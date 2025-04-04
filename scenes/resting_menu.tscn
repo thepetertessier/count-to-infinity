@@ -1,7 +1,25 @@
-[gd_scene load_steps=3 format=3 uid="uid://ime13jo53wo8"]
+[gd_scene load_steps=12 format=3 uid="uid://ime13jo53wo8"]
 
 [ext_resource type="Texture2D" uid="uid://bu8s78x7kd1ty" path="res://assets/images/CoffinBackground.png" id="1_4y48l"]
+[ext_resource type="Script" uid="uid://b7v54rffdav5b" path="res://scripts/resting_menu.gd" id="1_xitk6"]
 [ext_resource type="FontFile" uid="uid://drnqnibw60daw" path="res://assets/images/Firlest-Regular.otf" id="2_aoemk"]
+[ext_resource type="Resource" uid="uid://bgsvo35amirma" path="res://resources/test_player_stats.tres" id="2_rpyq4"]
+[ext_resource type="Texture2D" uid="uid://c4d7icnifcuh8" path="res://assets/images/wood-buttons.png" id="5_rpyq4"]
+[ext_resource type="Texture2D" uid="uid://ksteg5m1hskw" path="res://assets/images/dark-wooden-buttons.png" id="6_mu6aj"]
+[ext_resource type="Texture2D" uid="uid://da83jon3upwgc" path="res://assets/images/light-wood-buttons.png" id="7_jd1n5"]
+[ext_resource type="FontFile" uid="uid://dn4di6ajp75ob" path="res://assets/images/JetBrainsMono-Bold.ttf" id="8_suj7e"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rpyq4"]
+atlas = ExtResource("5_rpyq4")
+region = Rect2(190, 254, 1751, 564)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jd1n5"]
+atlas = ExtResource("6_mu6aj")
+region = Rect2(190, 254, 1751, 564)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_suj7e"]
+atlas = ExtResource("7_jd1n5")
+region = Rect2(190, 254, 1751, 564)
 
 [node name="RestingMenu" type="Control"]
 layout_mode = 3
@@ -10,6 +28,8 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_xitk6")
+stats = ExtResource("2_rpyq4")
 
 [node name="CoffinBackground" type="TextureRect" parent="."]
 layout_mode = 1
@@ -33,3 +53,67 @@ grow_horizontal = 2
 theme_override_fonts/font = ExtResource("2_aoemk")
 theme_override_font_sizes/font_size = 200
 text = "Count to Infinity"
+
+[node name="NewRunBtn" type="TextureButton" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -210.5
+offset_top = -91.0
+offset_right = 210.5
+offset_bottom = 91.0
+grow_horizontal = 2
+grow_vertical = 2
+texture_normal = SubResource("AtlasTexture_rpyq4")
+texture_pressed = SubResource("AtlasTexture_jd1n5")
+texture_hover = SubResource("AtlasTexture_suj7e")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="NewRunText" type="Label" parent="NewRunBtn"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -35.0
+offset_top = -11.5
+offset_right = 35.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("2_aoemk")
+theme_override_font_sizes/font_size = 70
+text = "New Run"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="GrainCountContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.31
+anchor_right = 0.5
+anchor_bottom = 0.31
+offset_left = -99.0
+offset_top = -64.8
+offset_right = 93.0
+offset_bottom = 63.2
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_group_ = true
+
+[node name="GrainCountIcon" type="TextureRect" parent="GrainCountContainer"]
+layout_mode = 2
+
+[node name="LifetimeGrainCount" type="Label" parent="GrainCountContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("8_suj7e")
+theme_override_font_sizes/font_size = 100
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
