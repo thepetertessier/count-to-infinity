@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://ime13jo53wo8"]
+[gd_scene load_steps=21 format=3 uid="uid://ime13jo53wo8"]
 
 [ext_resource type="Texture2D" uid="uid://bu8s78x7kd1ty" path="res://assets/images/CoffinBackground.png" id="1_4y48l"]
 [ext_resource type="Script" uid="uid://b7v54rffdav5b" path="res://scripts/resting_menu.gd" id="1_xitk6"]
@@ -10,6 +10,10 @@
 [ext_resource type="Texture2D" uid="uid://k4vhi6wej6k4" path="res://assets/images/icons8-grain-96.png" id="8_37ouw"]
 [ext_resource type="FontFile" uid="uid://dn4di6ajp75ob" path="res://assets/images/JetBrainsMono-Bold.ttf" id="8_suj7e"]
 [ext_resource type="Texture2D" uid="uid://bhumd5wltu6kt" path="res://assets/images/icons8-blood-96.png" id="10_0onyh"]
+[ext_resource type="Texture2D" uid="uid://3thr8ga3ld0e" path="res://assets/images/hand-silhouette.png" id="11_jch81"]
+[ext_resource type="Texture2D" uid="uid://bcm856x2r76fb" path="res://assets/images/pointing-finger.png" id="12_q3qxc"]
+[ext_resource type="Texture2D" uid="uid://cvrhjb2b0fn7r" path="res://assets/images/icons8-circle-around-64.png" id="13_nqn7n"]
+[ext_resource type="Texture2D" uid="uid://dabtu7qjifxf5" path="res://assets/images/icons8-speed-100.png" id="14_77cnt"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_rpyq4"]
 atlas = ExtResource("5_rpyq4")
@@ -22,6 +26,18 @@ region = Rect2(190, 254, 1751, 564)
 [sub_resource type="AtlasTexture" id="AtlasTexture_suj7e"]
 atlas = ExtResource("7_jd1n5")
 region = Rect2(190, 254, 1751, 564)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q3qxc"]
+atlas = ExtResource("5_rpyq4")
+region = Rect2(2626, 1968, 416, 433)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jch81"]
+atlas = ExtResource("6_mu6aj")
+region = Rect2(2626, 1968, 416, 433)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nqn7n"]
+atlas = ExtResource("7_jd1n5")
+region = Rect2(2626, 1968, 416, 433)
 
 [node name="RestingMenu" type="Control"]
 layout_mode = 3
@@ -150,3 +166,178 @@ theme_override_font_sizes/font_size = 100
 text = "0 ml."
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="LongFingersUpgradeBtn" type="TextureButton" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.939
+anchor_top = 0.899
+anchor_right = 0.939
+anchor_bottom = 0.899
+offset_left = -74.2201
+offset_top = -77.92
+offset_right = 75.7799
+offset_bottom = 77.08
+texture_normal = SubResource("AtlasTexture_q3qxc")
+texture_pressed = SubResource("AtlasTexture_jch81")
+texture_hover = SubResource("AtlasTexture_nqn7n")
+ignore_texture_size = true
+stretch_mode = 4
+metadata/_edit_group_ = true
+
+[node name="LongFingersTexture" type="TextureRect" parent="LongFingersUpgradeBtn"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -28.0
+offset_top = -47.5
+offset_right = 72.0
+offset_bottom = 33.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("11_jch81")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="PowerfulFingersUpgradeBtn" type="TextureButton" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.847
+anchor_top = 0.899
+anchor_right = 0.847
+anchor_bottom = 0.899
+offset_left = -74.0602
+offset_top = -77.92
+offset_right = 75.9398
+offset_bottom = 77.08
+texture_normal = SubResource("AtlasTexture_q3qxc")
+texture_pressed = SubResource("AtlasTexture_jch81")
+texture_hover = SubResource("AtlasTexture_nqn7n")
+ignore_texture_size = true
+stretch_mode = 4
+metadata/_edit_group_ = true
+
+[node name="PowerfulFingersTexture" type="TextureRect" parent="PowerfulFingersUpgradeBtn"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -28.0
+offset_top = -47.5
+offset_right = 72.0
+offset_bottom = 33.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("12_q3qxc")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="AutoFingersUpgradeBtn2" type="TextureButton" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.754
+anchor_top = 0.899
+anchor_right = 0.754
+anchor_bottom = 0.899
+offset_left = -74.92
+offset_top = -77.92
+offset_right = 75.08
+offset_bottom = 77.08
+texture_normal = SubResource("AtlasTexture_q3qxc")
+texture_pressed = SubResource("AtlasTexture_jch81")
+texture_hover = SubResource("AtlasTexture_nqn7n")
+ignore_texture_size = true
+stretch_mode = 4
+metadata/_edit_group_ = true
+
+[node name="AutoFingersTexture" type="TextureRect" parent="AutoFingersUpgradeBtn2"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -35.0
+offset_top = -44.5
+offset_right = 38.0
+offset_bottom = 36.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("13_nqn7n")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="AutoFingersUpgradeBtn3" type="TextureButton" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.754
+anchor_top = 0.899
+anchor_right = 0.754
+anchor_bottom = 0.899
+offset_left = -74.92
+offset_top = -77.92
+offset_right = 75.08
+offset_bottom = 77.08
+texture_normal = SubResource("AtlasTexture_q3qxc")
+texture_pressed = SubResource("AtlasTexture_jch81")
+texture_hover = SubResource("AtlasTexture_nqn7n")
+ignore_texture_size = true
+stretch_mode = 4
+metadata/_edit_group_ = true
+
+[node name="AutoFingersTexture" type="TextureRect" parent="AutoFingersUpgradeBtn3"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -35.0
+offset_top = -44.5
+offset_right = 38.0
+offset_bottom = 36.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("13_nqn7n")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="SpeedDemonUpgradeBtn4" type="TextureButton" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.754
+anchor_top = 0.899
+anchor_right = 0.754
+anchor_bottom = 0.899
+offset_left = -260.92
+offset_top = -77.92
+offset_right = -110.92
+offset_bottom = 77.08
+texture_normal = SubResource("AtlasTexture_q3qxc")
+texture_pressed = SubResource("AtlasTexture_jch81")
+texture_hover = SubResource("AtlasTexture_nqn7n")
+ignore_texture_size = true
+stretch_mode = 4
+metadata/_edit_group_ = true
+
+[node name="SpeedDemonTexture" type="TextureRect" parent="SpeedDemonUpgradeBtn4"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -35.0
+offset_top = -44.5
+offset_right = 38.0
+offset_bottom = 36.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("14_77cnt")
+expand_mode = 1
+stretch_mode = 4
