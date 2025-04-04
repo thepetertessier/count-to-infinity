@@ -1,0 +1,27 @@
+[gd_scene load_steps=3 format=3 uid="uid://cngw4ueq161xu"]
+
+[ext_resource type="Script" uid="uid://fcrd3vcoasqf" path="res://scripts/intro_text.gd" id="1_ioskq"]
+[ext_resource type="FontFile" uid="uid://df8p6ogj2hy8b" path="res://assets/fonts/MedievalSharp-Regular.ttf" id="1_yjqpq"]
+
+[node name="Intro" type="CanvasLayer"]
+
+[node name="Intro_Text" type="RichTextLabel" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 86.0
+offset_top = 78.0
+offset_right = -90.0
+offset_bottom = -349.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/normal_font = ExtResource("1_yjqpq")
+theme_override_fonts/mono_font = ExtResource("1_yjqpq")
+theme_override_fonts/bold_italics_font = ExtResource("1_yjqpq")
+theme_override_font_sizes/bold_italics_font_size = 50
+theme_override_font_sizes/italics_font_size = 50
+theme_override_font_sizes/mono_font_size = 50
+theme_override_font_sizes/normal_font_size = 50
+theme_override_font_sizes/bold_font_size = 50
+fit_content = true
+script = ExtResource("1_ioskq")
