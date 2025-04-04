@@ -1,7 +1,7 @@
 [gd_scene load_steps=33 format=3 uid="uid://ime13jo53wo8"]
 
 [ext_resource type="Texture2D" uid="uid://bu8s78x7kd1ty" path="res://assets/images/CoffinBackground.png" id="1_4y48l"]
-[ext_resource type="Script" uid="uid://b7v54rffdav5b" path="res://scripts/resting_menu.gd" id="1_xitk6"]
+[ext_resource type="Script" path="res://scripts/resting_menu.gd" id="1_xitk6"]
 [ext_resource type="FontFile" uid="uid://drnqnibw60daw" path="res://assets/images/Firlest-Regular.otf" id="2_aoemk"]
 [ext_resource type="Resource" uid="uid://c2a7vqpuvo0pw" path="res://resources/test_player_stats.tres" id="2_rpyq4"]
 [ext_resource type="Texture2D" uid="uid://c4d7icnifcuh8" path="res://assets/images/wood-buttons.png" id="5_rpyq4"]
@@ -87,6 +87,7 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_right = -60.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("1_4y48l")
@@ -207,9 +208,9 @@ anchor_left = 0.754
 anchor_top = 0.899
 anchor_right = 0.754
 anchor_bottom = 0.899
-offset_left = -260.92
+offset_left = -322.92
 offset_top = -77.92
-offset_right = -110.92
+offset_right = -172.92
 offset_bottom = 77.08
 texture_normal = SubResource("AtlasTexture_q3qxc")
 texture_pressed = SubResource("AtlasTexture_jch81")
@@ -242,9 +243,9 @@ anchor_left = 0.754
 anchor_top = 0.899
 anchor_right = 0.754
 anchor_bottom = 0.899
-offset_left = -74.92
+offset_left = -136.92
 offset_top = -77.92
-offset_right = 75.08
+offset_right = 13.08
 offset_bottom = 77.08
 texture_normal = SubResource("AtlasTexture_q3qxc")
 texture_pressed = SubResource("AtlasTexture_jch81")
@@ -277,9 +278,9 @@ anchor_left = 0.847
 anchor_top = 0.899
 anchor_right = 0.847
 anchor_bottom = 0.899
-offset_left = -74.0602
+offset_left = -136.06
 offset_top = -77.92
-offset_right = 75.9398
+offset_right = 13.9398
 offset_bottom = 77.08
 texture_normal = SubResource("AtlasTexture_q3qxc")
 texture_pressed = SubResource("AtlasTexture_jch81")
@@ -312,9 +313,9 @@ anchor_left = 0.939
 anchor_top = 0.899
 anchor_right = 0.939
 anchor_bottom = 0.899
-offset_left = -74.2201
+offset_left = -136.22
 offset_top = -77.92
-offset_right = 75.7799
+offset_right = 13.7799
 offset_bottom = 77.08
 texture_normal = SubResource("AtlasTexture_q3qxc")
 texture_pressed = SubResource("AtlasTexture_jch81")
