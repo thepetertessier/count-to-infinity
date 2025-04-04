@@ -1,5 +1,481 @@
-[gd_scene format=3 uid="uid://ime13jo53wo8"]
+[gd_scene load_steps=33 format=3 uid="uid://ime13jo53wo8"]
+
+[ext_resource type="Texture2D" uid="uid://bu8s78x7kd1ty" path="res://assets/images/CoffinBackground.png" id="1_4y48l"]
+[ext_resource type="Script" uid="uid://b7v54rffdav5b" path="res://scripts/resting_menu.gd" id="1_xitk6"]
+[ext_resource type="FontFile" uid="uid://drnqnibw60daw" path="res://assets/images/Firlest-Regular.otf" id="2_aoemk"]
+[ext_resource type="Resource" uid="uid://c2a7vqpuvo0pw" path="res://resources/test_player_stats.tres" id="2_rpyq4"]
+[ext_resource type="Texture2D" uid="uid://c4d7icnifcuh8" path="res://assets/images/wood-buttons.png" id="5_rpyq4"]
+[ext_resource type="Texture2D" uid="uid://ksteg5m1hskw" path="res://assets/images/dark-wooden-buttons.png" id="6_mu6aj"]
+[ext_resource type="Texture2D" uid="uid://da83jon3upwgc" path="res://assets/images/light-wood-buttons.png" id="7_jd1n5"]
+[ext_resource type="Texture2D" uid="uid://k4vhi6wej6k4" path="res://assets/images/icons8-grain-96.png" id="8_37ouw"]
+[ext_resource type="FontFile" uid="uid://dn4di6ajp75ob" path="res://assets/images/JetBrainsMono-Bold.ttf" id="8_suj7e"]
+[ext_resource type="Texture2D" uid="uid://bhumd5wltu6kt" path="res://assets/images/icons8-blood-96.png" id="10_0onyh"]
+[ext_resource type="Texture2D" uid="uid://3thr8ga3ld0e" path="res://assets/images/hand-silhouette.png" id="11_jch81"]
+[ext_resource type="Texture2D" uid="uid://bcm856x2r76fb" path="res://assets/images/pointing-finger.png" id="12_q3qxc"]
+[ext_resource type="Texture2D" uid="uid://cvrhjb2b0fn7r" path="res://assets/images/icons8-circle-around-64.png" id="13_nqn7n"]
+[ext_resource type="Texture2D" uid="uid://dabtu7qjifxf5" path="res://assets/images/icons8-speed-100.png" id="14_77cnt"]
+[ext_resource type="Texture2D" uid="uid://ob16iycq5edw" path="res://assets/images/buttons2.png" id="15_3c05p"]
+[ext_resource type="AudioStream" uid="uid://bgqx5b83vmm31" path="res://assets/sound/dracula-edm-dance-instrumental-vampire-goth-spooky-halloween-148255.mp3" id="15_sj1uh"]
+[ext_resource type="Texture2D" uid="uid://ccopo6ceiwcax" path="res://assets/images/buttons2-darkened.png" id="16_3c05p"]
+[ext_resource type="Texture2D" uid="uid://ciipfeuf4i0xv" path="res://assets/images/buttons2-lightened.png" id="17_ixk8q"]
+[ext_resource type="FontFile" uid="uid://q276iy7jh11j" path="res://assets/images/Impact.ttf" id="18_ixk8q"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rpyq4"]
+atlas = ExtResource("5_rpyq4")
+region = Rect2(190, 254, 1751, 564)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jd1n5"]
+atlas = ExtResource("6_mu6aj")
+region = Rect2(190, 254, 1751, 564)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_suj7e"]
+atlas = ExtResource("7_jd1n5")
+region = Rect2(190, 254, 1751, 564)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q3qxc"]
+atlas = ExtResource("5_rpyq4")
+region = Rect2(2626, 1968, 416, 433)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jch81"]
+atlas = ExtResource("6_mu6aj")
+region = Rect2(2626, 1968, 416, 433)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nqn7n"]
+atlas = ExtResource("7_jd1n5")
+region = Rect2(2626, 1968, 416, 433)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sj1uh"]
+atlas = ExtResource("5_rpyq4")
+region = Rect2(2061, 3038, 1541, 561)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6w85d"]
+atlas = ExtResource("15_3c05p")
+region = Rect2(21, 2596, 1117, 444)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_en5wp"]
+atlas = ExtResource("16_3c05p")
+region = Rect2(21, 2596, 1117, 444)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t3xc3"]
+atlas = ExtResource("17_ixk8q")
+region = Rect2(21, 2596, 1117, 444)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ixk8q"]
+atlas = ExtResource("15_3c05p")
+region = Rect2(876, 883, 774, 774)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_px36p"]
+atlas = ExtResource("16_3c05p")
+region = Rect2(876, 883, 774, 774)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_getes"]
+atlas = ExtResource("17_ixk8q")
+region = Rect2(876, 883, 774, 774)
 
 [node name="RestingMenu" type="Control"]
 layout_mode = 3
-anchors_preset = 0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_xitk6")
+stats = ExtResource("2_rpyq4")
+
+[node name="CoffinBackground" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_4y48l")
+
+[node name="TitleText" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.377
+anchor_right = 0.5
+anchor_bottom = 0.377
+offset_left = -680.0
+offset_top = -84.16
+offset_right = 680.0
+offset_bottom = 83.84
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("2_aoemk")
+theme_override_font_sizes/font_size = 200
+text = "Count to Infinity"
+
+[node name="NewRunBtn" type="TextureButton" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.543
+anchor_right = 0.5
+anchor_bottom = 0.543
+offset_left = -210.5
+offset_top = -91.4401
+offset_right = 210.5
+offset_bottom = 90.5599
+grow_horizontal = 2
+grow_vertical = 2
+texture_normal = SubResource("AtlasTexture_rpyq4")
+texture_pressed = SubResource("AtlasTexture_jd1n5")
+texture_hover = SubResource("AtlasTexture_suj7e")
+ignore_texture_size = true
+stretch_mode = 5
+metadata/_edit_group_ = true
+
+[node name="NewRunText" type="Label" parent="NewRunBtn"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -35.0
+offset_top = -11.5
+offset_right = 35.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("2_aoemk")
+theme_override_font_sizes/font_size = 70
+text = "New Run"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="GrainCountContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.685
+anchor_right = 0.5
+anchor_bottom = 0.685
+offset_left = -99.0
+offset_top = -60.8
+offset_right = 93.0
+offset_bottom = 61.2
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_group_ = true
+
+[node name="GrainCountIcon" type="TextureRect" parent="GrainCountContainer"]
+layout_mode = 2
+texture = ExtResource("8_37ouw")
+
+[node name="LifetimeGrainCount" type="Label" parent="GrainCountContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("8_suj7e")
+theme_override_font_sizes/font_size = 100
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BloodCountContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.108
+anchor_top = 0.931
+anchor_right = 0.108
+anchor_bottom = 0.931
+offset_left = -200.84
+offset_top = -64.48
+offset_right = 530.16
+offset_bottom = 63.52
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_group_ = true
+
+[node name="BloodCountIcon" type="TextureRect" parent="BloodCountContainer"]
+layout_mode = 2
+texture = ExtResource("10_0onyh")
+
+[node name="BloodCount" type="Label" parent="BloodCountContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("8_suj7e")
+theme_override_font_sizes/font_size = 100
+text = "0 ml."
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SpeedDemonUpgradeBtn" type="TextureButton" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.754
+anchor_top = 0.899
+anchor_right = 0.754
+anchor_bottom = 0.899
+offset_left = -260.92
+offset_top = -77.92
+offset_right = -110.92
+offset_bottom = 77.08
+texture_normal = SubResource("AtlasTexture_q3qxc")
+texture_pressed = SubResource("AtlasTexture_jch81")
+texture_hover = SubResource("AtlasTexture_nqn7n")
+ignore_texture_size = true
+stretch_mode = 4
+metadata/_edit_group_ = true
+
+[node name="SpeedDemonTexture" type="TextureRect" parent="SpeedDemonUpgradeBtn"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -35.0
+offset_top = -44.5
+offset_right = 38.0
+offset_bottom = 36.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("14_77cnt")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="AutoFingersUpgradeBtn" type="TextureButton" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.754
+anchor_top = 0.899
+anchor_right = 0.754
+anchor_bottom = 0.899
+offset_left = -74.92
+offset_top = -77.92
+offset_right = 75.08
+offset_bottom = 77.08
+texture_normal = SubResource("AtlasTexture_q3qxc")
+texture_pressed = SubResource("AtlasTexture_jch81")
+texture_hover = SubResource("AtlasTexture_nqn7n")
+ignore_texture_size = true
+stretch_mode = 4
+metadata/_edit_group_ = true
+
+[node name="AutoFingersTexture" type="TextureRect" parent="AutoFingersUpgradeBtn"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -35.0
+offset_top = -44.5
+offset_right = 38.0
+offset_bottom = 36.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("13_nqn7n")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="PowerfulFingersUpgradeBtn" type="TextureButton" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.847
+anchor_top = 0.899
+anchor_right = 0.847
+anchor_bottom = 0.899
+offset_left = -74.0602
+offset_top = -77.92
+offset_right = 75.9398
+offset_bottom = 77.08
+texture_normal = SubResource("AtlasTexture_q3qxc")
+texture_pressed = SubResource("AtlasTexture_jch81")
+texture_hover = SubResource("AtlasTexture_nqn7n")
+ignore_texture_size = true
+stretch_mode = 4
+metadata/_edit_group_ = true
+
+[node name="PowerfulFingersTexture" type="TextureRect" parent="PowerfulFingersUpgradeBtn"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -28.0
+offset_top = -47.5
+offset_right = 72.0
+offset_bottom = 33.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("12_q3qxc")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="LongFingersUpgradeBtn" type="TextureButton" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.939
+anchor_top = 0.899
+anchor_right = 0.939
+anchor_bottom = 0.899
+offset_left = -74.2201
+offset_top = -77.92
+offset_right = 75.7799
+offset_bottom = 77.08
+texture_normal = SubResource("AtlasTexture_q3qxc")
+texture_pressed = SubResource("AtlasTexture_jch81")
+texture_hover = SubResource("AtlasTexture_nqn7n")
+ignore_texture_size = true
+stretch_mode = 4
+metadata/_edit_group_ = true
+
+[node name="LongFingersTexture" type="TextureRect" parent="LongFingersUpgradeBtn"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -28.0
+offset_top = -47.5
+offset_right = 72.0
+offset_bottom = 33.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("11_jch81")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="UpgradeMenu" type="Control" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_group_ = true
+
+[node name="UpgradeMenuBg" type="TextureRect" parent="UpgradeMenu"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.202
+anchor_top = 0.278
+anchor_right = 0.798
+anchor_bottom = 0.722
+offset_left = 0.039978
+offset_top = -0.240021
+offset_right = -0.0400391
+offset_bottom = 0.239929
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("AtlasTexture_sj1uh")
+expand_mode = 1
+
+[node name="UpgradeName" type="Label" parent="UpgradeMenu"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.401
+anchor_right = 0.5
+anchor_bottom = 0.401
+offset_left = -352.5
+offset_top = -42.58
+offset_right = 352.5
+offset_bottom = 42.42
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("2_aoemk")
+theme_override_font_sizes/font_size = 80
+text = "UPGRADE - LVL 1"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="UpgradeButton" type="TextureButton" parent="UpgradeMenu"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.538
+anchor_right = 0.5
+anchor_bottom = 0.538
+offset_left = -166.0
+offset_top = -66.54
+offset_right = 166.0
+offset_bottom = 66.46
+grow_horizontal = 2
+grow_vertical = 2
+texture_normal = SubResource("AtlasTexture_6w85d")
+texture_pressed = SubResource("AtlasTexture_en5wp")
+texture_hover = SubResource("AtlasTexture_t3xc3")
+ignore_texture_size = true
+stretch_mode = 4
+metadata/_edit_group_ = true
+
+[node name="UpgradeText" type="Label" parent="UpgradeMenu/UpgradeButton"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("18_ixk8q")
+theme_override_font_sizes/font_size = 60
+text = "UPGRADE"
+
+[node name="BloodCostContainer" type="HBoxContainer" parent="UpgradeMenu"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.633
+anchor_right = 0.5
+anchor_bottom = 0.633
+offset_left = -114.0
+offset_top = -60.64
+offset_right = 120.0
+offset_bottom = 61.36
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+metadata/_edit_group_ = true
+
+[node name="BloodIcon" type="TextureRect" parent="UpgradeMenu/BloodCostContainer"]
+custom_minimum_size = Vector2(50, 20)
+layout_mode = 2
+texture = ExtResource("10_0onyh")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="BloodCost" type="Label" parent="UpgradeMenu/BloodCostContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("8_suj7e")
+theme_override_font_sizes/font_size = 50
+text = "500"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CloseMenu" type="TextureButton" parent="UpgradeMenu"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.744
+anchor_top = 0.359
+anchor_right = 0.744
+anchor_bottom = 0.359
+offset_left = -54.12
+offset_top = -53.72
+offset_right = 54.88
+offset_bottom = 54.28
+texture_normal = SubResource("AtlasTexture_ixk8q")
+texture_pressed = SubResource("AtlasTexture_px36p")
+texture_hover = SubResource("AtlasTexture_getes")
+ignore_texture_size = true
+stretch_mode = 4
+
+[node name="Music" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("15_sj1uh")
+
+[connection signal="pressed" from="SpeedDemonUpgradeBtn" to="." method="_on_speed_demon_upgrade_btn_pressed"]
+[connection signal="pressed" from="AutoFingersUpgradeBtn" to="." method="_on_auto_fingers_upgrade_btn_pressed"]
+[connection signal="pressed" from="PowerfulFingersUpgradeBtn" to="." method="_on_powerful_fingers_upgrade_btn_pressed"]
+[connection signal="pressed" from="LongFingersUpgradeBtn" to="." method="_on_long_fingers_upgrade_btn_pressed"]
+[connection signal="pressed" from="UpgradeMenu/UpgradeButton" to="." method="_on_upgrade_button_pressed"]
+[connection signal="pressed" from="UpgradeMenu/CloseMenu" to="." method="_on_close_menu_pressed"]
