@@ -1,5 +1,0 @@
-[gd_scene format=3 uid="uid://ime13jo53wo8"]
-
-[node name="RestingMenu" type="Control"]
-layout_mode = 3
-anchors_preset = 0

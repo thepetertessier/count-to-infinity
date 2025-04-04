@@ -11,7 +11,8 @@ config_version=5
 [application]
 
 config/name="Count to Infinity"
-config/features=PackedStringArray("4.3", "GL Compatibility")
+run/main_scene="uid://ime13jo53wo8"
+config/features=PackedStringArray("4.4", "GL Compatibility")
 config/icon="res://icon.svg"
 
 [display]
