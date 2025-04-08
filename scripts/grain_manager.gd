@@ -4,7 +4,7 @@ var total_grains: int = 0
 var collected_count: int = 0
 
 # Get the label node for updating UI. Adjust the path if needed.
-@onready var grain_count_label: Label = $"../GrainCountLabel"
+@onready var grain_count_label: Label = %GrainCountLabel
 
 func _ready():
 	randomize()
@@ -32,6 +32,7 @@ func spawn_grain(grain_scene, screen_margin):
 	
 	# Connect the signal from the grain when clicked.
 	grain.clicked.connect(_on_grain_clicked)
+	print("Grain spanwed at ", grain.position)
 
 # Callback for when a grain is clicked.
 func _on_grain_clicked():

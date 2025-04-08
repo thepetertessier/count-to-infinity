@@ -37,6 +37,7 @@ script = ExtResource("3_jkvj8")
 script = ExtResource("4_birqw")
 
 [node name="GrainCountLabel" type="Label" parent="."]
+unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
