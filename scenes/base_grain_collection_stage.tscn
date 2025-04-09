@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://8tjc4f5850sp"]
+[gd_scene load_steps=12 format=3 uid="uid://8tjc4f5850sp"]
 
 [ext_resource type="Script" uid="uid://cmv6nfg03y3to" path="res://scripts/base_grain_collection_stage.gd" id="1_8hmx6"]
 [ext_resource type="PackedScene" uid="uid://bhlwryr07um32" path="res://scenes/sunflower_seed.tscn" id="2_lpafe"]
@@ -9,6 +9,7 @@
 [ext_resource type="Script" uid="uid://duq46twvr370o" path="res://scripts/audio_manager.gd" id="7_t7vij"]
 [ext_resource type="Texture2D" uid="uid://bfcilfni0jf01" path="res://assets/images/jar.png" id="8_uyvr0"]
 [ext_resource type="AudioStream" uid="uid://f7ngrq337f5c" path="res://assets/sfx/hover.ogg" id="9_2odsn"]
+[ext_resource type="AudioStream" uid="uid://b4wfi1m2ef5go" path="res://assets/sfx/stage_complete.ogg" id="10_li4ok"]
 [ext_resource type="AudioStream" uid="uid://bx635tjx561hf" path="res://assets/sound/run_till_sunrise.ogg" id="10_r0eox"]
 
 [node name="BaseGrainCollectionStage" type="Control"]
@@ -99,6 +100,11 @@ script = ExtResource("7_t7vij")
 
 [node name="HoverPlayer" type="AudioStreamPlayer" parent="SFXManager"]
 stream = ExtResource("9_2odsn")
+max_polyphony = 4
+bus = &"SFX"
+
+[node name="StageCompletePlayer" type="AudioStreamPlayer" parent="SFXManager"]
+stream = ExtResource("10_li4ok")
 bus = &"SFX"
 
 [node name="MusicManager" type="Node" parent="."]
@@ -107,3 +113,4 @@ bus = &"SFX"
 stream = ExtResource("10_r0eox")
 autoplay = true
 bus = &"Music"
+parameters/looping = true

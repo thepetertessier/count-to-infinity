@@ -49,7 +49,7 @@ func _on_grain_collected(grain):
 	# Animate the grain's movement to the jar
 	var tween = get_tree().create_tween()
 	tween.tween_property(grain, "position", jar.position, 1)
-	tween.parallel().tween_property($Sprite, "scale", Vector2(), 1)
+	tween.parallel().tween_property(grain, "scale", Vector2(), 1)
 	tween.set_parallel(false)
 	tween.tween_callback(set_run_grain_count_label.bind(grain_count_across_run))
 	tween.tween_callback(audio_manager.play_collect)
@@ -66,3 +66,7 @@ func set_run_grain_count_label(amount):
 # Called when the stage is complete.
 func stage_complete():
 	grain_count_label.text = "Stage Complete!"
+	audio_manager.play_stage_complete()
+	var tween = get_tree().create_tween()
+	tween.tween_property(grain_count_label, "position", Vector2(330, 425), 1)
+	tween.parallel().tween_property(grain_count_label, "scale", Vector2(1,1)*2, 1)

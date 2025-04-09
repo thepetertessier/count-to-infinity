@@ -6,6 +6,7 @@ var pop_audio_players = []
 var collect_audio_players = []
 
 @onready var hover_player: AudioStreamPlayer = $HoverPlayer
+@onready var stage_complete_player: AudioStreamPlayer = $StageCompletePlayer
 
 func make_new_player(stream: AudioStream) -> AudioStreamPlayer:
 	var player = AudioStreamPlayer.new()
@@ -33,3 +34,6 @@ func play_hover():
 
 func play_collect():
 	collect_audio_players[randi_range(0, pop_sound_count-1)].play()
+	
+func play_stage_complete():
+	stage_complete_player.play()
