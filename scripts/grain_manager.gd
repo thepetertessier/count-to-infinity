@@ -6,7 +6,7 @@ var grain_count_across_run: int
 
 # Get the label node for updating UI. Adjust the path if needed.
 @onready var grain_count_label: Label = %GrainCountLabel
-@onready var audio_manager: Node = %AudioManager
+@onready var audio_manager: Node = %SFXManager
 @onready var jar: Sprite2D = $Jar
 @onready var run_grain_count_label: Label = $RunGrainCountLabel
 
@@ -54,10 +54,7 @@ func _on_grain_collected(grain):
 	tween.tween_callback(set_run_grain_count_label.bind(grain_count_across_run))
 	tween.tween_callback(audio_manager.play_collect)
 	tween.tween_callback(grain.queue_free)
-	
-	# Check if all grains are collected.
-	if collected_count >= total_grains:
-		stage_complete()
+	tween.tween_callback(func(): if collected_count >= total_grains: stage_complete())
 
 # Update the UI label.
 func update_ui():
@@ -69,4 +66,3 @@ func set_run_grain_count_label(amount):
 # Called when the stage is complete.
 func stage_complete():
 	grain_count_label.text = "Stage Complete!"
-	
