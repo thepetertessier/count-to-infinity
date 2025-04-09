@@ -1,7 +1,7 @@
 [gd_scene load_steps=33 format=3 uid="uid://ime13jo53wo8"]
 
 [ext_resource type="Texture2D" uid="uid://bu8s78x7kd1ty" path="res://assets/images/CoffinBackground.png" id="1_4y48l"]
-[ext_resource type="Script" path="res://scripts/resting_menu.gd" id="1_xitk6"]
+[ext_resource type="Script" uid="uid://b7v54rffdav5b" path="res://scripts/resting_menu.gd" id="1_xitk6"]
 [ext_resource type="FontFile" uid="uid://drnqnibw60daw" path="res://assets/images/Firlest-Regular.otf" id="2_aoemk"]
 [ext_resource type="Resource" uid="uid://c2a7vqpuvo0pw" path="res://resources/test_player_stats.tres" id="2_rpyq4"]
 [ext_resource type="Texture2D" uid="uid://c4d7icnifcuh8" path="res://assets/images/wood-buttons.png" id="5_rpyq4"]
@@ -473,6 +473,7 @@ stretch_mode = 4
 [node name="Music" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("15_sj1uh")
 
+[connection signal="pressed" from="NewRunBtn" to="." method="_on_new_run_btn_pressed"]
 [connection signal="pressed" from="SpeedDemonUpgradeBtn" to="." method="_on_speed_demon_upgrade_btn_pressed"]
 [connection signal="pressed" from="AutoFingersUpgradeBtn" to="." method="_on_auto_fingers_upgrade_btn_pressed"]
 [connection signal="pressed" from="PowerfulFingersUpgradeBtn" to="." method="_on_powerful_fingers_upgrade_btn_pressed"]
