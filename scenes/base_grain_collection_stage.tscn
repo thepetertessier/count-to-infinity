@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://8tjc4f5850sp"]
+[gd_scene load_steps=22 format=3 uid="uid://8tjc4f5850sp"]
 
 [ext_resource type="Script" uid="uid://cmv6nfg03y3to" path="res://scripts/base_grain_collection_stage.gd" id="1_8hmx6"]
 [ext_resource type="PackedScene" uid="uid://bhlwryr07um32" path="res://scenes/sunflower_seed.tscn" id="2_lpafe"]
@@ -8,12 +8,15 @@
 [ext_resource type="FontFile" uid="uid://drnqnibw60daw" path="res://assets/images/Firlest-Regular.otf" id="5_r4wbf"]
 [ext_resource type="Texture2D" uid="uid://c4nrn1kdanm1k" path="res://assets/images/sunrise.svg" id="6_4ov0l"]
 [ext_resource type="Script" uid="uid://ckexaofd476pt" path="res://scripts/day_lighter_timer.gd" id="6_h75rq"]
+[ext_resource type="Script" uid="uid://bgvj04lfkw1du" path="res://scripts/grain_count_label.gd" id="6_m2eps"]
 [ext_resource type="Script" uid="uid://duq46twvr370o" path="res://scripts/audio_manager.gd" id="7_t7vij"]
 [ext_resource type="Texture2D" uid="uid://bfcilfni0jf01" path="res://assets/images/jar.png" id="8_uyvr0"]
 [ext_resource type="AudioStream" uid="uid://f7ngrq337f5c" path="res://assets/sfx/hover.ogg" id="9_2odsn"]
 [ext_resource type="AudioStream" uid="uid://b4wfi1m2ef5go" path="res://assets/sfx/stage_complete.ogg" id="10_li4ok"]
 [ext_resource type="AudioStream" uid="uid://jmpswvu3gs8w" path="res://assets/sound/run_till_sunrise.ogg" id="10_r0eox"]
 [ext_resource type="AudioStream" uid="uid://dgm3errwigb7q" path="res://assets/sfx/buzzer.ogg" id="12_bhinw"]
+[ext_resource type="AudioStream" uid="uid://d3r8rx1mc34a" path="res://assets/sfx/run_over.ogg" id="14_bqhox"]
+[ext_resource type="Script" uid="uid://cvl38xwrt27m0" path="res://scripts/music_manager.gd" id="15_8v08u"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4ov0l"]
 
@@ -101,6 +104,7 @@ theme_override_fonts/font = ExtResource("5_r4wbf")
 theme_override_font_sizes/font_size = 100
 text = "Collected: X / X"
 horizontal_alignment = 1
+script = ExtResource("6_m2eps")
 
 [node name="StageLabel" type="Label" parent="."]
 unique_name_in_owner = true
@@ -248,6 +252,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="RunGrainCountLabel" type="Label" parent="GrainManager"]
+unique_name_in_owner = true
 offset_left = 1649.0
 offset_top = 93.0
 offset_right = 1907.0
@@ -277,7 +282,13 @@ bus = &"SFX"
 stream = ExtResource("10_li4ok")
 bus = &"SFX"
 
+[node name="RunOverPlayer" type="AudioStreamPlayer" parent="SFXManager"]
+stream = ExtResource("14_bqhox")
+bus = &"SFX"
+
 [node name="MusicManager" type="Node" parent="."]
+unique_name_in_owner = true
+script = ExtResource("15_8v08u")
 
 [node name="AmbientPlayer" type="AudioStreamPlayer" parent="MusicManager"]
 stream = ExtResource("10_r0eox")
@@ -286,7 +297,6 @@ bus = &"Music"
 parameters/looping = true
 
 [node name="SunLight" type="ColorRect" parent="."]
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -297,7 +307,8 @@ mouse_filter = 1
 color = Color(0.84, 0.45654, 0.1428, 0)
 metadata/_edit_use_anchors_ = true
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="SunLight"]
+[node name="SunlightAnimationPlayer" type="AnimationPlayer" parent="SunLight"]
+unique_name_in_owner = true
 libraries = {
 &"": SubResource("AnimationLibrary_h75rq")
 }

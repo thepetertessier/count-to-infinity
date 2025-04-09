@@ -40,3 +40,6 @@ func play_stage_complete():
 	
 func play_buzzer():
 	$BuzzerPlayer.play()
+
+func play_run_over():
+	$RunOverPlayer.play()

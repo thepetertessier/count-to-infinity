@@ -66,8 +66,5 @@ func set_run_grain_count_label(amount):
 
 # Called when the stage is complete.
 func stage_complete():
-	grain_count_label.text = "Stage Complete!"
 	audio_manager.play_stage_complete()
-	var tween = get_tree().create_tween()
-	tween.tween_property(grain_count_label, "position", Vector2(330, 425), 1)
-	tween.parallel().tween_property(grain_count_label, "scale", Vector2(1,1)*2, 1)
+	grain_count_label.big_center_text("Stage Complete!")
