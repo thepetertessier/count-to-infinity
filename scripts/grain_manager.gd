@@ -5,6 +5,7 @@ var collected_count: int = 0
 
 # Get the label node for updating UI. Adjust the path if needed.
 @onready var grain_count_label: Label = %GrainCountLabel
+@onready var audio_manager: Node = %AudioManager
 
 func _ready():
 	randomize()
@@ -30,7 +31,6 @@ func spawn_grain(grain_scene, screen_margin, index):
 	)
 	#grain.rotatation = randf_range(-1, 1)
 	grain.scale = Vector2(1, 1) * randf_range(0.8, 1.1)
-	grain.z_index = 10
 	
 	# Connect the signal from the grain when clicked.
 	var result = grain.clicked.connect(_on_grain_clicked.bind(index))
@@ -38,6 +38,7 @@ func spawn_grain(grain_scene, screen_margin, index):
 
 # Callback for when a grain is clicked.
 func _on_grain_clicked(grain_index):
+	audio_manager.play_pop()
 	collected_count += 1
 	update_ui()
 	

@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://8tjc4f5850sp"]
+[gd_scene load_steps=9 format=3 uid="uid://8tjc4f5850sp"]
 
 [ext_resource type="Script" uid="uid://cmv6nfg03y3to" path="res://scripts/base_grain_collection_stage.gd" id="1_8hmx6"]
 [ext_resource type="PackedScene" uid="uid://bhlwryr07um32" path="res://scenes/sunflower_seed.tscn" id="2_lpafe"]
@@ -6,6 +6,8 @@
 [ext_resource type="Texture2D" uid="uid://c4wmur4mwckt8" path="res://assets/images/doormat_night.png" id="3_lpafe"]
 [ext_resource type="Script" uid="uid://bdunv81ygpaoj" path="res://scripts/grain_manager.gd" id="4_birqw"]
 [ext_resource type="FontFile" uid="uid://drnqnibw60daw" path="res://assets/images/Firlest-Regular.otf" id="5_r4wbf"]
+[ext_resource type="Script" uid="uid://duq46twvr370o" path="res://scripts/audio_manager.gd" id="7_t7vij"]
+[ext_resource type="Texture2D" uid="uid://bfcilfni0jf01" path="res://assets/images/jar.png" id="8_uyvr0"]
 
 [node name="BaseGrainCollectionStage" type="Control"]
 layout_mode = 3
@@ -17,6 +19,9 @@ grow_vertical = 2
 mouse_filter = 1
 script = ExtResource("1_8hmx6")
 grain_scene = ExtResource("2_lpafe")
+
+[node name="CursorManager" type="Node" parent="."]
+script = ExtResource("3_jkvj8")
 
 [node name="Background" type="TextureRect" parent="."]
 layout_mode = 1
@@ -31,12 +36,6 @@ grow_vertical = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 texture = ExtResource("3_lpafe")
-
-[node name="CursorManager" type="Node" parent="."]
-script = ExtResource("3_jkvj8")
-
-[node name="GrainManager" type="Node2D" parent="."]
-script = ExtResource("4_birqw")
 
 [node name="GrainCountLabel" type="Label" parent="."]
 unique_name_in_owner = true
@@ -59,6 +58,25 @@ theme_override_font_sizes/font_size = 100
 text = "Collected: X / X"
 horizontal_alignment = 1
 
-[node name="SunflowerSeed" parent="." instance=ExtResource("2_lpafe")]
-z_index = 10
-position = Vector2(1026, 481)
+[node name="Jar" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -252.0
+offset_top = 7.0
+offset_right = 728.0
+offset_bottom = 987.0
+grow_horizontal = 0
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("8_uyvr0")
+
+[node name="GrainManager" type="Node2D" parent="."]
+script = ExtResource("4_birqw")
+
+[node name="AudioManager" type="Node" parent="."]
+unique_name_in_owner = true
+script = ExtResource("7_t7vij")
+
+[node name="PopPlayer" type="AudioStreamPlayer" parent="AudioManager"]
+max_polyphony = 4
