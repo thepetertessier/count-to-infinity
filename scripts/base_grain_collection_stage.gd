@@ -9,4 +9,4 @@ extends Control
 @onready var grain_manager: Node2D = $GrainManager
 
 func _ready() -> void:
-	grain_manager.set_stage(grain_scene, grain_count_min, grain_count_max, screen_margin)
+	grain_manager.set_stage(grain_scene, grain_count_min, grain_count_max, screen_margin, grain_count_across_run)

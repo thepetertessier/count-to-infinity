@@ -2,17 +2,19 @@ extends Node2D
 
 var total_grains: int = 0
 var collected_count: int = 0
+var grain_count_across_run: int
 
 # Get the label node for updating UI. Adjust the path if needed.
 @onready var grain_count_label: Label = %GrainCountLabel
 @onready var audio_manager: Node = %AudioManager
 @onready var jar: Sprite2D = $Jar
+@onready var run_grain_count_label: Label = $RunGrainCountLabel
 
 func _ready():
 	randomize()
 
-func set_stage(grain_scene: PackedScene, grain_count_min: int, grain_count_max: int, screen_margin: Vector2):
-	# Randomly decide the number of grain to spawn.
+func set_stage(grain_scene: PackedScene, grain_count_min: int, grain_count_max: int, screen_margin: Vector2, _grain_count_across_run: int):
+	grain_count_across_run = _grain_count_across_run
 	total_grains = randi_range(grain_count_min, grain_count_max)
 	
 	# Spawn each grain.
@@ -35,12 +37,13 @@ func spawn_grain(grain_scene, screen_margin):
 	
 	# Connect the signal from the grain when clicked.
 	grain.clicked.connect(_on_grain_collected.bind(grain))
-	grain.mouse_entered.connect(func(): audio_manager.play_hover())
+	grain.mouse_entered.connect(audio_manager.play_hover)
 
 # Callback for when a grain is clicked.
 func _on_grain_collected(grain):
 	audio_manager.play_pop()
 	collected_count += 1
+	grain_count_across_run += 1
 	update_ui()
 	
 	# Animate the grain's movement to the jar
@@ -48,6 +51,8 @@ func _on_grain_collected(grain):
 	tween.tween_property(grain, "position", jar.position, 1)
 	tween.parallel().tween_property($Sprite, "scale", Vector2(), 1)
 	tween.set_parallel(false)
+	tween.tween_callback(set_run_grain_count_label.bind(grain_count_across_run))
+	tween.tween_callback(audio_manager.play_collect)
 	tween.tween_callback(grain.queue_free)
 	
 	# Check if all grains are collected.
@@ -57,6 +62,9 @@ func _on_grain_collected(grain):
 # Update the UI label.
 func update_ui():
 	grain_count_label.text = "Collected: " + str(collected_count) + " / " + str(total_grains)
+
+func set_run_grain_count_label(amount):
+	run_grain_count_label.text = "x" + str(amount)
 
 # Called when the stage is complete.
 func stage_complete():
