@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" uid="uid://cmv6nfg03y3to" path="res://scripts/base_grain_collection_stage.gd" id="1_8hmx6"]
 [ext_resource type="PackedScene" uid="uid://bhlwryr07um32" path="res://scenes/sunflower_seed.tscn" id="2_lpafe"]
-[ext_resource type="Texture2D" uid="uid://baq41oljxvvfg" path="res://assets/images/macedonia_welcome_mat.png" id="2_omdvx"]
 [ext_resource type="Script" uid="uid://bt07xyuwly61l" path="res://scripts/cursor_manager.gd" id="3_jkvj8"]
+[ext_resource type="Texture2D" uid="uid://c4wmur4mwckt8" path="res://assets/images/doormat_night.png" id="3_lpafe"]
 [ext_resource type="Script" uid="uid://bdunv81ygpaoj" path="res://scripts/grain_manager.gd" id="4_birqw"]
 [ext_resource type="FontFile" uid="uid://drnqnibw60daw" path="res://assets/images/Firlest-Regular.otf" id="5_r4wbf"]
 
@@ -22,13 +22,14 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_top = -233.0
 offset_right = 52.0
-offset_bottom = 61.0
+offset_bottom = 94.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-texture = ExtResource("2_omdvx")
+texture = ExtResource("3_lpafe")
 
 [node name="CursorManager" type="Node" parent="."]
 script = ExtResource("3_jkvj8")

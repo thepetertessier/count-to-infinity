@@ -67,7 +67,7 @@ _data = {
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_gr5ta"]
 radius = 27.0
-height = 114.0
+height = 122.328
 
 [node name="SunflowerSeed" type="Node2D"]
 script = ExtResource("2_gr5ta")
@@ -84,7 +84,7 @@ autoplay = "teeter"
 modulate = Color(0, 0, 0, 1)
 position = Vector2(2.98023e-08, -1)
 rotation = 0.785398
-scale = Vector2(0.159497, 0.159497)
+scale = Vector2(0.170775, 0.170775)
 texture = ExtResource("1_05ma5")
 
 [node name="Sprite2D" type="Sprite2D" parent="RotatingSprite"]
