@@ -1,7 +1,6 @@
 extends Control
 
 @export var stats: PlayerStats
-const BASE_GRAIN_COLLECTION_STAGE := preload("res://scenes/base_grain_collection_stage.tscn")
 
 var upgrade_selected
 var upgrade_cost
@@ -102,4 +101,4 @@ func set_upgrade_name_and_cost(upgrade):
 	
 
 func _on_new_run_btn_pressed() -> void:
-	get_tree().change_scene_to_packed(BASE_GRAIN_COLLECTION_STAGE)
+	SceneSwitcher.goto_scene("res://scenes/base_grain_collection_stage.tscn")

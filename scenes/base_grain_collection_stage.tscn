@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://8tjc4f5850sp"]
+[gd_scene load_steps=23 format=3 uid="uid://8tjc4f5850sp"]
 
 [ext_resource type="Script" uid="uid://cmv6nfg03y3to" path="res://scripts/base_grain_collection_stage.gd" id="1_8hmx6"]
 [ext_resource type="PackedScene" uid="uid://bhlwryr07um32" path="res://scenes/sunflower_seed.tscn" id="2_lpafe"]
@@ -17,6 +17,7 @@
 [ext_resource type="AudioStream" uid="uid://dgm3errwigb7q" path="res://assets/sfx/buzzer.ogg" id="12_bhinw"]
 [ext_resource type="AudioStream" uid="uid://d3r8rx1mc34a" path="res://assets/sfx/run_over.ogg" id="14_bqhox"]
 [ext_resource type="Script" uid="uid://cvl38xwrt27m0" path="res://scripts/music_manager.gd" id="15_8v08u"]
+[ext_resource type="Script" uid="uid://buyjikfeb5ymg" path="res://scripts/scene_manager.gd" id="18_r4acy"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4ov0l"]
 
@@ -295,6 +296,10 @@ stream = ExtResource("10_r0eox")
 autoplay = true
 bus = &"Music"
 parameters/looping = true
+
+[node name="SceneManager" type="Node" parent="."]
+unique_name_in_owner = true
+script = ExtResource("18_r4acy")
 
 [node name="SunLight" type="ColorRect" parent="."]
 layout_mode = 1

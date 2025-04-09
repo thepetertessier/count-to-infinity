@@ -7,9 +7,13 @@ extends Panel
 @onready var music_manager: Node = %MusicManager
 @onready var grain_count_label: Label = %GrainCountLabel
 @onready var sunlight_animation_player: AnimationPlayer = %SunlightAnimationPlayer
+@onready var scene_manager: Node = %SceneManager
 
 var seconds_remaining: int
 var run_total_seconds: int  # For determining screen brightness
+
+func get_seconds_remaining():
+	return seconds_remaining
 
 func start_countdown(seconds: int, _run_total_seconds: int):
 	seconds_remaining = seconds
@@ -39,6 +43,8 @@ func _on_second_timer_timeout() -> void:
 		grain_count_label.big_center_text("Run Over!")
 		grain_count_label.z_index = 5  # Above white screen
 		music_manager.fade_out(1)
+		await get_tree().create_timer(2).timeout
+		scene_manager.go_to_resting(grain_manager.get_grain_count_across_run())
 		return
 
 	if seconds_remaining <= 10:

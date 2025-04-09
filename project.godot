@@ -11,9 +11,13 @@ config_version=5
 [application]
 
 config/name="Count to Infinity"
-run/main_scene="uid://8tjc4f5850sp"
+run/main_scene="uid://ime13jo53wo8"
 config/features=PackedStringArray("4.4", "GL Compatibility")
 config/icon="res://icon.svg"
+
+[autoload]
+
+SceneSwitcher="*res://scene_switcher.gd"
 
 [display]
 

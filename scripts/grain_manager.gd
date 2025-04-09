@@ -10,9 +10,14 @@ var grain_count_across_run: int
 @onready var jar: Sprite2D = $Jar
 @onready var run_grain_count_label: Label = $RunGrainCountLabel
 @onready var grain_spawn_area: Control = %GrainSpawnArea
+@onready var scene_manager: Node = %SceneManager
+@onready var day_lighter_timer: Panel = %DayLighterTimer
 
 func _ready():
 	randomize()
+	
+func get_grain_count_across_run():
+	return grain_count_across_run
 
 func set_stage(grain_scene: PackedScene, grain_count_min: int, grain_count_max: int, _grain_count_across_run: int):
 	grain_count_across_run = _grain_count_across_run
@@ -64,7 +69,15 @@ func update_ui():
 func set_run_grain_count_label(amount):
 	run_grain_count_label.text = "x" + str(amount)
 
+var stage_completed = false
+
 # Called when the stage is complete.
 func stage_complete():
+	if stage_completed:
+		return
+	stage_completed = true
+	var seconds_remaining = day_lighter_timer.get_seconds_remaining()
 	audio_manager.play_stage_complete()
 	grain_count_label.big_center_text("Stage Complete!")
+	await get_tree().create_timer(2).timeout
+	scene_manager.go_to_blood_reward(grain_count_across_run, seconds_remaining)
