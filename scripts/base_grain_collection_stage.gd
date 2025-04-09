@@ -13,7 +13,7 @@ extends Control
 @onready var day_lighter_timer: Panel = %DayLighterTimer
 
 const BASE_GRAIN_COLLECTION_STAGE = preload("res://scenes/base_grain_collection_stage.tscn")
-
+const RESTING_MENU = preload("res://scenes/resting_menu.tscn")
 
 func _ready() -> void:
 	stage_label.text = "Stage: " + str(stage_num)
@@ -22,7 +22,7 @@ func _ready() -> void:
 
 
 func load_resting_menu(grain_count_across_run):
-	SceneSwitcher.goto_scene("res://scenes/resting_menu.tscn")
+	SceneSwitcher.goto_scene_from_path("res://scenes/resting_menu.tscn")
 
 func load_next_stage(run_grain_count, seconds_remaining):
 	var next_stage = BASE_GRAIN_COLLECTION_STAGE.instantiate()
@@ -34,7 +34,4 @@ func load_next_stage(run_grain_count, seconds_remaining):
 	next_stage.seconds_until_sunrise = seconds_remaining
 	next_stage.run_total_seconds = run_total_seconds
 	
-	# Add the new level to the scene tree.
-	get_tree().get_root().add_child(next_stage)
-	
-	queue_free()
+	SceneSwitcher.goto_node(next_stage)
