@@ -59,6 +59,7 @@ text = "Collected: X / X"
 horizontal_alignment = 1
 
 [node name="Jar" type="TextureRect" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
@@ -74,9 +75,13 @@ texture = ExtResource("8_uyvr0")
 [node name="GrainManager" type="Node2D" parent="."]
 script = ExtResource("4_birqw")
 
+[node name="Jar" type="Sprite2D" parent="GrainManager"]
+position = Vector2(1807, 116)
+scale = Vector2(0.205102, 0.205102)
+texture = ExtResource("8_uyvr0")
+
 [node name="AudioManager" type="Node" parent="."]
 unique_name_in_owner = true
 script = ExtResource("7_t7vij")
 
-[node name="PopPlayer" type="AudioStreamPlayer" parent="AudioManager"]
-max_polyphony = 4
+[node name="HoverPlayer" type="AudioStreamPlayer" parent="AudioManager"]

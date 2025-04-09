@@ -2,7 +2,10 @@ extends Node
 
 const pop_sound_count := 5
 
-var audio_players = []
+var pop_audio_players = []
+const HOVER = preload("res://assets/sfx/hover.ogg")
+
+@onready var hover_player: AudioStreamPlayer = $HoverPlayer
 
 # Create a pool of, say, 8 players (adjust number as needed)
 func _ready():
@@ -12,7 +15,11 @@ func _ready():
 		player.max_polyphony = 4
 		player.set_stream(sound)
 		add_child(player)
-		audio_players.append(player)
+		pop_audio_players.append(player)
+	hover_player.set_stream(HOVER)
 
 func play_pop():
-	audio_players[randi_range(0, pop_sound_count-1)].play()
+	pop_audio_players[randi_range(0, pop_sound_count-1)].play()
+
+func play_hover():
+	hover_player.play()

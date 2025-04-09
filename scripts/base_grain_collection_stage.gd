@@ -1,5 +1,6 @@
 extends Control
 
+@export var grain_count_across_run := 0
 @export var grain_scene: PackedScene         # Drag your Rice.tscn into this field.
 @export var grain_count_min: int = 10       # Minimum number of grains to generate.
 @export var grain_count_max: int = 20       # Maximum number of grains to generate.

@@ -6,6 +6,7 @@ var collected_count: int = 0
 # Get the label node for updating UI. Adjust the path if needed.
 @onready var grain_count_label: Label = %GrainCountLabel
 @onready var audio_manager: Node = %AudioManager
+@onready var jar: Sprite2D = $Jar
 
 func _ready():
 	randomize()
@@ -16,12 +17,12 @@ func set_stage(grain_scene: PackedScene, grain_count_min: int, grain_count_max: 
 	
 	# Spawn each grain.
 	for i in range(total_grains):
-		spawn_grain(grain_scene, screen_margin, i)
+		spawn_grain(grain_scene, screen_margin)
 	
 	update_ui()
 
 # Function to spawn a grain in a random position.
-func spawn_grain(grain_scene, screen_margin, index):
+func spawn_grain(grain_scene, screen_margin):
 	var grain = grain_scene.instantiate()
 	add_child(grain)
 	var viewport_size = get_viewport().size
@@ -33,14 +34,21 @@ func spawn_grain(grain_scene, screen_margin, index):
 	grain.scale = Vector2(1, 1) * randf_range(0.8, 1.1)
 	
 	# Connect the signal from the grain when clicked.
-	var result = grain.clicked.connect(_on_grain_clicked.bind(index))
-	print("Connection result: ", result)
+	grain.clicked.connect(_on_grain_collected.bind(grain))
+	grain.mouse_entered.connect(func(): audio_manager.play_hover())
 
 # Callback for when a grain is clicked.
-func _on_grain_clicked(grain_index):
+func _on_grain_collected(grain):
 	audio_manager.play_pop()
 	collected_count += 1
 	update_ui()
+	
+	# Animate the grain's movement to the jar
+	var tween = get_tree().create_tween()
+	tween.tween_property(grain, "position", jar.position, 1)
+	tween.parallel().tween_property($Sprite, "scale", Vector2(), 1)
+	tween.set_parallel(false)
+	tween.tween_callback(grain.queue_free)
 	
 	# Check if all grains are collected.
 	if collected_count >= total_grains:
@@ -53,4 +61,4 @@ func update_ui():
 # Called when the stage is complete.
 func stage_complete():
 	grain_count_label.text = "Stage Complete!"
-	# Optionally, you can implement further stage-completion logic here.
+	
