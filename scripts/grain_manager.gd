@@ -9,28 +9,29 @@ var grain_count_across_run: int
 @onready var audio_manager: Node = %SFXManager
 @onready var jar: Sprite2D = $Jar
 @onready var run_grain_count_label: Label = $RunGrainCountLabel
+@onready var grain_spawn_area: Control = %GrainSpawnArea
 
 func _ready():
 	randomize()
 
-func set_stage(grain_scene: PackedScene, grain_count_min: int, grain_count_max: int, screen_margin: Vector2, _grain_count_across_run: int):
+func set_stage(grain_scene: PackedScene, grain_count_min: int, grain_count_max: int, _grain_count_across_run: int):
 	grain_count_across_run = _grain_count_across_run
 	total_grains = randi_range(grain_count_min, grain_count_max)
 	
 	# Spawn each grain.
 	for i in range(total_grains):
-		spawn_grain(grain_scene, screen_margin)
+		spawn_grain(grain_scene)
 	
 	update_ui()
 
 # Function to spawn a grain in a random position.
-func spawn_grain(grain_scene, screen_margin):
+func spawn_grain(grain_scene):
 	var grain = grain_scene.instantiate()
 	add_child(grain)
-	var viewport_size = get_viewport().size
+	var bounds := grain_spawn_area.get_rect()
 	grain.position = Vector2(
-		randf_range(screen_margin.x, viewport_size.x - screen_margin.x),
-		randf_range(screen_margin.y, viewport_size.y - screen_margin.y)
+		randf_range(bounds.position.x, bounds.position.x + bounds.size.x),
+		randf_range(bounds.position.y, bounds.position.y + bounds.size.y)
 	)
 	#grain.rotatation = randf_range(-1, 1)
 	grain.scale = Vector2(1, 1) * randf_range(0.8, 1.1)

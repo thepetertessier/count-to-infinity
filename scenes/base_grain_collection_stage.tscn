@@ -10,7 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://bfcilfni0jf01" path="res://assets/images/jar.png" id="8_uyvr0"]
 [ext_resource type="AudioStream" uid="uid://f7ngrq337f5c" path="res://assets/sfx/hover.ogg" id="9_2odsn"]
 [ext_resource type="AudioStream" uid="uid://b4wfi1m2ef5go" path="res://assets/sfx/stage_complete.ogg" id="10_li4ok"]
-[ext_resource type="AudioStream" uid="uid://bx635tjx561hf" path="res://assets/sound/run_till_sunrise.ogg" id="10_r0eox"]
+[ext_resource type="AudioStream" uid="uid://jmpswvu3gs8w" path="res://assets/sound/run_till_sunrise.ogg" id="10_r0eox"]
 
 [node name="BaseGrainCollectionStage" type="Control"]
 layout_mode = 3
@@ -61,21 +61,44 @@ theme_override_font_sizes/font_size = 100
 text = "Collected: X / X"
 horizontal_alignment = 1
 
-[node name="Jar" type="TextureRect" parent="."]
-visible = false
+[node name="StageLabel" type="Label" parent="."]
+unique_name_in_owner = true
 layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -252.0
-offset_top = 7.0
-offset_right = 728.0
-offset_bottom = 987.0
-grow_horizontal = 0
-scale = Vector2(0.2, 0.2)
-texture = ExtResource("8_uyvr0")
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -900.0
+offset_top = 43.0
+offset_right = -574.0
+offset_bottom = 121.0
+grow_horizontal = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 10
+theme_override_constants/shadow_offset_y = 10
+theme_override_constants/outline_size = 20
+theme_override_constants/shadow_outline_size = 10
+theme_override_fonts/font = ExtResource("5_r4wbf")
+theme_override_font_sizes/font_size = 70
+text = "Stage: 1"
+
+[node name="GrainSpawnArea" type="Control" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -874.0
+offset_top = -317.0
+offset_right = 885.0
+offset_bottom = 400.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
 
 [node name="GrainManager" type="Node2D" parent="."]
+unique_name_in_owner = true
 script = ExtResource("4_birqw")
 
 [node name="Jar" type="Sprite2D" parent="GrainManager"]
@@ -83,11 +106,34 @@ position = Vector2(1555, 116)
 scale = Vector2(0.205102, 0.205102)
 texture = ExtResource("8_uyvr0")
 
+[node name="TotalLabel" type="Label" parent="GrainManager/Jar"]
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -444.0
+offset_top = -659.0
+offset_right = -490.0
+offset_bottom = -26.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 10
+theme_override_constants/shadow_offset_y = 10
+theme_override_constants/outline_size = 20
+theme_override_constants/shadow_outline_size = 10
+theme_override_fonts/font = ExtResource("5_r4wbf")
+theme_override_font_sizes/font_size = 200
+text = "Total
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="RunGrainCountLabel" type="Label" parent="GrainManager"]
 offset_left = 1649.0
-offset_top = 69.0
+offset_top = 93.0
 offset_right = 1907.0
-offset_bottom = 148.0
+offset_bottom = 172.0
 theme_override_constants/outline_size = 20
 theme_override_fonts/font = ExtResource("5_r4wbf")
 theme_override_font_sizes/font_size = 50
