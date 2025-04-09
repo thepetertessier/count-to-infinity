@@ -12,6 +12,9 @@ extends Panel
 var seconds_remaining: int
 var run_total_seconds: int  # For determining screen brightness
 
+func stop():
+	timer.stop()
+
 func get_seconds_remaining():
 	return seconds_remaining
 

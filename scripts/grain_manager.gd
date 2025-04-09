@@ -76,6 +76,9 @@ func stage_complete():
 	if stage_completed:
 		return
 	stage_completed = true
+	
+	day_lighter_timer.stop()
+	
 	var seconds_remaining = day_lighter_timer.get_seconds_remaining()
 	audio_manager.play_stage_complete()
 	grain_count_label.big_center_text("Stage Complete!")
