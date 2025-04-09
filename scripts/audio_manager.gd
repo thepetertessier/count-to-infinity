@@ -37,3 +37,6 @@ func play_collect():
 	
 func play_stage_complete():
 	stage_complete_player.play()
+	
+func play_buzzer():
+	$BuzzerPlayer.play()
