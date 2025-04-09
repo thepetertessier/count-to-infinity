@@ -14,6 +14,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 1
 script = ExtResource("1_8hmx6")
 grain_scene = ExtResource("2_lpafe")
 
@@ -57,3 +58,7 @@ theme_override_fonts/font = ExtResource("5_r4wbf")
 theme_override_font_sizes/font_size = 100
 text = "Collected: X / X"
 horizontal_alignment = 1
+
+[node name="SunflowerSeed" parent="." instance=ExtResource("2_lpafe")]
+z_index = 10
+position = Vector2(1026, 481)

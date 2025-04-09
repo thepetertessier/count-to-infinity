@@ -15,12 +15,12 @@ func set_stage(grain_scene: PackedScene, grain_count_min: int, grain_count_max: 
 	
 	# Spawn each grain.
 	for i in range(total_grains):
-		spawn_grain(grain_scene, screen_margin)
+		spawn_grain(grain_scene, screen_margin, i)
 	
 	update_ui()
 
 # Function to spawn a grain in a random position.
-func spawn_grain(grain_scene, screen_margin):
+func spawn_grain(grain_scene, screen_margin, index):
 	var grain = grain_scene.instantiate()
 	add_child(grain)
 	var viewport_size = get_viewport().size
@@ -29,12 +29,15 @@ func spawn_grain(grain_scene, screen_margin):
 		randf_range(screen_margin.y, viewport_size.y - screen_margin.y)
 	)
 	#grain.rotatation = randf_range(-1, 1)
+	grain.scale = Vector2(1, 1) * randf_range(0.8, 1.1)
+	grain.z_index = 10
 	
 	# Connect the signal from the grain when clicked.
-	grain.clicked.connect(_on_grain_clicked)
+	var result = grain.clicked.connect(_on_grain_clicked.bind(index))
+	print("Connection result: ", result)
 
 # Callback for when a grain is clicked.
-func _on_grain_clicked():
+func _on_grain_clicked(grain_index):
 	collected_count += 1
 	update_ui()
 	
