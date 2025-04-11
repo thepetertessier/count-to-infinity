@@ -1,9 +1,18 @@
-[gd_scene load_steps=3 format=3 uid="uid://cngw4ueq161xu"]
+[gd_scene load_steps=4 format=3 uid="uid://cngw4ueq161xu"]
 
 [ext_resource type="Script" uid="uid://fcrd3vcoasqf" path="res://scripts/intro_text.gd" id="1_ioskq"]
 [ext_resource type="FontFile" uid="uid://df8p6ogj2hy8b" path="res://assets/fonts/MedievalSharp-Regular.ttf" id="1_yjqpq"]
+[ext_resource type="FontFile" uid="uid://d1wqf4rmbxrgy" path="res://assets/fonts/Nightcore Demo.ttf" id="3_4bx60"]
 
 [node name="Intro" type="CanvasLayer"]
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 3.0
+offset_bottom = 6.0
+color = Color(0, 0, 0, 1)
 
 [node name="Intro_Text" type="RichTextLabel" parent="."]
 anchors_preset = 15
@@ -12,7 +21,7 @@ anchor_bottom = 1.0
 offset_left = 86.0
 offset_top = 78.0
 offset_right = -90.0
-offset_bottom = -349.0
+offset_bottom = -577.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_fonts/normal_font = ExtResource("1_yjqpq")
@@ -25,3 +34,19 @@ theme_override_font_sizes/normal_font_size = 50
 theme_override_font_sizes/bold_font_size = 50
 fit_content = true
 script = ExtResource("1_ioskq")
+
+[node name="Label" type="Label" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 356.0
+offset_top = 792.0
+offset_right = -328.0
+offset_bottom = -4.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("3_4bx60")
+theme_override_font_sizes/font_size = 35
+text = "( Press  Enter  to  Skip  Cutscene  and  Tutorial )"
+horizontal_alignment = 1
+vertical_alignment = 1
