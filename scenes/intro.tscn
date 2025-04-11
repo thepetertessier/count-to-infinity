@@ -1,10 +1,51 @@
-[gd_scene load_steps=4 format=3 uid="uid://cngw4ueq161xu"]
+[gd_scene load_steps=10 format=3 uid="uid://cngw4ueq161xu"]
 
+[ext_resource type="Script" uid="uid://dpyofscfjk0vx" path="res://scripts/intro.gd" id="1_i2l1n"]
 [ext_resource type="Script" uid="uid://fcrd3vcoasqf" path="res://scripts/intro_text.gd" id="1_ioskq"]
 [ext_resource type="FontFile" uid="uid://df8p6ogj2hy8b" path="res://assets/fonts/MedievalSharp-Regular.ttf" id="1_yjqpq"]
 [ext_resource type="FontFile" uid="uid://d1wqf4rmbxrgy" path="res://assets/fonts/Nightcore Demo.ttf" id="3_4bx60"]
+[ext_resource type="PackedScene" uid="uid://bhlwryr07um32" path="res://scenes/sunflower_seed.tscn" id="5_wfs7u"]
+[ext_resource type="AudioStream" uid="uid://lk5nqc53stpo" path="res://assets/sound/GameMusic_ForestTheme_24.mp3" id="6_es01l"]
 
-[node name="Intro" type="CanvasLayer"]
+[sub_resource type="Animation" id="Animation_es01l"]
+resource_name = "Tutorial"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(967, -71), Vector2(967, 452)]
+}
+
+[sub_resource type="Animation" id="Animation_0naf5"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(967, -71)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_bu1yb"]
+_data = {
+&"RESET": SubResource("Animation_0naf5"),
+&"Tutorial": SubResource("Animation_es01l")
+}
+
+[node name="Intro" type="Node"]
+script = ExtResource("1_i2l1n")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 anchors_preset = 15
@@ -35,7 +76,7 @@ theme_override_font_sizes/bold_font_size = 50
 fit_content = true
 script = ExtResource("1_ioskq")
 
-[node name="Label" type="Label" parent="."]
+[node name="Skip Label" type="Label" parent="."]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -50,3 +91,18 @@ theme_override_font_sizes/font_size = 35
 text = "( Press  Enter  to  Skip  Cutscene  and  Tutorial )"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="SunflowerSeed" parent="." instance=ExtResource("5_wfs7u")]
+visible = false
+position = Vector2(967, -71)
+
+[node name="AnimationPlayer2" type="AnimationPlayer" parent="SunflowerSeed"]
+libraries = {
+&"": SubResource("AnimationLibrary_bu1yb")
+}
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_es01l")
+volume_db = -9.369
+autoplay = true
+parameters/looping = true
