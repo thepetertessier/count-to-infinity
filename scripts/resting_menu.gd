@@ -2,11 +2,16 @@ extends Control
 
 @export var stats: PlayerStats
 
+const BASE_GRAIN_COLLECTION_STAGE = preload("res://scenes/base_grain_collection_stage.tscn")
+
 var upgrade_selected
 var upgrade_cost
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	# Reset after being set by run
+	Input.set_custom_mouse_cursor(null)
+
 	# sample lifetime grain count
 	var lifetime_grain_count_label = get_node("GrainCountContainer/LifetimeGrainCount")
 	lifetime_grain_count_label.text = str(stats.lifetime_grain_count)
@@ -96,4 +101,6 @@ func set_upgrade_name_and_cost(upgrade):
 		
 	blood_cost_label.text = str(upgrade_cost)
 	
-	
+
+func _on_new_run_btn_pressed() -> void:
+	SceneSwitcher.goto_scene(BASE_GRAIN_COLLECTION_STAGE)
