@@ -1,5 +1,6 @@
 extends Node
 
+
 @onready var text_label = $Intro_Text
 @onready var seed = $SunflowerSeed
 @onready var tutorial = $TutorialNode
@@ -8,6 +9,8 @@ extends Node
 func _ready() -> void:
 	text_label.connect("text_finished", Callable(self, "_on_text_finished"))
 	seed.visible = false  # make sure seed is hidden initially
+	Input.set_custom_mouse_cursor(VAMPIRE_HAND, 0, Vector2(13,0))
+	seed.clicked.connect(_on_seed_clicked)
 
 func _on_text_finished():
 	await fade_out_text()
@@ -24,4 +27,13 @@ func fade_out_text() -> void:
 func _input(event):
 	if event.is_action_pressed("ui_accept"): 
 		get_tree().change_scene_to_file("res://scenes/resting_menu.tscn")
+		
+func _on_seed_clicked():
+	var tween = create_tween()
+	tween.tween_property(seed, "scale", Vector2(), 0.5)
+	tween.tween_callback(seed.queue_free)
+		
+
+const VAMPIRE_HAND = preload("res://assets/images/vampire_hand.png")
+
 		
