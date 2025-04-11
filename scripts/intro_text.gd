@@ -1,7 +1,7 @@
 extends RichTextLabel
 signal text_finished
 
-var story_text = "Long before the first vampire walked the earth, there was Arithematra—the Matron of the Countless. A cosmic force of pure calculation. Architect of order. The silent hand behind the patterns of the universe.
+var story_text = "Long before the first vampire walked the earth, there was Arithematra—the Matron of the Countless. She was the architect of order. The silent hand behind the patterns of the universe.
 
 When the first of your kind defied nature by drinking the blood of the living, she did not strike them down. She did something worse.
 
@@ -13,7 +13,7 @@ Many have perished under this curse, whispering numbers into the dark as dawn co
 
 But not you.
 
-You are Velka, the Hungering Sovereign. The last of the old lords. Sealed in a crypt for centuries. Your prison lined with grains—endless, infinite grains—your torment made manifest.
+You are Velka, the Hungering Sovereign, the last of the old lords, sealed in a crypt for centuries. Your prison lined with grains—endless, infinite grains—your torment made manifest.
 
 But now…"
 
