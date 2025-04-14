@@ -14,8 +14,7 @@ gradient = SubResource("Gradient_753ps")
 fill = 1
 fill_from = Vector2(0.5, 0.5)
 
-[node name="PlayerCursor" type="CharacterBody2D"]
-motion_mode = 1
+[node name="PlayerCursor" type="RigidBody2D"]
 script = ExtResource("1_uwxsh")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
