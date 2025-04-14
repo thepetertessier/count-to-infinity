@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://ybc88pd4pdxa"]
+
+[ext_resource type="PackedScene" uid="uid://caiiavr8c7087" path="res://scenes/lottery_wheel.tscn" id="1_gss7s"]
+
+[node name="BloodReward" type="Node2D"]
+
+[node name="LotteryWheel" parent="." instance=ExtResource("1_gss7s")]
+position = Vector2(920, 538)

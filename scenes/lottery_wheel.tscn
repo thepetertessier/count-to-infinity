@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://caiiavr8c7087"]
+
+[ext_resource type="Script" uid="uid://ckyf5r5r0v73v" path="res://scripts/lottery_wheel.gd" id="1_dvxx4"]
+[ext_resource type="Texture2D" uid="uid://cr6lyu8raa5y4" path="res://assets/images/spin_wheel.svg" id="2_lsclr"]
+
+[node name="LotteryWheel" type="Node2D"]
+script = ExtResource("1_dvxx4")
+
+[node name="SprinningWheel" type="Sprite2D" parent="."]
+scale = Vector2(5, 5)
+texture = ExtResource("2_lsclr")
+
+[node name="StopButton" type="Button" parent="."]
+offset_left = -87.0
+offset_top = -45.0
+offset_right = 89.0
+offset_bottom = 47.0
+theme_override_font_sizes/font_size = 60
+text = "Stop"
+
+[connection signal="pressed" from="StopButton" to="." method="_on_stop_button_pressed"]
