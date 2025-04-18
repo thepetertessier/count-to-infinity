@@ -66,12 +66,16 @@ func _on_upgrade_button_pressed() -> void:
 		
 		if upgrade_selected == "speed-demon":
 			stats.speed_demon_level += 1
+			stats.daylight_timer += 10
 		elif upgrade_selected == "auto-fingers":
 			stats.auto_fingers_level += 1
+			stats.auto_collect_rate += 1
 		elif upgrade_selected == "powerful-fingers":
 			stats.powerful_fingers_level += 1
+			stats.click_power += 1
 		elif upgrade_selected == "long-fingers":
 			stats.long_fingers_level += 1
+			stats.click_radius = 1 * sqrt(stats.long_fingers_level)
 			
 	set_upgrade_name_and_cost(upgrade_selected)
 	
