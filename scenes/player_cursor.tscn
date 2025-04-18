@@ -1,9 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://j856hemyhcaa"]
 
-[ext_resource type="Script" uid="uid://dvloe6ebliggu" path="res://scripts/player_cursor.gd" id="1_uwxsh"]
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_753ps"]
-radius = 22.0227
+[ext_resource type="Script" path="res://scripts/player_cursor.gd" id="1_uwxsh"]
 
 [sub_resource type="Gradient" id="Gradient_753ps"]
 offsets = PackedFloat32Array(0, 0.483766, 0.568182, 1)
@@ -14,11 +11,15 @@ gradient = SubResource("Gradient_753ps")
 fill = 1
 fill_from = Vector2(0.5, 0.5)
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_753ps"]
+radius = 15.0
+
 [node name="PlayerCursor" type="RigidBody2D"]
 script = ExtResource("1_uwxsh")
 
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.6875, 0.6875)
+texture = SubResource("GradientTexture2D_uwxsh")
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_753ps")
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
-texture = SubResource("GradientTexture2D_uwxsh")

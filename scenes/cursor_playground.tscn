@@ -1,8 +1,23 @@
-[gd_scene load_steps=7 format=3 uid="uid://dy3h10sgroqf6"]
+[gd_scene load_steps=7 format=3 uid="uid://biv4een8oyq0b"]
 
 [ext_resource type="PackedScene" uid="uid://j856hemyhcaa" path="res://scenes/player_cursor.tscn" id="1_ud1jq"]
-[ext_resource type="PackedScene" uid="uid://dxgiuhv6sjefj" path="res://scenes/moving_rect.tscn" id="2_gee7y"]
-[ext_resource type="PackedScene" uid="uid://dskep877p7svb" path="res://scenes/pushable.tscn" id="3_euvy8"]
+[ext_resource type="PackedScene" path="res://scenes/moving_rect.tscn" id="2_gee7y"]
+[ext_resource type="PackedScene" path="res://scenes/pushable.tscn" id="3_euvy8"]
+
+[sub_resource type="Animation" id="Animation_euvy8"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(283, 206)]
+}
 
 [sub_resource type="Animation" id="Animation_gee7y"]
 resource_name = "move_rect"
@@ -19,21 +34,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector2(283, 206), Vector2(1303, 206)]
-}
-
-[sub_resource type="Animation" id="Animation_euvy8"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(283, 206)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_gja4b"]
