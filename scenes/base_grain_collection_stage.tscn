@@ -1,5 +1,4 @@
 [gd_scene load_steps=24 format=3 uid="uid://8tjc4f5850sp"]
-[gd_scene load_steps=24 format=3 uid="uid://8tjc4f5850sp"]
 
 [ext_resource type="Script" uid="uid://cmv6nfg03y3to" path="res://scripts/base_grain_collection_stage.gd" id="1_8hmx6"]
 [ext_resource type="PackedScene" uid="uid://bhlwryr07um32" path="res://scenes/sunflower_seed.tscn" id="2_lpafe"]
@@ -320,8 +319,5 @@ unique_name_in_owner = true
 libraries = {
 &"": SubResource("AnimationLibrary_h75rq")
 }
-
-[node name="PlayerCursor" parent="." instance=ExtResource("19_3ho38")]
-z_index = 1
 
 [connection signal="timeout" from="DayLighterTimer/SecondTimer" to="DayLighterTimer" method="_on_second_timer_timeout"]
