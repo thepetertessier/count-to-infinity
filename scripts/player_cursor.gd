@@ -4,6 +4,7 @@ extends RigidBody2D
 
 @onready var hit_collision_shape: CollisionShape2D = $HitBox/HitCollisionShape
 @onready var cpu_particles_2d: CPUParticles2D = $Visuals/CPUParticles2D
+@onready var halo_parent: Node2D = $Visuals/HaloParent
 
 @export var click_radius: float = 1.0:
 	set(value):
@@ -13,6 +14,7 @@ extends RigidBody2D
 		hit_collision_shape.shape.set_radius(collision_radius)
 		cpu_particles_2d.set_emission_sphere_radius(collision_radius)
 		cpu_particles_2d.set_amount(500 * sqrt(click_radius))
+		halo_parent.set_scale(click_radius * Vector2.ONE)
 
 func _ready():
 	#Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
