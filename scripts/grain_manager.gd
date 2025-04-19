@@ -48,13 +48,9 @@ func spawn_grain(grain_scene):
 	)
 	#grain.rotatation = randf_range(-1, 1)
 	grain.scale = Vector2(1, 1) * randf_range(0.8, 1.1)
-	
-	# Connect the signal from the grain when clicked.
-	grain.clicked.connect(_on_grain_collected.bind(grain))
-	grain.mouse_entered.connect(audio_manager.play_hover)
 
-# Callback for when a grain is clicked.
-func _on_grain_collected(grain):
+func collect_grain(grain: Grain):
+	grain.on_collected()
 	audio_manager.play_pop()
 	collected_count += 1
 	grain_count_across_run += 1
@@ -100,9 +96,12 @@ var _auto_accumulator: float = 0.0
 
 func _on_area_entered(area: Area2D) -> void:
 	_grains_in_range.add(area)
+	audio_manager.play_hover()
+	get_grain_root(area).on_entered_range()
 
 func _on_area_exited(area: Area2D) -> void:
 	_grains_in_range.remove(area)
+	get_grain_root(area).on_exited_range()
 
 func _input(event: InputEvent) -> void:
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
@@ -119,13 +118,13 @@ func _process(delta: float) -> void:
 func _collect_grains(amount: int) -> void:
 	# pull up to `amount` grains out of _grains_in_range
 	var collected := 0
-	# fast‐path: if you don't care which ones, pop_back()
 	while collected < amount and _grains_in_range.size() > 0:
-		var grain = _grains_in_range.pop_any()
-		if not is_instance_valid(grain):
+		var grain_area: Area2D = _grains_in_range.pop_any()
+		if not is_instance_valid(grain_area):
 			continue  # it may already have been freed
-		collect_grain(grain)
+		var grain_root := get_grain_root(grain_area)
+		collect_grain(grain_root)
 		collected += 1
-
-func collect_grain(grain):
-	print("Collected grain! (%s)" % grain)
+		
+func get_grain_root(grain_area: Area2D) -> Grain:
+	return grain_area.get_parent().get_parent()
