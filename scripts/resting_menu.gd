@@ -119,4 +119,6 @@ func set_upgrade_name_and_cost(upgrade):
 	
 
 func _on_new_run_btn_pressed() -> void:
-	SceneSwitcher.load_stage(stats.daylight_timer)
+	var total_power = stats.auto_fingers_level + stats.speed_demon_level + stats.long_fingers_level + stats.powerful_fingers_level - 4
+	var adjusted_grain_count = 10 + total_power * 5
+	SceneSwitcher.load_stage(stats.daylight_timer, adjusted_grain_count)

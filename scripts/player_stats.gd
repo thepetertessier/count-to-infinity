@@ -10,7 +10,7 @@ extends Resource
 @export var click_power: int = 1
 @export var click_radius: float = 1.0
 @export var auto_collect_rate: float = 0.0
-@export var daylight_timer: int = 60
+@export var daylight_timer: int = 30
 
 # upgrade levels
 @export var long_fingers_level: int = 1
