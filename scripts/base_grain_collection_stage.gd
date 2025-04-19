@@ -6,6 +6,8 @@ extends Control
 @export var grain_count_min: int = 10
 @export var seconds_until_sunrise: int = 60
 @export var run_total_seconds: int = 60
+@export var backdrop_dir: String = "res://assets/images/stage_backdrops"
+@export var history_resource: BackgroundHistory
 
 @onready var grain_manager: Node2D = %GrainManager
 @onready var stage_label: Label = %StageLabel
@@ -15,6 +17,8 @@ const BASE_GRAIN_COLLECTION_STAGE = preload("res://scenes/base_grain_collection_
 const RESTING_MENU = preload("res://scenes/resting_menu.tscn")
 
 func _ready() -> void:
+	randomize()
+	randomize_background()
 	stage_label.text = "Stage: " + str(stage_num)
 	var grain_count_max = int(grain_count_min * 1.5)
 	grain_manager.set_stage(grain_scene, grain_count_min, grain_count_max, grain_count_across_run)
@@ -31,3 +35,38 @@ func load_next_stage(run_grain_count, seconds_remaining):
 		run_grain_count,
 		seconds_remaining
 	)
+
+func randomize_background() -> void:
+	var dir_access = DirAccess.open(backdrop_dir)
+	if not dir_access:
+		push_error("Cannot access directory: %s" % backdrop_dir)
+		return
+
+	# Gather all PNG files
+	dir_access.list_dir_begin()
+	var file_name: String = dir_access.get_next()
+	var candidates: Array[String] = []
+	while file_name != "":
+		if not dir_access.current_is_dir() and file_name.to_lower().ends_with(".png"):
+			candidates.append(file_name)
+		file_name = dir_access.get_next()
+	dir_access.list_dir_end()
+
+	# Filter out the recent history
+	var available: Array[String] = []
+	for f in candidates:
+		if not history_resource.contains(f):
+			available.append(f)
+
+	# If all are filtered out, allow any
+	if available.is_empty():
+		available = candidates.duplicate()
+
+	# Pick a random file
+	var choice = available[randi() % available.size()]
+	var tex: Texture2D = load(backdrop_dir + "/" + choice)
+	if tex:
+		$Background.texture = tex
+		history_resource.add(choice)
+	else:
+		push_error("Failed to load texture: %s" % choice)

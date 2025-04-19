@@ -1,0 +1,7 @@
+[gd_resource type="Resource" script_class="BackgroundHistory" load_steps=2 format=3 uid="uid://4o3ciexuwt0o"]
+
+[ext_resource type="Script" uid="uid://b4gekkl1ftq2n" path="res://scripts/background_history.gd" id="1_31ttn"]
+
+[resource]
+script = ExtResource("1_31ttn")
+max_history = 5
