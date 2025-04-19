@@ -6,23 +6,30 @@ extends Control
 @export var grain_count_min: int = 10
 @export var seconds_until_sunrise: int = 60
 @export var run_total_seconds: int = 60
-@export var backdrop_dir: String = "res://assets/images/stage_backdrops"
 @export var history_resource: BackgroundHistory
+@export var stats: PlayerStats
 
 @onready var grain_manager: Node2D = %GrainManager
 @onready var stage_label: Label = %StageLabel
 @onready var day_lighter_timer: Panel = %DayLighterTimer
+@onready var player_cursor: PlayerCursor = %PlayerCursor
 
 const BASE_GRAIN_COLLECTION_STAGE = preload("res://scenes/base_grain_collection_stage.tscn")
 const RESTING_MENU = preload("res://scenes/resting_menu.tscn")
+const backdrop_dir := "res://assets/images/stage_backdrops"
+const stats_path := "res://resources/test_player_stats.tres"
 
 func _ready() -> void:
 	randomize()
 	randomize_background()
+	set_values_from_stats()
 	stage_label.text = "Stage: " + str(stage_num)
 	var grain_count_max = int(grain_count_min * 1.5)
 	grain_manager.set_stage(grain_scene, grain_count_min, grain_count_max, grain_count_across_run)
 	day_lighter_timer.start_countdown(seconds_until_sunrise, run_total_seconds)
+
+func set_values_from_stats() -> void:
+	player_cursor.click_radius = stats.click_radius
 
 func load_resting_menu(grain_count_across_run):
 	SceneSwitcher.goto_scene_from_path("res://scenes/resting_menu.tscn")

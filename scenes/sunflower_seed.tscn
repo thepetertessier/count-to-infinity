@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://bhlwryr07um32"]
 
 [ext_resource type="Texture2D" uid="uid://bh8wp0xuohbcr" path="res://assets/images/sunflower_seed.png" id="1_05ma5"]
-[ext_resource type="Script" uid="uid://d17kionsicbpp" path="res://scripts/sunflower_seed.gd" id="2_gr5ta"]
+[ext_resource type="Script" path="res://scripts/sunflower_seed.gd" id="2_gr5ta"]
 
 [sub_resource type="Animation" id="Animation_ciset"]
 length = 0.001
