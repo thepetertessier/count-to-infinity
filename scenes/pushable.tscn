@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://dskep877p7svb"]
+
+[ext_resource type="Texture2D" uid="uid://bhumd5wltu6kt" path="res://assets/images/icons8-blood-96.png" id="1_e1clh"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_gee7y"]
+radius = 25.02
+
+[node name="Pushable" type="RigidBody2D"]
+mass = 0.1
+gravity_scale = 0.0
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -14)
+texture = ExtResource("1_e1clh")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_gee7y")
