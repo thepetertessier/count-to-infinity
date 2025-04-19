@@ -4,8 +4,8 @@ extends Control
 @export var grain_count_across_run := 0
 @export var grain_scene: PackedScene
 @export var grain_count_min: int = 10
-@export var seconds_until_sunrise: int = 60
-@export var run_total_seconds: int = 60
+@export var seconds_until_sunrise: int = 30
+@export var run_total_seconds: int = 30
 @export var history_resource: BackgroundHistory
 @export var stats: PlayerStats
 
