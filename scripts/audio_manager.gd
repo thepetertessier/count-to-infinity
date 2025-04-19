@@ -16,7 +16,6 @@ func make_new_player(stream: AudioStream) -> AudioStreamPlayer:
 	add_child(player)
 	return player
 
-# Create a pool of, say, 8 players (adjust number as needed)
 func _ready():
 	for i in range(1, pop_sound_count+1):
 		var sound: AudioStreamOggVorbis = load("res://assets/sfx/pop" + str(i) + ".ogg")
@@ -25,6 +24,7 @@ func _ready():
 		
 		var player2 = make_new_player(sound)
 		collect_audio_players.append(player2)
+		player2.pitch_scale = 2
 
 func play_pop():
 	pop_audio_players[randi_range(0, pop_sound_count-1)].play()
