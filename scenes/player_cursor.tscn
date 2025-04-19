@@ -89,7 +89,6 @@ shape = SubResource("CircleShape2D_753ps")
 collision_mask = 2
 
 [node name="HitCollisionShape" type="CollisionShape2D" parent="HitBox"]
-visible = false
 shape = SubResource("CircleShape2D_uwxsh")
 
 [node name="Visuals" type="Node2D" parent="."]

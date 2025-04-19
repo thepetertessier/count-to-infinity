@@ -5,6 +5,7 @@ extends RigidBody2D
 @onready var hit_collision_shape: CollisionShape2D = $HitBox/HitCollisionShape
 @onready var cpu_particles_2d: CPUParticles2D = $Visuals/CPUParticles2D
 @onready var halo_parent: Node2D = $Visuals/HaloParent
+@onready var hit_box: Area2D = $HitBox
 
 @export var click_radius: float = 1.0:
 	set(value):
@@ -27,3 +28,6 @@ func _physics_process(delta):
 	#velocity = to_go / delta
 	#move_and_slide()
 	move_and_collide(to_go)
+	
+func get_hit_box() -> Area2D:
+	return hit_box

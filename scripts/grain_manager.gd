@@ -1,3 +1,4 @@
+class_name GrainManager
 extends Node2D
 
 var total_grains: int = 0
@@ -13,9 +14,16 @@ var grain_count_across_run: int
 @onready var scene_manager: Node = %SceneManager
 @onready var day_lighter_timer: Panel = %DayLighterTimer
 
+var click_power: int
+var auto_collect_rate: float
+
+func set_stats(_click_power: int, _auto_collect_rate: float):
+	click_power = _click_power
+	auto_collect_rate = _auto_collect_rate
+
 func _ready():
 	randomize()
-	
+
 func get_grain_count_across_run():
 	return grain_count_across_run
 
@@ -84,3 +92,40 @@ func stage_complete():
 	grain_count_label.big_center_text("Stage Complete!")
 	await get_tree().create_timer(2).timeout
 	scene_manager.go_to_blood_reward(grain_count_across_run, seconds_remaining)
+
+## Logic for grain collection
+# internals
+var _grains_in_range := FastSet.new()
+var _auto_accumulator: float = 0.0
+
+func _on_area_entered(area: Area2D) -> void:
+	_grains_in_range.add(area)
+
+func _on_area_exited(area: Area2D) -> void:
+	_grains_in_range.remove(area)
+
+func _input(event: InputEvent) -> void:
+	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
+		_collect_grains(click_power)
+
+func _process(delta: float) -> void:
+	# accumulate fractional grains
+	_auto_accumulator += auto_collect_rate * delta
+	if _auto_accumulator >= 1.0:
+		var to_collect = floor(_auto_accumulator)
+		_collect_grains(to_collect)
+		_auto_accumulator -= to_collect
+
+func _collect_grains(amount: int) -> void:
+	# pull up to `amount` grains out of _grains_in_range
+	var collected := 0
+	# fast‐path: if you don't care which ones, pop_back()
+	while collected < amount and _grains_in_range.size() > 0:
+		var grain = _grains_in_range.pop_any()
+		if not is_instance_valid(grain):
+			continue  # it may already have been freed
+		collect_grain(grain)
+		collected += 1
+
+func collect_grain(grain):
+	print("Collected grain! (%s)" % grain)

@@ -25,7 +25,10 @@ func _ready() -> void:
 	set_values_from_stats()
 	stage_label.text = "Stage: " + str(stage_num)
 	var grain_count_max = int(grain_count_min * 1.5)
+	grain_manager.set_stats(stats.click_power, stats.auto_collect_rate)
 	grain_manager.set_stage(grain_scene, grain_count_min, grain_count_max, grain_count_across_run)
+	player_cursor.get_hit_box().area_entered.connect(grain_manager._on_area_entered)
+	player_cursor.get_hit_box().area_exited.connect(grain_manager._on_area_exited)
 	day_lighter_timer.start_countdown(seconds_until_sunrise, run_total_seconds)
 
 func set_values_from_stats() -> void:
