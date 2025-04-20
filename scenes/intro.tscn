@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://cngw4ueq161xu"]
+[gd_scene load_steps=11 format=3 uid="uid://cngw4ueq161xu"]
 
 [ext_resource type="Script" uid="uid://dpyofscfjk0vx" path="res://scripts/intro.gd" id="1_i2l1n"]
 [ext_resource type="Script" uid="uid://fcrd3vcoasqf" path="res://scripts/intro_text.gd" id="1_ioskq"]
@@ -6,6 +6,7 @@
 [ext_resource type="FontFile" uid="uid://d1wqf4rmbxrgy" path="res://assets/fonts/Nightcore Demo.ttf" id="3_4bx60"]
 [ext_resource type="PackedScene" uid="uid://bhlwryr07um32" path="res://scenes/sunflower_seed.tscn" id="5_wfs7u"]
 [ext_resource type="AudioStream" uid="uid://lk5nqc53stpo" path="res://assets/sound/GameMusic_ForestTheme_24.mp3" id="6_es01l"]
+[ext_resource type="Script" uid="uid://bmn0tkxuvsv60" path="res://scripts/counting_text.gd" id="7_0naf5"]
 
 [sub_resource type="Animation" id="Animation_0naf5"]
 length = 0.001
@@ -101,6 +102,24 @@ position = Vector2(967, -71)
 libraries = {
 &"": SubResource("AnimationLibrary_bu1yb")
 }
+
+[node name="Counting_Text" type="RichTextLabel" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 735.0
+offset_top = 586.0
+offset_right = -714.0
+offset_bottom = -349.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/normal_font = ExtResource("1_yjqpq")
+theme_override_font_sizes/bold_italics_font_size = 50
+theme_override_font_sizes/italics_font_size = 50
+theme_override_font_sizes/mono_font_size = 50
+theme_override_font_sizes/normal_font_size = 50
+theme_override_font_sizes/bold_font_size = 50
+script = ExtResource("7_0naf5")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("6_es01l")
