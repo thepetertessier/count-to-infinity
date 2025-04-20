@@ -1,6 +1,7 @@
 extends Node2D
 
 @onready var player_cursor: PlayerCursor = %PlayerCursor
+@onready var day_lighter_timer: Panel = %DayLighterTimer
 
 const invincibility_duration := 1
 const TIME_PENALTY = preload("res://scenes/time_penalty.tscn")
@@ -29,3 +30,5 @@ func hurt_player_with_trap(trap: Trap):
 	var time_penalty: Node2D = TIME_PENALTY.instantiate()
 	add_child(time_penalty)
 	time_penalty.position = player_cursor.position
+	
+	day_lighter_timer.reduce_seconds_remaining(5)
