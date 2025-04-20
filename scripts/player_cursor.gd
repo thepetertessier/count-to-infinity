@@ -1,6 +1,8 @@
 @tool
 class_name PlayerCursor
-extends RigidBody2D
+extends CharacterBody2D
+
+signal collided_with_trap(collision: KinematicCollision2D)
 
 @onready var hit_collision_shape: CollisionShape2D = $HitBox/HitCollisionShape
 @onready var cpu_particles_2d: CPUParticles2D = $Visuals/CPUParticles2D
@@ -25,9 +27,7 @@ func _physics_process(delta):
 	if Engine.is_editor_hint():
 		return
 	var to_go = get_global_mouse_position() - global_position
-	#velocity = to_go / delta
-	#move_and_slide()
-	move_and_collide(to_go)
-	
+	var collision = move_and_collide(to_go)
+
 func get_hit_box() -> Area2D:
 	return hit_box

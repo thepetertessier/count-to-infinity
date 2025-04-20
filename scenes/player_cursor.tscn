@@ -78,8 +78,9 @@ _limits = [-1.0, 1.0, 0.0, 1.0]
 _data = [Vector2(0, 0.643579), 0.0, 0.0, 0, 0, Vector2(1, 0.837422), 0.0, 0.0, 0, 0]
 point_count = 2
 
-[node name="PlayerCursor" type="RigidBody2D"]
+[node name="PlayerCursor" type="CharacterBody2D"]
 collision_mask = 4
+motion_mode = 1
 script = ExtResource("1_uwxsh")
 
 [node name="HurtCollisionShape" type="CollisionShape2D" parent="."]
