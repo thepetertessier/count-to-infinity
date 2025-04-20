@@ -61,16 +61,19 @@ func collect_grain(grain: Grain):
 	tween.tween_property(grain, "position", jar.position, 1)
 	tween.parallel().tween_property(grain, "scale", Vector2(), 1)
 	tween.set_parallel(false)
-	tween.tween_callback(set_run_grain_count_label.bind(grain_count_across_run))
-	tween.tween_callback(audio_manager.play_collect)
-	tween.tween_callback(grain.queue_free)
-	tween.tween_callback(func(): if collected_count >= total_grains: stage_complete())
+	tween.tween_callback(grain.queue_free.call_deferred)
+	tween.tween_callback(audio_manager.play_collect.call_deferred)
+	tween.tween_callback(set_run_grain_count_label.bind(grain_count_across_run).call_deferred)
+	if collected_count >= total_grains:
+		tween.tween_callback(stage_complete.call_deferred)
 
 # Update the UI label.
 func update_ui():
-	grain_count_label.text = "Collected: " + str(collected_count) + " / " + str(total_grains)
+	grain_count_label.set_new_text("Collected: " + str(collected_count) + " / " + str(total_grains))
 
 func set_run_grain_count_label(amount):
+	if stage_completed:
+		return
 	run_grain_count_label.text = "x" + str(amount)
 
 var stage_completed = false
@@ -92,6 +95,7 @@ func stage_complete():
 ## Logic for grain collection
 # internals
 var _grains_in_range := FastSet.new()
+var _grains_collected := {}
 var _auto_accumulator: float = 0.0
 
 func _on_area_entered(area: Area2D) -> void:
@@ -120,11 +124,12 @@ func _collect_grains(amount: int) -> void:
 	var collected := 0
 	while collected < amount and _grains_in_range.size() > 0:
 		var grain_area: Area2D = _grains_in_range.pop_any()
-		if not is_instance_valid(grain_area):
-			continue  # it may already have been freed
+		if (not is_instance_valid(grain_area)) or _grains_collected.has(grain_area):
+			continue  # already collected
+		_grains_collected.get_or_add(grain_area)
 		var grain_root := get_grain_root(grain_area)
 		collect_grain(grain_root)
 		collected += 1
-		
+
 func get_grain_root(grain_area: Area2D) -> Grain:
 	return grain_area.get_parent().get_parent()

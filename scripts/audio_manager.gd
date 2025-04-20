@@ -2,8 +2,8 @@ extends Node
 
 const pop_sound_count := 5
 
-var pop_audio_players = []
-var collect_audio_players = []
+var pop_audio_players: Array[AudioStreamPlayer] = []
+var collect_audio_players: Array[AudioStreamPlayer] = []
 
 @onready var hover_player: AudioStreamPlayer = $HoverPlayer
 @onready var stage_complete_player: AudioStreamPlayer = $StageCompletePlayer
@@ -25,6 +25,12 @@ func _ready():
 		var player2 = make_new_player(sound)
 		collect_audio_players.append(player2)
 		player2.pitch_scale = 2
+		
+func stop_pops():
+	# mute the players
+	for i in range(pop_sound_count):
+		pop_audio_players[i].set_volume_linear(0)
+		collect_audio_players[i].set_volume_linear(0)
 
 func play_pop():
 	pop_audio_players[randi_range(0, pop_sound_count-1)].play()

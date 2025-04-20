@@ -42,6 +42,7 @@ func _on_second_timer_timeout() -> void:
 	if seconds_remaining <= 0:
 		timer.stop()
 		grain_manager.visible = false
+		sfx_manager.stop_pops()
 		sfx_manager.play_run_over()
 		grain_count_label.big_center_text("Run Over!")
 		grain_count_label.z_index = 5  # Above white screen
