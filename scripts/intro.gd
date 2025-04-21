@@ -84,13 +84,19 @@ func show_counting_text(label: RichTextLabel, text: String) -> void:
 	fade_tween.tween_property(label, "modulate:a", 0.0, 1.5)
 	await fade_tween.finished
 	label.visible = false
+	
+func fade_out_music(audio_player: AudioStreamPlayer, duration: float = 2.0) -> void:
+	var tween = create_tween()
+	tween.tween_property(audio_player, "volume_db", -80, duration)
+	await tween.finished
+	audio_player.stop()
 
 func show_vampire_freedom():
 	var final_text = $FinalDialog
 	final_text.visible = true
 
 	# Show initial dramatic realization
-	await show_counting_text(final_text, "\"Wait... I've done it... I've actually done it!\"\n\n\"I've counted them all!\"")
+	await show_counting_text(final_text, "\"Wait... I did it... I finally did it!\"\n\n\"I've counted them all!\"\n\n\"This wretched prison can no longer contain me!\"")
 	
 	# Sinister red fade after realization
 	var red_overlay = $RedOverlay
@@ -116,6 +122,8 @@ func show_vampire_freedom():
 	var new_fade_tween = create_tween()
 	new_fade_tween.tween_property(black_overlay, "modulate:a", 1.0, 2.0)
 	await new_fade_tween.finished
+	
+	await fade_out_music($Music)
 	
 	await get_tree().create_timer(1.0).timeout
 	SceneSwitcher.goto_scene_from_path("res://scenes/resting_menu.tscn")

@@ -65,7 +65,7 @@ anchor_bottom = 1.0
 offset_right = 3.0
 offset_bottom = 6.0
 mouse_filter = 2
-color = Color(0.6143, 0.0244613, 0.0139716, 1)
+color = Color(0.360075, 0.0137017, 0.0136513, 1)
 
 [node name="Intro_Text" type="RichTextLabel" parent="."]
 anchors_preset = 15
@@ -187,10 +187,10 @@ script = ExtResource("7_0naf5")
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 536.0
+offset_left = 355.0
 offset_top = 432.0
-offset_right = -498.0
-offset_bottom = -415.0
+offset_right = -362.0
+offset_bottom = -283.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
@@ -255,7 +255,7 @@ grow_vertical = 2
 mouse_filter = 2
 color = Color(0, 0, 0, 1)
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+[node name="Music" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("6_es01l")
 volume_db = -8.432
 autoplay = true

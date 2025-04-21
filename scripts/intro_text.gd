@@ -13,7 +13,7 @@ Many have perished under this curse, whispering numbers into the dark as dawn co
 
 But not you.
 
-You are Velka, the Hungering Sovereign, the last of the old lords, sealed in a crypt for centuries. Your prison lined with grains—endless, infinite grains—your torment made manifest.
+You are Velka, the Hungering Sovereign, the last of the old lords, sealed in a crypt for centuries. Your prison lined with endless grains, you count them one by one.
 
 But now…"
 
