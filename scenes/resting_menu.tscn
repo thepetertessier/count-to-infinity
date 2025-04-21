@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://bu8s78x7kd1ty" path="res://assets/images/CoffinBackground.png" id="1_4y48l"]
 [ext_resource type="Script" uid="uid://b7v54rffdav5b" path="res://scripts/resting_menu.gd" id="1_xitk6"]
 [ext_resource type="FontFile" uid="uid://drnqnibw60daw" path="res://assets/images/Firlest-Regular.otf" id="2_aoemk"]
-[ext_resource type="Resource" uid="uid://la2h71pdosei" path="res://resources/test_player_stats.tres" id="2_rpyq4"]
+[ext_resource type="Resource" uid="uid://32odrbvn0mud" path="res://resources/test_player_stats.tres" id="2_rpyq4"]
 [ext_resource type="Texture2D" uid="uid://c4d7icnifcuh8" path="res://assets/images/wood-buttons.png" id="5_rpyq4"]
 [ext_resource type="Texture2D" uid="uid://ksteg5m1hskw" path="res://assets/images/dark-wooden-buttons.png" id="6_mu6aj"]
 [ext_resource type="Texture2D" uid="uid://da83jon3upwgc" path="res://assets/images/light-wood-buttons.png" id="7_jd1n5"]
