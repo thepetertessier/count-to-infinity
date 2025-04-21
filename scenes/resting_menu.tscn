@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://bu8s78x7kd1ty" path="res://assets/images/CoffinBackground.png" id="1_4y48l"]
 [ext_resource type="Script" uid="uid://b7v54rffdav5b" path="res://scripts/resting_menu.gd" id="1_xitk6"]
 [ext_resource type="FontFile" uid="uid://drnqnibw60daw" path="res://assets/images/Firlest-Regular.otf" id="2_aoemk"]
-[ext_resource type="Resource" uid="uid://g61ur8rvb0ka" path="res://resources/test_player_stats.tres" id="2_rpyq4"]
+[ext_resource type="Resource" uid="uid://jj0i6goslm25" path="res://resources/test_player_stats.tres" id="2_rpyq4"]
 [ext_resource type="Texture2D" uid="uid://c4d7icnifcuh8" path="res://assets/images/wood-buttons.png" id="5_rpyq4"]
 [ext_resource type="Texture2D" uid="uid://ksteg5m1hskw" path="res://assets/images/dark-wooden-buttons.png" id="6_mu6aj"]
 [ext_resource type="Texture2D" uid="uid://da83jon3upwgc" path="res://assets/images/light-wood-buttons.png" id="7_jd1n5"]
@@ -203,13 +203,13 @@ vertical_alignment = 1
 [node name="SpeedDemonUpgradeBtn" type="TextureButton" parent="."]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.754
+anchor_left = 0.657
 anchor_top = 0.899
-anchor_right = 0.754
+anchor_right = 0.657
 anchor_bottom = 0.899
-offset_left = -260.68
+offset_left = -74.4401
 offset_top = -77.92
-offset_right = -110.68
+offset_right = 75.5599
 offset_bottom = 77.08
 texture_normal = SubResource("AtlasTexture_q3qxc")
 texture_pressed = SubResource("AtlasTexture_jch81")

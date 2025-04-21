@@ -1,6 +1,7 @@
 extends Node
 
 var current_scene = null
+const BASE_GRAIN_COLLECTION_STAGE = preload("res://scenes/base_grain_collection_stage.tscn")
 
 func _ready():
 	var root = get_tree().root
@@ -29,3 +30,14 @@ func _deferred_goto_node(node: Node):
 
 	# Optionally, to make it compatible with the SceneTree.change_scene_to_file() API.
 	get_tree().current_scene = current_scene
+
+func load_stage(run_total_seconds, grain_count_min := 10, stage_num := 1, run_grain_count := 0, seconds_remaining = null):
+	var next_stage = BASE_GRAIN_COLLECTION_STAGE.instantiate()
+	
+	next_stage.stage_num = stage_num
+	next_stage.grain_count_across_run = run_grain_count
+	next_stage.grain_count_min = grain_count_min
+	next_stage.seconds_until_sunrise = run_total_seconds if seconds_remaining == null else seconds_remaining
+	next_stage.run_total_seconds = run_total_seconds
+	
+	goto_node(next_stage)
