@@ -19,7 +19,7 @@ const VAMPIRE_HAND = preload("res://assets/images/vampire_hand.png")
 	$Counting_Text3
 ]
 
-# Dialog text for each step
+# dialog text for each step
 var counting_lines = [
 	"\"3,485,453,233...\"",
 	"\"3,485,453,234...\"",
