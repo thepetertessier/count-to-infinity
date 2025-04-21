@@ -1,6 +1,6 @@
 extends Control
 
-@export var stage_num := 1
+@export var stage_num :int = 1
 @export var grain_count_across_run := 0
 @export var grain_scene: PackedScene
 @export var grain_count_min: int = 10
@@ -14,6 +14,7 @@ extends Control
 
 const BASE_GRAIN_COLLECTION_STAGE = preload("res://scenes/base_grain_collection_stage.tscn")
 const RESTING_MENU = preload("res://scenes/resting_menu.tscn")
+const BLOOD_WHEEL = preload("res://scenes/spinner.tscn")
 
 func _ready() -> void:
 	stage_label.text = "Stage: " + str(stage_num)
@@ -25,7 +26,7 @@ func load_resting_menu(grain_count_across_run):
 	SceneSwitcher.goto_scene_from_path("res://scenes/resting_menu.tscn")
 
 func load_next_stage(run_grain_count, seconds_remaining):
-	var next_stage = BASE_GRAIN_COLLECTION_STAGE.instantiate()
+	var next_stage = BLOOD_WHEEL.instantiate()
 	
 	next_stage.stage_num = stage_num + 1
 	next_stage.grain_count_across_run = run_grain_count

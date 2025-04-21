@@ -1,0 +1,136 @@
+[gd_scene load_steps=15 format=3 uid="uid://b0c3dae7qr2vi"]
+
+[ext_resource type="Script" uid="uid://ct3tvpujhrqlc" path="res://scripts/spinner.gd" id="1_78gc6"]
+[ext_resource type="Script" uid="uid://b0wnqmxk3tk5t" path="res://scripts/base_wheel_script.gd" id="1_vekcj"]
+[ext_resource type="Texture2D" uid="uid://bu8s78x7kd1ty" path="res://assets/images/CoffinBackground.png" id="2_78gc6"]
+[ext_resource type="Texture2D" uid="uid://c4d7icnifcuh8" path="res://assets/images/wood-buttons.png" id="3_gjgub"]
+[ext_resource type="Texture2D" uid="uid://ksteg5m1hskw" path="res://assets/images/dark-wooden-buttons.png" id="4_vvma1"]
+[ext_resource type="Texture2D" uid="uid://da83jon3upwgc" path="res://assets/images/light-wood-buttons.png" id="5_qt8r4"]
+[ext_resource type="FontFile" uid="uid://drnqnibw60daw" path="res://assets/images/Firlest-Regular.otf" id="6_572xw"]
+[ext_resource type="Script" uid="uid://dfigp78ocy0ka" path="res://scripts/stop_wheel.gd" id="6_vvma1"]
+[ext_resource type="Texture2D" uid="uid://bcm856x2r76fb" path="res://assets/images/pointing-finger.png" id="8_qt8r4"]
+[ext_resource type="Script" uid="uid://7kwja6qr20ce" path="res://scripts/collect_blood.gd" id="9_572xw"]
+[ext_resource type="Resource" path="res://resources/test_player_stats.tres" id="10_xdg4i"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xdg4i"]
+atlas = ExtResource("3_gjgub")
+region = Rect2(190, 254, 1751, 564)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vekcj"]
+atlas = ExtResource("4_vvma1")
+region = Rect2(190, 254, 1751, 564)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8u1ip"]
+atlas = ExtResource("5_qt8r4")
+region = Rect2(190, 254, 1751, 564)
+
+[node name="SpinnerScene" type="Node2D"]
+script = ExtResource("1_vekcj")
+
+[node name="CoffinBackground" type="TextureRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 70.0
+offset_top = -102.0
+offset_right = 1606.0
+offset_bottom = 922.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_78gc6")
+
+[node name="ScriptRunner" type="Node2D" parent="."]
+script = ExtResource("1_78gc6")
+
+[node name="StopWheel" type="TextureButton" parent="."]
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.543
+anchor_right = 0.5
+anchor_bottom = 0.543
+offset_left = 1927.0
+offset_top = 136.0
+offset_right = 2348.0
+offset_bottom = 318.0
+grow_horizontal = 2
+grow_vertical = 2
+texture_normal = SubResource("AtlasTexture_xdg4i")
+texture_pressed = SubResource("AtlasTexture_vekcj")
+texture_hover = SubResource("AtlasTexture_8u1ip")
+ignore_texture_size = true
+stretch_mode = 5
+script = ExtResource("6_vvma1")
+metadata/_edit_group_ = true
+
+[node name="StopWheelText" type="Label" parent="StopWheel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -35.0
+offset_top = -11.5
+offset_right = 35.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("6_572xw")
+theme_override_font_sizes/font_size = 70
+text = "STOP"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Pointing-finger" type="Sprite2D" parent="."]
+position = Vector2(1493, 505)
+rotation = -1.07687
+scale = Vector2(-0.5, 0.5)
+texture = ExtResource("8_qt8r4")
+
+[node name="CollectBlood" type="TextureButton" parent="." node_paths=PackedStringArray("nodeAddBlood", "baseScene")]
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.543
+anchor_right = 0.5
+anchor_bottom = 0.543
+offset_left = -664.0
+offset_top = 367.0
+offset_right = -243.0
+offset_bottom = 549.0
+grow_horizontal = 2
+grow_vertical = 2
+texture_normal = SubResource("AtlasTexture_xdg4i")
+texture_pressed = SubResource("AtlasTexture_vekcj")
+texture_hover = SubResource("AtlasTexture_8u1ip")
+ignore_texture_size = true
+stretch_mode = 5
+script = ExtResource("9_572xw")
+nodeAddBlood = NodePath("../ScriptRunner")
+baseScene = NodePath("..")
+stats = ExtResource("10_xdg4i")
+metadata/_edit_group_ = true
+
+[node name="CollectBloodText" type="Label" parent="CollectBlood"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -35.0
+offset_top = -11.5
+offset_right = 35.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("6_572xw")
+theme_override_font_sizes/font_size = 70
+text = "Collect Blood"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="spun" from="ScriptRunner" to="CollectBlood" method="_on_spun"]
+[connection signal="pressed" from="StopWheel" to="ScriptRunner" method="_on_stop_wheel_pressed"]
+[connection signal="pressed" from="StopWheel" to="StopWheel" method="_on_pressed"]
+[connection signal="pressed" from="CollectBlood" to="ScriptRunner" method="_on_stop_wheel_pressed"]
+[connection signal="pressed" from="CollectBlood" to="CollectBlood" method="_on_pressed"]
