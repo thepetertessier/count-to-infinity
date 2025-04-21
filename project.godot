@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Count to Infinity"
-run/main_scene="uid://cngw4ueq161xu"
+run/main_scene="uid://bgmdjfwguirpr"
 config/features=PackedStringArray("4.4", "GL Compatibility")
 config/icon="res://icon.svg"
 
@@ -25,6 +25,12 @@ window/size/viewport_width=1920
 window/size/viewport_height=1080
 window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
+
+[layer_names]
+
+2d_physics/layer_1="player"
+2d_physics/layer_2="grain"
+2d_physics/layer_3="traps"
 
 [rendering]
 
