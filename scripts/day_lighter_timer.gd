@@ -49,12 +49,16 @@ func update_ui():
 		sec_str = "0" + sec_str
 	day_light_timer_label.text = str(minutes) + ":" + sec_str
 
+func free_safely(instance: Node):
+	if is_instance_valid(instance):
+		instance.queue_free()
+
 func end_run_if_timeup():
 	if seconds_remaining <= 0:
 		timer.stop()
 		grain_manager.visible = false
-		player_cursor.queue_free.call_deferred()
-		trap_manager.queue_free.call_deferred()
+		free_safely(player_cursor)
+		free_safely(trap_manager)
 		sfx_manager.stop_pops()
 		sfx_manager.play_run_over()
 		grain_count_label.big_center_text("Run Over!")
