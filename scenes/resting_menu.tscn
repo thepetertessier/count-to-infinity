@@ -171,6 +171,7 @@ metadata/_edit_group_ = true
 [node name="GrainCountIcon" type="TextureRect" parent="GrainCountContainer"]
 layout_mode = 2
 texture = ExtResource("8_37ouw")
+stretch_mode = 5
 
 [node name="LifetimeGrainCount" type="Label" parent="GrainCountContainer"]
 layout_mode = 2
@@ -198,6 +199,7 @@ metadata/_edit_group_ = true
 [node name="BloodCountIcon" type="TextureRect" parent="BloodCountContainer"]
 layout_mode = 2
 texture = ExtResource("10_0onyh")
+stretch_mode = 5
 
 [node name="BloodCount" type="Label" parent="BloodCountContainer"]
 layout_mode = 2
