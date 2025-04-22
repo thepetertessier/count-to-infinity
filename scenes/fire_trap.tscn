@@ -1,7 +1,9 @@
-[gd_scene load_steps=22 format=3 uid="uid://cslth8xyiqa4w"]
+[gd_scene load_steps=24 format=3 uid="uid://cslth8xyiqa4w"]
 
 [ext_resource type="Script" uid="uid://bjtle4ypwe7b0" path="res://scripts/trap.gd" id="1_6dvj4"]
 [ext_resource type="Texture2D" uid="uid://cthd788mtw0ay" path="res://assets/images/fire.png" id="1_disgf"]
+[ext_resource type="AudioStream" uid="uid://c4ari702pllwc" path="res://assets/sfx/fire_damage.WAV" id="2_0b03g"]
+[ext_resource type="AudioStream" uid="uid://bi0ih8akb75k4" path="res://assets/sfx/fire_burn.WAV" id="3_ehxbr"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_62q8x"]
 atlas = ExtResource("1_disgf")
@@ -153,6 +155,7 @@ _data = {
 
 [node name="FireTrap" type="Node2D"]
 script = ExtResource("1_6dvj4")
+hit_sfx = ExtResource("2_0b03g")
 
 [node name="Area2D" type="Area2D" parent="."]
 collision_layer = 4
@@ -166,6 +169,12 @@ frame_progress = 0.611687
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("CircleShape2D_ykdm6")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="Area2D"]
+stream = ExtResource("3_ehxbr")
+autoplay = true
+attenuation = 3.24901
+bus = &"SFX"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

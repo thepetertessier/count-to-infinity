@@ -1,3 +1,4 @@
+class_name SFXManager
 extends Node
 
 const pop_sound_count := 5

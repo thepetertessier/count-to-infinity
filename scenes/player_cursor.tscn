@@ -124,3 +124,6 @@ scale_amount_curve = SubResource("Curve_jnbgc")
 hue_variation_min = 1.0
 hue_variation_max = 1.0
 hue_variation_curve = SubResource("Curve_blyi6")
+
+[node name="AudioListener2D" type="AudioListener2D" parent="."]
+current = true

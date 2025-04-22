@@ -300,6 +300,9 @@ bus = &"SFX"
 stream = ExtResource("14_bqhox")
 bus = &"SFX"
 
+[node name="MiscPlayer" type="AudioStreamPlayer" parent="SFXManager"]
+bus = &"SFX"
+
 [node name="MusicManager" type="Node" parent="."]
 unique_name_in_owner = true
 script = ExtResource("15_8v08u")
