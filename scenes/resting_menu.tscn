@@ -90,6 +90,8 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("1_4y48l")
+expand_mode = 4
+stretch_mode = 5
 
 [node name="TitleText" type="Label" parent="."]
 layout_mode = 1
@@ -103,6 +105,11 @@ offset_top = -84.16
 offset_right = 680.0
 offset_bottom = 83.84
 grow_horizontal = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 5
+theme_override_constants/shadow_offset_y = 5
+theme_override_constants/outline_size = 40
+theme_override_constants/shadow_outline_size = 50
 theme_override_fonts/font = ExtResource("2_aoemk")
 theme_override_font_sizes/font_size = 200
 text = "Count to Infinity"
