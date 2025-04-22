@@ -2,6 +2,7 @@ extends Node
 
 var current_scene = null
 const BASE_GRAIN_COLLECTION_STAGE = preload("res://scenes/base_grain_collection_stage.tscn")
+const SPINNER = preload("res://scenes/spinner.tscn")
 
 func _ready():
 	var root = get_tree().root
@@ -31,8 +32,14 @@ func _deferred_goto_node(node: Node):
 	# Optionally, to make it compatible with the SceneTree.change_scene_to_file() API.
 	get_tree().current_scene = current_scene
 
-func load_stage(run_total_seconds, grain_count_min := 10, stage_num := 1, run_grain_count := 0, seconds_remaining = null):
-	var next_stage = BASE_GRAIN_COLLECTION_STAGE.instantiate()
+func load_next_stage(run_total_seconds, grain_count_min := 10, stage_num := 1, run_grain_count := 0, seconds_remaining = null):
+	load_next_scene(BASE_GRAIN_COLLECTION_STAGE, run_total_seconds, grain_count_min, stage_num, run_grain_count, seconds_remaining)
+
+func load_next_blood_reward(run_total_seconds, grain_count_min := 10, stage_num := 1, run_grain_count := 0, seconds_remaining = null):
+	load_next_scene(SPINNER, run_total_seconds, grain_count_min, stage_num, run_grain_count, seconds_remaining)
+
+func load_next_scene(scene: PackedScene, run_total_seconds, grain_count_min := 10, stage_num := 1, run_grain_count := 0, seconds_remaining = null):
+	var next_stage = scene.instantiate()
 	
 	next_stage.stage_num = stage_num
 	next_stage.grain_count_across_run = run_grain_count

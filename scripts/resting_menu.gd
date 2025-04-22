@@ -107,4 +107,4 @@ func set_upgrade_name_and_cost(upgrade):
 	
 
 func _on_new_run_btn_pressed() -> void:
-	SceneSwitcher.load_stage(stats.daylight_timer)
+	SceneSwitcher.load_next_stage(stats.daylight_timer)
