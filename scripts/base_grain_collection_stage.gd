@@ -1,6 +1,6 @@
 extends Control
 
-@export var stage_num := 1
+@export var stage_num :int = 1
 @export var grain_count_across_run := 0
 @export var grain_scene: PackedScene
 @export var grain_count_min: int = 10
@@ -37,8 +37,8 @@ func set_values_from_stats() -> void:
 func load_resting_menu(grain_count_across_run):
 	SceneSwitcher.goto_scene_from_path("res://scenes/resting_menu.tscn")
 
-func load_next_stage(run_grain_count, seconds_remaining):	
-	SceneSwitcher.load_stage(
+func load_next_blood_reward(run_grain_count, seconds_remaining):	
+	SceneSwitcher.load_next_blood_reward(
 		run_total_seconds,
 		int(grain_count_min * 1.5),
 		stage_num + 1,

@@ -1,9 +1,9 @@
 class_name GrainManager
 extends Node2D
 
-var total_grains: int = 0
-var collected_count: int = 0
-var grain_count_across_run: int
+@export var total_grains: int = 0
+@export var collected_count: int = 0
+@export var grain_count_across_run: int
 
 # Get the label node for updating UI. Adjust the path if needed.
 @onready var grain_count_label: Label = %GrainCountLabel
