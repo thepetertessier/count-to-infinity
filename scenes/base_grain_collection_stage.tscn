@@ -20,7 +20,7 @@
 [ext_resource type="Script" uid="uid://bkrtt0oko2hjd" path="res://scripts/trap_manager.gd" id="13_034ej"]
 [ext_resource type="AudioStream" uid="uid://d3r8rx1mc34a" path="res://assets/sfx/run_over.ogg" id="14_bqhox"]
 [ext_resource type="Script" path="res://scripts/music_manager.gd" id="15_8v08u"]
-[ext_resource type="Script" path="res://scripts/scene_manager.gd" id="18_r4acy"]
+[ext_resource type="Script" uid="uid://buyjikfeb5ymg" path="res://scripts/scene_manager.gd" id="18_r4acy"]
 [ext_resource type="PackedScene" uid="uid://dsaq4eheaehbl" path="res://scenes/player_cursor.tscn" id="20_807r6"]
 [ext_resource type="PackedScene" uid="uid://cslth8xyiqa4w" path="res://scenes/fire_trap.tscn" id="21_tfo2j"]
 
