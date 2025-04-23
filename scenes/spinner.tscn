@@ -1,20 +1,22 @@
-[gd_scene load_steps=19 format=3 uid="uid://b0c3dae7qr2vi"]
+[gd_scene load_steps=21 format=3 uid="uid://b0c3dae7qr2vi"]
 
 [ext_resource type="Script" uid="uid://ct3tvpujhrqlc" path="res://scripts/spinner.gd" id="1_78gc6"]
 [ext_resource type="Script" uid="uid://b0wnqmxk3tk5t" path="res://scripts/base_wheel_script.gd" id="1_vekcj"]
 [ext_resource type="Texture2D" uid="uid://biy8oe8f3ogcy" path="res://assets/images/outskirts_blood_reward.webp" id="2_vekcj"]
 [ext_resource type="Texture2D" uid="uid://c4d7icnifcuh8" path="res://assets/images/wood-buttons.png" id="3_gjgub"]
+[ext_resource type="Texture2D" uid="uid://coy8b5abpvfjf" path="res://assets/images/WheelFrame.png" id="4_lyxip"]
 [ext_resource type="Texture2D" uid="uid://ksteg5m1hskw" path="res://assets/images/dark-wooden-buttons.png" id="4_vvma1"]
 [ext_resource type="Texture2D" uid="uid://da83jon3upwgc" path="res://assets/images/light-wood-buttons.png" id="5_qt8r4"]
 [ext_resource type="FontFile" uid="uid://drnqnibw60daw" path="res://assets/images/Firlest-Regular.otf" id="6_572xw"]
 [ext_resource type="Script" uid="uid://dfigp78ocy0ka" path="res://scripts/stop_wheel.gd" id="6_vvma1"]
 [ext_resource type="Texture2D" uid="uid://bcm856x2r76fb" path="res://assets/images/pointing-finger.png" id="8_qt8r4"]
 [ext_resource type="Script" uid="uid://7kwja6qr20ce" path="res://scripts/collect_blood.gd" id="9_572xw"]
-[ext_resource type="Resource" uid="uid://b1lne5jlp3y4c" path="res://resources/test_player_stats.tres" id="10_xdg4i"]
+[ext_resource type="Resource" path="res://resources/test_player_stats.tres" id="10_xdg4i"]
 [ext_resource type="AudioStream" uid="uid://brwqas7g7fny7" path="res://assets/sfx/wheel-looping2.ogg" id="12_fj47n"]
 [ext_resource type="AudioStream" uid="uid://ce4ap4wnbfu2a" path="res://assets/sfx/ending-spinner.ogg" id="13_3o07h"]
 [ext_resource type="AudioStream" uid="uid://cdyo43kldau1r" path="res://assets/sfx/breeze-of-blood-122253.mp3" id="14_mqgsy"]
 [ext_resource type="FontFile" uid="uid://bnscowtn6uye1" path="res://assets/fonts/DoubleFeature-KvAe.ttf" id="15_fj47n"]
+[ext_resource type="Script" uid="uid://bl7tmdb6s7pbw" path="res://scenes/script_runner_2.gd" id="16_tn8vy"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_xdg4i"]
 atlas = ExtResource("3_gjgub")
@@ -45,6 +47,26 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("2_vekcj")
+
+[node name="WheelBackgroundScriptRunner" type="Sprite2D" parent="."]
+script = ExtResource("16_tn8vy")
+
+[node name="WheelFrame" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -674.0
+offset_top = -708.5
+offset_right = 674.0
+offset_bottom = 668.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_lyxip")
+expand_mode = 1
+stretch_mode = 5
 
 [node name="ScriptRunner" type="Node2D" parent="."]
 script = ExtResource("1_78gc6")
@@ -147,6 +169,7 @@ stream = ExtResource("13_3o07h")
 volume_db = 15.0
 
 [node name="BloodSplatter" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(844, 389)
 stream = ExtResource("14_mqgsy")
 volume_db = 15.0
 
@@ -172,6 +195,7 @@ theme_override_font_sizes/font_size = 200
 text = "+50"
 
 [connection signal="spun" from="ScriptRunner" to="CollectBlood" method="_on_spun"]
+[connection signal="pressed" from="StopWheel" to="WheelBackgroundScriptRunner" method="_on_stop_wheel_pressed"]
 [connection signal="pressed" from="StopWheel" to="ScriptRunner" method="_on_stop_wheel_pressed"]
 [connection signal="pressed" from="StopWheel" to="StopWheel" method="_on_pressed"]
 [connection signal="pressed" from="CollectBlood" to="ScriptRunner" method="_on_stop_wheel_pressed"]

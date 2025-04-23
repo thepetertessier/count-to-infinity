@@ -84,7 +84,10 @@ func _process(delta: float) -> void:
 	
 
 func _draw() -> void:
-	draw_circle(cen,rad,col)
+	# commented this out as I replaced the circle in WheelBackgroundScriptRunner
+	#draw_circle(cen,rad,col)
+	
+	
 	for x in lines:
 		draw_line(cen,x,Color(0,0,0),3)
 	
