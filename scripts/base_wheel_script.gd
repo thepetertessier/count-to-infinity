@@ -10,6 +10,9 @@ extends Control
 const BASE_GRAIN_COLLECTION_STAGE = preload("res://scenes/base_grain_collection_stage.tscn")
 
 func _ready():
+	$BloodCount.hide()
+	
+	# play wheel spin intro sound
 	$EndlessWheelSpinSoundEffect.play()
 
 func returnToGame():	
