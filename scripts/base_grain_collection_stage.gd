@@ -35,6 +35,8 @@ func set_values_from_stats() -> void:
 	player_cursor.click_radius = stats.click_radius
 
 func load_resting_menu(grain_count_across_run):
+	stats.lifetime_grain_count += grain_count_across_run
+	ResourceSaver.save(stats, stats_path)
 	SceneSwitcher.goto_scene_from_path("res://scenes/resting_menu.tscn")
 
 func load_next_blood_reward(run_grain_count, seconds_remaining):	
