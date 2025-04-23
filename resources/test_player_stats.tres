@@ -5,13 +5,13 @@
 [resource]
 script = ExtResource("1_otkgs")
 lifetime_grain_count = 0
-blood = 325
+blood = 0
 click_power = 1
 click_radius = 1.0
 auto_collect_rate = 0.0
-daylight_timer = 40
+daylight_timer = 30
 long_fingers_level = 1
 powerful_fingers_level = 1
 auto_fingers_level = 1
-speed_demon_level = 2
+speed_demon_level = 1
 metadata/_custom_type_script = "uid://gcq1t384arvx"
