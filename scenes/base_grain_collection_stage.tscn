@@ -272,6 +272,7 @@ text = "x0"
 vertical_alignment = 1
 
 [node name="TrapManager" type="Node2D" parent="."]
+unique_name_in_owner = true
 script = ExtResource("13_034ej")
 
 [node name="FireTrap" parent="TrapManager" instance=ExtResource("21_tfo2j")]

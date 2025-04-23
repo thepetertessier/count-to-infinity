@@ -60,7 +60,7 @@ func collect_grain(grain: Grain):
 	# Animate the grain's movement to the jar
 	var tween = get_tree().create_tween()
 	if collected_count >= total_grains:
-		stage_complete.call_deferred()
+		stage_complete()
 	tween.tween_property(grain, "position", jar.position, 1)
 	tween.parallel().tween_property(grain, "scale", Vector2(), 1)
 	tween.set_parallel(false)
@@ -79,6 +79,11 @@ func set_run_grain_count_label(amount):
 
 var stage_completed = false
 
+func free_safely(instance):
+	print('Attempting to free: ', instance)
+	if instance != null and is_instance_valid(instance):
+		instance.queue_free()
+
 # Called when the stage is complete.
 func stage_complete():
 	if stage_completed:
@@ -88,7 +93,7 @@ func stage_complete():
 	day_lighter_timer.stop()
 	
 	var seconds_remaining = day_lighter_timer.get_seconds_remaining()
-	trap_manager.hide()
+	free_safely(trap_manager)
 	audio_manager.play_stage_complete()
 	grain_count_label.big_center_text("Stage Complete!")
 	await get_tree().create_timer(2).timeout
