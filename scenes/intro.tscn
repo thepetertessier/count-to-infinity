@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://fcrd3vcoasqf" path="res://scripts/intro_text.gd" id="1_ioskq"]
 [ext_resource type="FontFile" uid="uid://df8p6ogj2hy8b" path="res://assets/fonts/MedievalSharp-Regular.ttf" id="1_yjqpq"]
 [ext_resource type="FontFile" uid="uid://d1wqf4rmbxrgy" path="res://assets/fonts/Nightcore Demo.ttf" id="3_4bx60"]
-[ext_resource type="PackedScene" uid="uid://bhlwryr07um32" path="res://scenes/intro_sunflower_seed.tscn" id="5_wfs7u"]
+[ext_resource type="PackedScene" path="res://scenes/intro_sunflower_seed.tscn" id="5_0naf5"]
 [ext_resource type="AudioStream" uid="uid://lk5nqc53stpo" path="res://assets/sound/GameMusic_ForestTheme_24.mp3" id="6_es01l"]
 [ext_resource type="Script" uid="uid://bmn0tkxuvsv60" path="res://scripts/counting_text.gd" id="7_0naf5"]
 
@@ -105,7 +105,7 @@ text = "( Click  to  Skip  Cutscene  and  Tutorial )"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="SunflowerSeed1" parent="." instance=ExtResource("5_wfs7u")]
+[node name="SunflowerSeed1" parent="." instance=ExtResource("5_0naf5")]
 position = Vector2(967, -71)
 
 [node name="AnimationPlayer2" type="AnimationPlayer" parent="SunflowerSeed1"]
@@ -113,16 +113,16 @@ libraries = {
 &"": SubResource("AnimationLibrary_bu1yb")
 }
 
-[node name="SunflowerSeed2" parent="." instance=ExtResource("5_wfs7u")]
+[node name="SunflowerSeed2" parent="." instance=ExtResource("5_0naf5")]
 position = Vector2(967, -71)
 
 [node name="AnimationPlayer2" type="AnimationPlayer" parent="SunflowerSeed2"]
-root_node = NodePath("")
 libraries = {
 &"": SubResource("AnimationLibrary_bu1yb")
 }
 
-[node name="SunflowerSeed3" parent="." instance=ExtResource("5_wfs7u")]
+[node name="SunflowerSeed3" parent="." instance=ExtResource("5_0naf5")]
+position = Vector2(1934, -142)
 
 [node name="AnimationPlayer2" type="AnimationPlayer" parent="SunflowerSeed3"]
 root_node = NodePath("")
