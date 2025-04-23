@@ -10,7 +10,7 @@
 [ext_resource type="Script" uid="uid://dfigp78ocy0ka" path="res://scripts/stop_wheel.gd" id="6_vvma1"]
 [ext_resource type="Texture2D" uid="uid://bcm856x2r76fb" path="res://assets/images/pointing-finger.png" id="8_qt8r4"]
 [ext_resource type="Script" uid="uid://7kwja6qr20ce" path="res://scripts/collect_blood.gd" id="9_572xw"]
-[ext_resource type="Resource" uid="uid://sbwhmtxjqecy" path="res://resources/test_player_stats.tres" id="10_xdg4i"]
+[ext_resource type="Resource" uid="uid://cj22hnd5w3l86" path="res://resources/test_player_stats.tres" id="10_xdg4i"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_xdg4i"]
 atlas = ExtResource("3_gjgub")
