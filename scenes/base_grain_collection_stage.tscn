@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://8tjc4f5850sp"]
+[gd_scene load_steps=27 format=3 uid="uid://8tjc4f5850sp"]
 
 [ext_resource type="Script" uid="uid://cmv6nfg03y3to" path="res://scripts/base_grain_collection_stage.gd" id="1_8hmx6"]
 [ext_resource type="PackedScene" uid="uid://bhlwryr07um32" path="res://scenes/sunflower_seed.tscn" id="2_lpafe"]
@@ -6,7 +6,7 @@
 [ext_resource type="Script" path="res://scripts/cursor_manager.gd" id="3_jkvj8"]
 [ext_resource type="Texture2D" uid="uid://bwrq6cjt1yai2" path="res://assets/images/stage_backdrops/doormat_night.png" id="3_lpafe"]
 [ext_resource type="Script" uid="uid://bdunv81ygpaoj" path="res://scripts/grain_manager.gd" id="4_birqw"]
-[ext_resource type="Resource" path="res://resources/test_player_stats.tres" id="4_hsp7t"]
+[ext_resource type="Resource" uid="uid://b1lne5jlp3y4c" path="res://resources/test_player_stats.tres" id="4_hsp7t"]
 [ext_resource type="FontFile" uid="uid://drnqnibw60daw" path="res://assets/images/Firlest-Regular.otf" id="5_r4wbf"]
 [ext_resource type="Texture2D" uid="uid://c4nrn1kdanm1k" path="res://assets/images/sunrise.svg" id="6_4ov0l"]
 [ext_resource type="Script" uid="uid://ckexaofd476pt" path="res://scripts/day_lighter_timer.gd" id="6_h75rq"]
@@ -22,7 +22,6 @@
 [ext_resource type="Script" path="res://scripts/music_manager.gd" id="15_8v08u"]
 [ext_resource type="Script" uid="uid://buyjikfeb5ymg" path="res://scripts/scene_manager.gd" id="18_r4acy"]
 [ext_resource type="PackedScene" uid="uid://dsaq4eheaehbl" path="res://scenes/player_cursor.tscn" id="20_807r6"]
-[ext_resource type="PackedScene" uid="uid://cslth8xyiqa4w" path="res://scenes/fire_trap.tscn" id="21_tfo2j"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4ov0l"]
 
@@ -274,9 +273,6 @@ vertical_alignment = 1
 [node name="TrapManager" type="Node2D" parent="."]
 unique_name_in_owner = true
 script = ExtResource("13_034ej")
-
-[node name="FireTrap" parent="TrapManager" instance=ExtResource("21_tfo2j")]
-position = Vector2(959, 539)
 
 [node name="SFXManager" type="Node" parent="."]
 unique_name_in_owner = true
