@@ -3,11 +3,11 @@
 [ext_resource type="Texture2D" uid="uid://bu8s78x7kd1ty" path="res://assets/images/CoffinBackground.png" id="1_4y48l"]
 [ext_resource type="Script" uid="uid://b7v54rffdav5b" path="res://scripts/resting_menu.gd" id="1_xitk6"]
 [ext_resource type="FontFile" uid="uid://drnqnibw60daw" path="res://assets/images/Firlest-Regular.otf" id="2_aoemk"]
-[ext_resource type="Resource" path="res://resources/test_player_stats.tres" id="2_rpyq4"]
+[ext_resource type="Resource" uid="uid://dx8kioargxi3q" path="res://resources/test_player_stats.tres" id="2_rpyq4"]
 [ext_resource type="Texture2D" uid="uid://c4d7icnifcuh8" path="res://assets/images/wood-buttons.png" id="5_rpyq4"]
 [ext_resource type="Texture2D" uid="uid://ksteg5m1hskw" path="res://assets/images/dark-wooden-buttons.png" id="6_mu6aj"]
 [ext_resource type="Texture2D" uid="uid://da83jon3upwgc" path="res://assets/images/light-wood-buttons.png" id="7_jd1n5"]
-[ext_resource type="Texture2D" uid="uid://k4vhi6wej6k4" path="res://assets/images/icons8-grain-96.png" id="8_37ouw"]
+[ext_resource type="Texture2D" uid="uid://bh8wp0xuohbcr" path="res://assets/images/sunflower_seed.png" id="8_en5wp"]
 [ext_resource type="FontFile" uid="uid://dn4di6ajp75ob" path="res://assets/images/JetBrainsMono-Bold.ttf" id="8_suj7e"]
 [ext_resource type="Texture2D" uid="uid://bhumd5wltu6kt" path="res://assets/images/icons8-blood-96.png" id="10_0onyh"]
 [ext_resource type="Texture2D" uid="uid://3thr8ga3ld0e" path="res://assets/images/hand-silhouette.png" id="11_jch81"]
@@ -172,8 +172,10 @@ grow_vertical = 2
 metadata/_edit_group_ = true
 
 [node name="GrainCountIcon" type="TextureRect" parent="GrainCountContainer"]
+custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
-texture = ExtResource("8_37ouw")
+texture = ExtResource("8_en5wp")
+expand_mode = 1
 stretch_mode = 5
 
 [node name="LifetimeGrainCount" type="Label" parent="GrainCountContainer"]

@@ -6,7 +6,7 @@
 [ext_resource type="Script" uid="uid://bt07xyuwly61l" path="res://scripts/cursor_manager.gd" id="3_jkvj8"]
 [ext_resource type="Texture2D" uid="uid://bwrq6cjt1yai2" path="res://assets/images/stage_backdrops/doormat_night.png" id="3_lpafe"]
 [ext_resource type="Script" uid="uid://bdunv81ygpaoj" path="res://scripts/grain_manager.gd" id="4_birqw"]
-[ext_resource type="Resource" uid="uid://bsgrq1v54ufrx" path="res://resources/test_player_stats.tres" id="4_hsp7t"]
+[ext_resource type="Resource" uid="uid://dx8kioargxi3q" path="res://resources/test_player_stats.tres" id="4_hsp7t"]
 [ext_resource type="FontFile" uid="uid://drnqnibw60daw" path="res://assets/images/Firlest-Regular.otf" id="5_r4wbf"]
 [ext_resource type="Texture2D" uid="uid://c4nrn1kdanm1k" path="res://assets/images/sunrise.svg" id="6_4ov0l"]
 [ext_resource type="Script" uid="uid://ckexaofd476pt" path="res://scripts/day_lighter_timer.gd" id="6_h75rq"]
