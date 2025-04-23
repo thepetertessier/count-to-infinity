@@ -9,7 +9,7 @@ extends Panel
 @onready var sunlight_animation_player: AnimationPlayer = %SunlightAnimationPlayer
 @onready var scene_manager: Node = %SceneManager
 @onready var player_cursor: PlayerCursor = %PlayerCursor
-@onready var trap_manager: Node2D = $"../TrapManager"
+@onready var trap_manager: Node2D = %TrapManager
 
 var seconds_remaining: int
 var run_total_seconds: int  # For determining screen brightness
