@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://60wse8gqjg0t"]
 
+[ext_resource type="Script" uid="uid://c7bcunfi6xsxa" path="res://scenes/intro_sunflower_seed.gd" id="1_4d7lh"]
 [ext_resource type="Texture2D" uid="uid://bh8wp0xuohbcr" path="res://assets/images/sunflower_seed.png" id="1_05ma5"]
-[ext_resource type="Script" path="res://scripts/intro_sunflower_seed.gd" id="2_gr5ta"]
 
 [sub_resource type="Animation" id="Animation_ciset"]
 length = 0.001
@@ -69,7 +69,7 @@ radius = 27.0
 height = 122.328
 
 [node name="SunflowerSeed" type="Node2D"]
-script = ExtResource("2_gr5ta")
+script = ExtResource("1_4d7lh")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
