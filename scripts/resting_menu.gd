@@ -3,12 +3,16 @@ extends Control
 @export var stats: PlayerStats
 
 const BASE_GRAIN_COLLECTION_STAGE = preload("res://scenes/base_grain_collection_stage.tscn")
+const stats_path := "res://resources/test_player_stats.tres"
 
 var upgrade_selected
 var upgrade_cost
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	# Uncomment if you want to reset the player stats:
+	#reset_player_stats()
+	
 	# Reset after being set by run
 	Input.set_custom_mouse_cursor(null)
 
@@ -26,11 +30,19 @@ func _ready() -> void:
 	# hide upgrade menu
 	$UpgradeMenu.hide()
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
-
+func reset_player_stats() -> void:
+	stats.lifetime_grain_count = 0
+	stats.blood = 0
+	stats.click_power = 1
+	stats.click_radius = 1
+	stats.auto_collect_rate = 0
+	stats.daylight_timer = 60
+	stats.long_fingers_level = 1
+	stats.powerful_fingers_level = 1
+	stats.auto_fingers_level = 1
+	stats.speed_demon_level = 1
+	
+	ResourceSaver.save(stats, stats_path)
 
 func _on_speed_demon_upgrade_btn_pressed() -> void:
 	open_upgrade_menu("speed-demon")
@@ -80,7 +92,7 @@ func _on_upgrade_button_pressed() -> void:
 	set_upgrade_name_and_cost(upgrade_selected)
 	
 	# updates the stats resource accordingly
-	ResourceSaver.save(stats, "res://resources/test_player_stats.tres")
+	ResourceSaver.save(stats, stats_path)
 	
 	# updates blood count
 	var blood_count_label = get_node("BloodCountContainer/BloodCount")
@@ -107,4 +119,6 @@ func set_upgrade_name_and_cost(upgrade):
 	
 
 func _on_new_run_btn_pressed() -> void:
-	SceneSwitcher.load_stage(stats.daylight_timer)
+	var total_power = stats.auto_fingers_level + stats.speed_demon_level + stats.long_fingers_level + stats.powerful_fingers_level - 4
+	var adjusted_grain_count = 10 + total_power * 2
+	SceneSwitcher.load_next_stage(stats.daylight_timer, adjusted_grain_count)

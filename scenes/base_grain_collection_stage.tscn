@@ -1,23 +1,28 @@
-[gd_scene load_steps=23 format=3 uid="uid://8tjc4f5850sp"]
+[gd_scene load_steps=28 format=3 uid="uid://8tjc4f5850sp"]
 
 [ext_resource type="Script" uid="uid://cmv6nfg03y3to" path="res://scripts/base_grain_collection_stage.gd" id="1_8hmx6"]
 [ext_resource type="PackedScene" uid="uid://bhlwryr07um32" path="res://scenes/sunflower_seed.tscn" id="2_lpafe"]
+[ext_resource type="Resource" uid="uid://4o3ciexuwt0o" path="res://resources/background_history.tres" id="3_3ho38"]
 [ext_resource type="Script" path="res://scripts/cursor_manager.gd" id="3_jkvj8"]
-[ext_resource type="Texture2D" uid="uid://c4wmur4mwckt8" path="res://assets/images/doormat_night.png" id="3_lpafe"]
-[ext_resource type="Script" path="res://scripts/grain_manager.gd" id="4_birqw"]
+[ext_resource type="Texture2D" uid="uid://bwrq6cjt1yai2" path="res://assets/images/stage_backdrops/doormat_night.png" id="3_lpafe"]
+[ext_resource type="Script" uid="uid://bdunv81ygpaoj" path="res://scripts/grain_manager.gd" id="4_birqw"]
+[ext_resource type="Resource" uid="uid://sbwhmtxjqecy" path="res://resources/test_player_stats.tres" id="4_hsp7t"]
 [ext_resource type="FontFile" uid="uid://drnqnibw60daw" path="res://assets/images/Firlest-Regular.otf" id="5_r4wbf"]
 [ext_resource type="Texture2D" uid="uid://c4nrn1kdanm1k" path="res://assets/images/sunrise.svg" id="6_4ov0l"]
-[ext_resource type="Script" path="res://scripts/day_lighter_timer.gd" id="6_h75rq"]
-[ext_resource type="Script" path="res://scripts/grain_count_label.gd" id="6_m2eps"]
-[ext_resource type="Script" path="res://scripts/audio_manager.gd" id="7_t7vij"]
+[ext_resource type="Script" uid="uid://ckexaofd476pt" path="res://scripts/day_lighter_timer.gd" id="6_h75rq"]
+[ext_resource type="Script" uid="uid://bgvj04lfkw1du" path="res://scripts/grain_count_label.gd" id="6_m2eps"]
+[ext_resource type="Script" uid="uid://duq46twvr370o" path="res://scripts/audio_manager.gd" id="7_t7vij"]
 [ext_resource type="Texture2D" uid="uid://bfcilfni0jf01" path="res://assets/images/jar.png" id="8_uyvr0"]
 [ext_resource type="AudioStream" uid="uid://f7ngrq337f5c" path="res://assets/sfx/hover.ogg" id="9_2odsn"]
 [ext_resource type="AudioStream" uid="uid://b4wfi1m2ef5go" path="res://assets/sfx/stage_complete.ogg" id="10_li4ok"]
 [ext_resource type="AudioStream" uid="uid://jmpswvu3gs8w" path="res://assets/sound/run_till_sunrise.ogg" id="10_r0eox"]
 [ext_resource type="AudioStream" uid="uid://dgm3errwigb7q" path="res://assets/sfx/buzzer.ogg" id="12_bhinw"]
+[ext_resource type="Script" uid="uid://bkrtt0oko2hjd" path="res://scripts/trap_manager.gd" id="13_034ej"]
 [ext_resource type="AudioStream" uid="uid://d3r8rx1mc34a" path="res://assets/sfx/run_over.ogg" id="14_bqhox"]
 [ext_resource type="Script" path="res://scripts/music_manager.gd" id="15_8v08u"]
-[ext_resource type="Script" path="res://scripts/scene_manager.gd" id="18_r4acy"]
+[ext_resource type="Script" uid="uid://buyjikfeb5ymg" path="res://scripts/scene_manager.gd" id="18_r4acy"]
+[ext_resource type="PackedScene" uid="uid://dsaq4eheaehbl" path="res://scenes/player_cursor.tscn" id="20_807r6"]
+[ext_resource type="PackedScene" uid="uid://cslth8xyiqa4w" path="res://scenes/fire_trap.tscn" id="21_tfo2j"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4ov0l"]
 
@@ -67,6 +72,8 @@ grow_vertical = 2
 mouse_filter = 1
 script = ExtResource("1_8hmx6")
 grain_scene = ExtResource("2_lpafe")
+history_resource = ExtResource("3_3ho38")
+stats = ExtResource("4_hsp7t")
 
 [node name="CursorManager" type="Node" parent="."]
 script = ExtResource("3_jkvj8")
@@ -76,17 +83,17 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = -233.0
-offset_right = 52.0
-offset_bottom = 94.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 texture = ExtResource("3_lpafe")
+expand_mode = 4
+stretch_mode = 5
 
 [node name="GrainCountLabel" type="Label" parent="."]
 unique_name_in_owner = true
+z_index = 6
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -264,6 +271,12 @@ theme_override_font_sizes/font_size = 50
 text = "x0"
 vertical_alignment = 1
 
+[node name="TrapManager" type="Node2D" parent="."]
+script = ExtResource("13_034ej")
+
+[node name="FireTrap" parent="TrapManager" instance=ExtResource("21_tfo2j")]
+position = Vector2(959, 539)
+
 [node name="SFXManager" type="Node" parent="."]
 unique_name_in_owner = true
 script = ExtResource("7_t7vij")
@@ -287,6 +300,9 @@ bus = &"SFX"
 stream = ExtResource("14_bqhox")
 bus = &"SFX"
 
+[node name="MiscPlayer" type="AudioStreamPlayer" parent="SFXManager"]
+bus = &"SFX"
+
 [node name="MusicManager" type="Node" parent="."]
 unique_name_in_owner = true
 script = ExtResource("15_8v08u")
@@ -302,6 +318,7 @@ unique_name_in_owner = true
 script = ExtResource("18_r4acy")
 
 [node name="SunLight" type="ColorRect" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -317,5 +334,8 @@ unique_name_in_owner = true
 libraries = {
 &"": SubResource("AnimationLibrary_h75rq")
 }
+
+[node name="PlayerCursor" parent="." instance=ExtResource("20_807r6")]
+unique_name_in_owner = true
 
 [connection signal="timeout" from="DayLighterTimer/SecondTimer" to="DayLighterTimer" method="_on_second_timer_timeout"]

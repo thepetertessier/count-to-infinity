@@ -101,7 +101,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_fonts/font = ExtResource("3_4bx60")
 theme_override_font_sizes/font_size = 35
-text = "( Press  Enter  to  Skip  Cutscene  and  Tutorial )"
+text = "( Click  to  Skip  Cutscene  and  Tutorial )"
 horizontal_alignment = 1
 vertical_alignment = 1
 
