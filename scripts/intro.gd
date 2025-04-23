@@ -55,8 +55,8 @@ func fade_out_text() -> void:
 	tween.tween_property(text_label, "modulate:a", 0.0, 1.5)
 	await tween.finished
 	
-func _input(event: InputEvent) -> void:
-	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
+func _input(event):
+	if event.is_action_pressed("ui_accept"): 
 		SceneSwitcher.goto_scene_from_path("res://scenes/resting_menu.tscn")
 
 func show_seed_and_wait_for_click(seed: Node) -> void:
