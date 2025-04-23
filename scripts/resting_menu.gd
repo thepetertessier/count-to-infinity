@@ -14,7 +14,7 @@ var upgrade_cost
 @export var auto_fingers_upgrade_increment = 1
 @export var powerful_fingers_upgrade_increment = 1
 @export var click_radius_scale = 1
-@export var upgrade_cost_multiplier = 200
+@export var upgrade_cost_multiplier = 100
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
