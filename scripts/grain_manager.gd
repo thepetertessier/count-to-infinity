@@ -13,6 +13,7 @@ extends Node2D
 @onready var grain_spawn_area: Control = %GrainSpawnArea
 @onready var scene_manager: Node = %SceneManager
 @onready var day_lighter_timer: Panel = %DayLighterTimer
+@onready var trap_manager: Node2D = %TrapManager
 
 var click_power: int
 var auto_collect_rate: float
@@ -58,14 +59,14 @@ func collect_grain(grain: Grain):
 	
 	# Animate the grain's movement to the jar
 	var tween = get_tree().create_tween()
+	if collected_count >= total_grains:
+		stage_complete()
 	tween.tween_property(grain, "position", jar.position, 1)
 	tween.parallel().tween_property(grain, "scale", Vector2(), 1)
 	tween.set_parallel(false)
-	tween.tween_callback(grain.queue_free.call_deferred)
+	tween.tween_callback(grain.queue_free)
 	tween.tween_callback(audio_manager.play_collect.call_deferred)
 	tween.tween_callback(set_run_grain_count_label.bind(grain_count_across_run).call_deferred)
-	if collected_count >= total_grains:
-		tween.tween_callback(stage_complete.call_deferred)
 
 # Update the UI label.
 func update_ui():
@@ -78,6 +79,11 @@ func set_run_grain_count_label(amount):
 
 var stage_completed = false
 
+func free_safely(instance):
+	print('Attempting to free: ', instance)
+	if instance != null and is_instance_valid(instance):
+		instance.queue_free()
+
 # Called when the stage is complete.
 func stage_complete():
 	if stage_completed:
@@ -87,6 +93,7 @@ func stage_complete():
 	day_lighter_timer.stop()
 	
 	var seconds_remaining = day_lighter_timer.get_seconds_remaining()
+	free_safely(trap_manager)
 	audio_manager.play_stage_complete()
 	grain_count_label.big_center_text("Stage Complete!")
 	await get_tree().create_timer(2).timeout
