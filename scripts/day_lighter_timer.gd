@@ -49,7 +49,7 @@ func update_ui():
 		sec_str = "0" + sec_str
 	day_light_timer_label.text = str(minutes) + ":" + sec_str
 
-func free_safely(instance: Node):
+func free_safely(instance):
 	if is_instance_valid(instance):
 		instance.queue_free()
 
