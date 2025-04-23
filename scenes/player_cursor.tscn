@@ -1,0 +1,129 @@
+[gd_scene load_steps=14 format=3 uid="uid://dsaq4eheaehbl"]
+
+[ext_resource type="Script" uid="uid://dvloe6ebliggu" path="res://scripts/player_cursor.gd" id="1_uwxsh"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_753ps"]
+radius = 7.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_uwxsh"]
+radius = 20.0
+
+[sub_resource type="Gradient" id="Gradient_uwxsh"]
+interpolation_mode = 2
+offsets = PackedFloat32Array(0.107143, 0.681818, 1)
+colors = PackedColorArray(1, 1, 1, 1, 0.53, 0.53, 0.53, 0, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_jnbgc"]
+gradient = SubResource("Gradient_uwxsh")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
+[sub_resource type="Gradient" id="Gradient_blyi6"]
+offsets = PackedFloat32Array(0, 0.561688, 0.594156, 0.655844, 0.720779, 1)
+colors = PackedColorArray(1, 1, 1, 0, 0.84, 0.65002, 0.3444, 0, 0.84, 0.65002, 0.3444, 0.603922, 0.839216, 0.65098, 0.345098, 0.603922, 0.53, 0.53, 0.53, 0, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_theut"]
+gradient = SubResource("Gradient_blyi6")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
+[sub_resource type="Animation" id="Animation_jnbgc"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:texture:gradient:offsets")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [PackedFloat32Array(0, 0.561688, 0.594156, 0.655844, 0.720779, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_uwxsh"]
+resource_name = "pulse"
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:texture:gradient:offsets")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(4.92458, 3.86374),
+"update": 0,
+"values": [PackedFloat32Array(0, 0.561688, 0.594156, 0.655844, 0.720779, 1), PackedFloat32Array(0, 0.4, 0.5, 0.6, 0.63, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_jnbgc"]
+_data = {
+&"RESET": SubResource("Animation_jnbgc"),
+&"pulse": SubResource("Animation_uwxsh")
+}
+
+[sub_resource type="Curve" id="Curve_uwxsh"]
+_limits = [-360.0, 360.0, 0.0, 1.0]
+_data = [Vector2(0.00847457, -166.753), 0.0, 0.0, 0, 0, Vector2(0.946328, 218.182), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_jnbgc"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.983051, 0.362193), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_blyi6"]
+_limits = [-1.0, 1.0, 0.0, 1.0]
+_data = [Vector2(0, 0.643579), 0.0, 0.0, 0, 0, Vector2(1, 0.837422), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[node name="PlayerCursor" type="CharacterBody2D"]
+collision_mask = 4
+motion_mode = 1
+script = ExtResource("1_uwxsh")
+
+[node name="HurtCollisionShape" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_753ps")
+
+[node name="HitBox" type="Area2D" parent="."]
+collision_mask = 2
+
+[node name="HitCollisionShape" type="CollisionShape2D" parent="HitBox"]
+shape = SubResource("CircleShape2D_uwxsh")
+
+[node name="Visuals" type="Node2D" parent="."]
+
+[node name="Center" type="Sprite2D" parent="Visuals"]
+scale = Vector2(0.6875, 0.6875)
+texture = SubResource("GradientTexture2D_jnbgc")
+
+[node name="HaloParent" type="Node2D" parent="Visuals"]
+
+[node name="Halo" type="Sprite2D" parent="Visuals/HaloParent"]
+scale = Vector2(0.6875, 0.6875)
+texture = SubResource("GradientTexture2D_theut")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Visuals/HaloParent/Halo"]
+libraries = {
+&"": SubResource("AnimationLibrary_jnbgc")
+}
+autoplay = "pulse"
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="Visuals"]
+amount = 500
+lifetime = 1.48
+explosiveness = 0.08
+lifetime_randomness = 0.67
+emission_shape = 1
+emission_sphere_radius = 20.0
+gravity = Vector2(0, -200)
+angle_curve = SubResource("Curve_uwxsh")
+scale_amount_max = 3.0
+scale_amount_curve = SubResource("Curve_jnbgc")
+hue_variation_min = 1.0
+hue_variation_max = 1.0
+hue_variation_curve = SubResource("Curve_blyi6")
+
+[node name="AudioListener2D" type="AudioListener2D" parent="."]
+current = true

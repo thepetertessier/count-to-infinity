@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://bu8s78x7kd1ty" path="res://assets/images/CoffinBackground.png" id="1_4y48l"]
 [ext_resource type="Script" uid="uid://b7v54rffdav5b" path="res://scripts/resting_menu.gd" id="1_xitk6"]
 [ext_resource type="FontFile" uid="uid://drnqnibw60daw" path="res://assets/images/Firlest-Regular.otf" id="2_aoemk"]
-[ext_resource type="Resource" uid="uid://32odrbvn0mud" path="res://resources/test_player_stats.tres" id="2_rpyq4"]
+[ext_resource type="Resource" uid="uid://sbwhmtxjqecy" path="res://resources/test_player_stats.tres" id="2_rpyq4"]
 [ext_resource type="Texture2D" uid="uid://c4d7icnifcuh8" path="res://assets/images/wood-buttons.png" id="5_rpyq4"]
 [ext_resource type="Texture2D" uid="uid://ksteg5m1hskw" path="res://assets/images/dark-wooden-buttons.png" id="6_mu6aj"]
 [ext_resource type="Texture2D" uid="uid://da83jon3upwgc" path="res://assets/images/light-wood-buttons.png" id="7_jd1n5"]
@@ -90,6 +90,8 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("1_4y48l")
+expand_mode = 4
+stretch_mode = 5
 
 [node name="TitleText" type="Label" parent="."]
 layout_mode = 1
@@ -103,6 +105,11 @@ offset_top = -84.16
 offset_right = 680.0
 offset_bottom = 83.84
 grow_horizontal = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 5
+theme_override_constants/shadow_offset_y = 5
+theme_override_constants/outline_size = 40
+theme_override_constants/shadow_outline_size = 50
 theme_override_fonts/font = ExtResource("2_aoemk")
 theme_override_font_sizes/font_size = 200
 text = "Count to Infinity"
@@ -164,6 +171,7 @@ metadata/_edit_group_ = true
 [node name="GrainCountIcon" type="TextureRect" parent="GrainCountContainer"]
 layout_mode = 2
 texture = ExtResource("8_37ouw")
+stretch_mode = 5
 
 [node name="LifetimeGrainCount" type="Label" parent="GrainCountContainer"]
 layout_mode = 2
@@ -191,6 +199,7 @@ metadata/_edit_group_ = true
 [node name="BloodCountIcon" type="TextureRect" parent="BloodCountContainer"]
 layout_mode = 2
 texture = ExtResource("10_0onyh")
+stretch_mode = 5
 
 [node name="BloodCount" type="Label" parent="BloodCountContainer"]
 layout_mode = 2

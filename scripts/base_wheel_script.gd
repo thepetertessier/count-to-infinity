@@ -1,4 +1,4 @@
-extends Node2D
+extends Control
 
 @export var stage_num :int = 1
 @export var grain_count_across_run :int = 0

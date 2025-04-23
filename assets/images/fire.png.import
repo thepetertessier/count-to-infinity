@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cl63v0syoq6li"
-path="res://.godot/imported/doormat_night.png-72d1252dff878a6c106439420e71cdd6.ctex"
+uid="uid://cthd788mtw0ay"
+path="res://.godot/imported/fire.png-3892466d509c95c4c465c7175b24c06a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/doormat_night.png"
-dest_files=["res://.godot/imported/doormat_night.png-72d1252dff878a6c106439420e71cdd6.ctex"]
+source_file="res://assets/images/fire.png"
+dest_files=["res://.godot/imported/fire.png-3892466d509c95c4c465c7175b24c06a.ctex"]
 
 [params]
 
