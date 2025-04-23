@@ -12,7 +12,7 @@ signal spun
 func _ready():
 	# took this code for how to draw this circle from chatgpt
 	# Set the size of the sprite based on the radius
-	self.texture = load("/Users/kenningspath/Projects/SLAV2500/GodotProjects/count-to-infinity/assets/images/blood-wood-texture.png")
+	self.texture = load("res://assets/images/blood-wood-texture.png")
 	var tex_size = texture.get_size()
 	var desired_size = rad * 2.0
 	var scale_factor = desired_size / tex_size.x  # assume square texture

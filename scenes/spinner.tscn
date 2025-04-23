@@ -195,8 +195,8 @@ theme_override_font_sizes/font_size = 200
 text = "+50"
 
 [connection signal="spun" from="ScriptRunner" to="CollectBlood" method="_on_spun"]
+[connection signal="pressed" from="StopWheel" to="WheelBackgroundScriptRunner" method="_on_stop_wheel_pressed"]
 [connection signal="pressed" from="StopWheel" to="ScriptRunner" method="_on_stop_wheel_pressed"]
 [connection signal="pressed" from="StopWheel" to="StopWheel" method="_on_pressed"]
-[connection signal="pressed" from="StopWheel" to="WheelBackgroundScriptRunner" method="_on_stop_wheel_pressed"]
 [connection signal="pressed" from="CollectBlood" to="ScriptRunner" method="_on_stop_wheel_pressed"]
 [connection signal="pressed" from="CollectBlood" to="CollectBlood" method="_on_pressed"]
