@@ -19,4 +19,16 @@ func _on_pressed() -> void:
 	stats.blood += nodeAddBlood.addblood
 	ResourceSaver.save(stats, "res://resources/test_player_stats.tres")
 	
+	self.hide()
+	
+	# show blood count
+	var blood_count = get_node("../BloodCount")
+	blood_count.text = "+" + str(nodeAddBlood.addblood)
+	blood_count.show()
+	
+	# play blood splatter sound
+	var blood_splatter = get_node("../BloodSplatter")
+	blood_splatter.play()
+	await blood_splatter.finished
+	
 	baseScene.returnToGame()

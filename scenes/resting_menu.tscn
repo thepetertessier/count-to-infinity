@@ -1,13 +1,13 @@
-[gd_scene load_steps=33 format=3 uid="uid://ime13jo53wo8"]
+[gd_scene load_steps=36 format=3 uid="uid://ime13jo53wo8"]
 
 [ext_resource type="Texture2D" uid="uid://bu8s78x7kd1ty" path="res://assets/images/CoffinBackground.png" id="1_4y48l"]
 [ext_resource type="Script" uid="uid://b7v54rffdav5b" path="res://scripts/resting_menu.gd" id="1_xitk6"]
 [ext_resource type="FontFile" uid="uid://drnqnibw60daw" path="res://assets/images/Firlest-Regular.otf" id="2_aoemk"]
-[ext_resource type="Resource" uid="uid://sbwhmtxjqecy" path="res://resources/test_player_stats.tres" id="2_rpyq4"]
+[ext_resource type="Resource" uid="uid://v2pps0ta54nk" path="res://resources/test_player_stats.tres" id="2_rpyq4"]
 [ext_resource type="Texture2D" uid="uid://c4d7icnifcuh8" path="res://assets/images/wood-buttons.png" id="5_rpyq4"]
 [ext_resource type="Texture2D" uid="uid://ksteg5m1hskw" path="res://assets/images/dark-wooden-buttons.png" id="6_mu6aj"]
 [ext_resource type="Texture2D" uid="uid://da83jon3upwgc" path="res://assets/images/light-wood-buttons.png" id="7_jd1n5"]
-[ext_resource type="Texture2D" uid="uid://k4vhi6wej6k4" path="res://assets/images/icons8-grain-96.png" id="8_37ouw"]
+[ext_resource type="Texture2D" uid="uid://bh8wp0xuohbcr" path="res://assets/images/sunflower_seed.png" id="8_en5wp"]
 [ext_resource type="FontFile" uid="uid://dn4di6ajp75ob" path="res://assets/images/JetBrainsMono-Bold.ttf" id="8_suj7e"]
 [ext_resource type="Texture2D" uid="uid://bhumd5wltu6kt" path="res://assets/images/icons8-blood-96.png" id="10_0onyh"]
 [ext_resource type="Texture2D" uid="uid://3thr8ga3ld0e" path="res://assets/images/hand-silhouette.png" id="11_jch81"]
@@ -19,6 +19,9 @@
 [ext_resource type="Texture2D" uid="uid://ccopo6ceiwcax" path="res://assets/images/buttons2-darkened.png" id="16_3c05p"]
 [ext_resource type="Texture2D" uid="uid://ciipfeuf4i0xv" path="res://assets/images/buttons2-lightened.png" id="17_ixk8q"]
 [ext_resource type="FontFile" uid="uid://q276iy7jh11j" path="res://assets/images/Impact.ttf" id="18_ixk8q"]
+[ext_resource type="Texture2D" uid="uid://calmsm5sfwg7y" path="res://assets/images/click_radius_menu_img.png" id="19_px36p"]
+[ext_resource type="FontFile" uid="uid://df8p6ogj2hy8b" path="res://assets/fonts/MedievalSharp-Regular.ttf" id="20_6w85d"]
+[ext_resource type="Texture2D" uid="uid://dn7hrk2p7naol" path="res://assets/images/white-arrow.png" id="21_en5wp"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_rpyq4"]
 atlas = ExtResource("5_rpyq4")
@@ -169,8 +172,10 @@ grow_vertical = 2
 metadata/_edit_group_ = true
 
 [node name="GrainCountIcon" type="TextureRect" parent="GrainCountContainer"]
+custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
-texture = ExtResource("8_37ouw")
+texture = ExtResource("8_en5wp")
+expand_mode = 1
 stretch_mode = 5
 
 [node name="LifetimeGrainCount" type="Label" parent="GrainCountContainer"]
@@ -362,14 +367,14 @@ metadata/_edit_group_ = true
 [node name="UpgradeMenuBg" type="TextureRect" parent="UpgradeMenu"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.202
-anchor_top = 0.278
-anchor_right = 0.798
-anchor_bottom = 0.722
-offset_left = 0.039978
-offset_top = -0.240021
-offset_right = -0.0400391
-offset_bottom = 0.239929
+anchor_left = 0.177
+anchor_top = 0.108
+anchor_right = 0.823
+anchor_bottom = 0.881
+offset_left = -0.339996
+offset_top = 0.360001
+offset_right = 0.339966
+offset_bottom = 11.52
 grow_horizontal = 2
 grow_vertical = 2
 texture = SubResource("AtlasTexture_sj1uh")
@@ -379,13 +384,13 @@ expand_mode = 1
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.5
-anchor_top = 0.401
+anchor_top = 0.195
 anchor_right = 0.5
-anchor_bottom = 0.401
-offset_left = -352.5
-offset_top = -42.58
-offset_right = 352.5
-offset_bottom = 42.42
+anchor_bottom = 0.195
+offset_left = -352.0
+offset_top = -42.6
+offset_right = 353.0
+offset_bottom = 42.4
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_fonts/font = ExtResource("2_aoemk")
@@ -397,14 +402,14 @@ vertical_alignment = 1
 [node name="UpgradeButton" type="TextureButton" parent="UpgradeMenu"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.5
-anchor_top = 0.538
-anchor_right = 0.5
-anchor_bottom = 0.538
-offset_left = -166.0
-offset_top = -66.54
-offset_right = 166.0
-offset_bottom = 66.46
+anchor_left = 0.461
+anchor_top = 0.699
+anchor_right = 0.461
+anchor_bottom = 0.699
+offset_left = -165.12
+offset_top = -54.92
+offset_right = 166.88
+offset_bottom = 78.08
 grow_horizontal = 2
 grow_vertical = 2
 texture_normal = SubResource("AtlasTexture_6w85d")
@@ -434,13 +439,13 @@ text = "UPGRADE"
 [node name="BloodCostContainer" type="HBoxContainer" parent="UpgradeMenu"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.5
-anchor_top = 0.633
-anchor_right = 0.5
-anchor_bottom = 0.633
-offset_left = -114.0
+anchor_left = 0.594
+anchor_top = 0.708
+anchor_right = 0.594
+anchor_bottom = 0.708
+offset_left = -116.48
 offset_top = -60.64
-offset_right = 120.0
+offset_right = 117.52
 offset_bottom = 61.36
 grow_horizontal = 2
 grow_vertical = 2
@@ -465,19 +470,108 @@ vertical_alignment = 1
 [node name="CloseMenu" type="TextureButton" parent="UpgradeMenu"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.744
-anchor_top = 0.359
-anchor_right = 0.744
-anchor_bottom = 0.359
-offset_left = -54.12
-offset_top = -53.72
-offset_right = 54.88
-offset_bottom = 54.28
+anchor_left = 0.77
+anchor_top = 0.206
+anchor_right = 0.77
+anchor_bottom = 0.206
+offset_left = -54.4
+offset_top = -54.48
+offset_right = 54.6
+offset_bottom = 53.52
 texture_normal = SubResource("AtlasTexture_ixk8q")
 texture_pressed = SubResource("AtlasTexture_px36p")
 texture_hover = SubResource("AtlasTexture_getes")
 ignore_texture_size = true
 stretch_mode = 4
+
+[node name="UpgradeImageFrame" type="ColorRect" parent="UpgradeMenu"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.385
+anchor_top = 0.444
+anchor_right = 0.385
+anchor_bottom = 0.444
+offset_left = -203.2
+offset_top = -203.52
+offset_right = 204.8
+offset_bottom = 200.48
+color = Color(0.368627, 0.121569, 0.266667, 1)
+
+[node name="UpgradeImage" type="TextureRect" parent="UpgradeMenu"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.39
+anchor_top = 0.443
+anchor_right = 0.39
+anchor_bottom = 0.443
+offset_left = -196.8
+offset_top = -190.44
+offset_right = 187.2
+offset_bottom = 189.56
+texture = ExtResource("19_px36p")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="UpgradeDesc" type="Label" parent="UpgradeMenu"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.655
+anchor_top = 0.377
+anchor_right = 0.655
+anchor_bottom = 0.377
+offset_left = -263.6
+offset_top = -84.16
+offset_right = 240.4
+offset_bottom = 83.84
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("20_6w85d")
+theme_override_font_sizes/font_size = 40
+text = "Upgrade to increase the daylight timer!"
+autowrap_mode = 2
+
+[node name="CurStat" type="Label" parent="UpgradeMenu"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.582
+anchor_top = 0.471
+anchor_right = 0.582
+anchor_bottom = 0.471
+offset_left = -117.44
+offset_top = -27.68
+offset_right = 118.56
+offset_bottom = 27.32
+theme_override_font_sizes/font_size = 35
+text = "Current: 60s"
+
+[node name="UpgradeArrow" type="TextureRect" parent="UpgradeMenu"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.552
+anchor_top = 0.537
+anchor_right = 0.552
+anchor_bottom = 0.537
+offset_left = -75.8401
+offset_top = -74.96
+offset_right = 76.1599
+offset_bottom = 76.04
+texture = ExtResource("21_en5wp")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="NewStat" type="Label" parent="UpgradeMenu"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.639
+anchor_top = 0.537
+anchor_right = 0.639
+anchor_bottom = 0.537
+offset_left = -98.8801
+offset_top = -26.96
+offset_right = 80.1199
+offset_bottom = 28.04
+theme_override_font_sizes/font_size = 35
+text = "Next: 70s"
 
 [node name="Music" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("15_sj1uh")

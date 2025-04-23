@@ -9,5 +9,11 @@ extends Control
 
 const BASE_GRAIN_COLLECTION_STAGE = preload("res://scenes/base_grain_collection_stage.tscn")
 
+func _ready():
+	$BloodCount.hide()
+	
+	# play wheel spin intro sound
+	$EndlessWheelSpinSoundEffect.play()
+
 func returnToGame():	
 	SceneSwitcher.load_next_stage(run_total_seconds, grain_count_min, stage_num, grain_count_across_run, seconds_until_sunrise)
