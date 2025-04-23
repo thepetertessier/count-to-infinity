@@ -11,7 +11,7 @@ var rad = 350
 var col = Color(255,0,0)
 var h = 100
 var w = 200
-var done = false
+var done = 100
 @export var addblood: int = 0
 
 signal spun
@@ -57,10 +57,12 @@ func _process(delta: float) -> void:
 	for x in rewards:
 		tempSum += x[0]
 		var offset = 2*PI*tempSum/oddSum
-		if not done and speed == 0 and fmod(rot+offset,2*PI) > PI/2:
+		if fmod(rot+offset,2*PI) < done and speed == 0 and fmod(rot+offset,2*PI) > PI/2:
 			addblood = x[1]
+			print(str(fmod(rot+offset,2*PI)/PI))
+			print(str(x[1]))
 			spun.emit()
-			done = true
+			done = fmod(rot+offset,2*PI)
 		lines.append(Vector2(sin(rot+offset)*rad,cos(rot+offset)*rad)+cen)
 	for i in rewards.size():
 		var middle

@@ -86,7 +86,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Pointing-finger" type="Sprite2D" parent="."]
-position = Vector2(1493, 505)
+position = Vector2(1631, 596)
 rotation = 2.06472
 scale = Vector2(0.5, -0.5)
 texture = ExtResource("8_qt8r4")
