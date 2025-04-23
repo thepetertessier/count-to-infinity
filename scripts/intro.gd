@@ -61,6 +61,7 @@ func _input(event: InputEvent) -> void:
 
 func show_seed_and_wait_for_click(seed: Node) -> void:
 	seed.visible = true
+	
 	seed.get_node("AnimationPlayer2").play("Tutorial")
 	seed.get_node("AnimationPlayer").play("teeter")
 

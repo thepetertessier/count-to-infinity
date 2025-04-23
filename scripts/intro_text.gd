@@ -28,7 +28,7 @@ func scroll_text(input_text: String) -> void:
 	
 	for i in input_text.length():
 		visible_characters += 1
-		await get_tree().create_timer(0.05).timeout
+		await get_tree().create_timer(0.001).timeout
 
 	emit_signal("text_finished")
 	
