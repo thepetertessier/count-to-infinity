@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://b0c3dae7qr2vi"]
+[gd_scene load_steps=17 format=3 uid="uid://b0c3dae7qr2vi"]
 
 [ext_resource type="Script" uid="uid://ct3tvpujhrqlc" path="res://scripts/spinner.gd" id="1_78gc6"]
 [ext_resource type="Script" uid="uid://b0wnqmxk3tk5t" path="res://scripts/base_wheel_script.gd" id="1_vekcj"]
@@ -11,6 +11,8 @@
 [ext_resource type="Texture2D" uid="uid://bcm856x2r76fb" path="res://assets/images/pointing-finger.png" id="8_qt8r4"]
 [ext_resource type="Script" uid="uid://7kwja6qr20ce" path="res://scripts/collect_blood.gd" id="9_572xw"]
 [ext_resource type="Resource" uid="uid://dx8kioargxi3q" path="res://resources/test_player_stats.tres" id="10_xdg4i"]
+[ext_resource type="AudioStream" uid="uid://dymbitp0kmwaj" path="res://assets/sfx/wheel-looping.ogg" id="12_8u1ip"]
+[ext_resource type="AudioStream" uid="uid://ce4ap4wnbfu2a" path="res://assets/sfx/ending-spinner.ogg" id="13_3o07h"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_xdg4i"]
 atlas = ExtResource("3_gjgub")
@@ -133,6 +135,12 @@ theme_override_font_sizes/font_size = 70
 text = "Collect Blood"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="EndlessWheelSpinSoundEffect" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("12_8u1ip")
+
+[node name="EndingSpin" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("13_3o07h")
 
 [connection signal="spun" from="ScriptRunner" to="CollectBlood" method="_on_spun"]
 [connection signal="pressed" from="StopWheel" to="ScriptRunner" method="_on_stop_wheel_pressed"]
