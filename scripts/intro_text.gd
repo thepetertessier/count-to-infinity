@@ -15,7 +15,7 @@ But not you.
 
 You are Velka, the Hungering Sovereign, the last of the old lords, sealed in a crypt for centuries. Your prison lined with endless grains, you count them one by one.
 
-But now…"
+Until…"
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
