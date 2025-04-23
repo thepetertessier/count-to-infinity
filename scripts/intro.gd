@@ -1,8 +1,6 @@
 extends Node
 
-
 @onready var text_label = $Intro_Text
-@onready var animation_player = $AnimationPlayer2
 
 const VAMPIRE_HAND = preload("res://assets/images/vampire_hand.png")
 
