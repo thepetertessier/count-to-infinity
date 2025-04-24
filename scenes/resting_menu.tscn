@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://bu8s78x7kd1ty" path="res://assets/images/CoffinBackground.png" id="1_4y48l"]
 [ext_resource type="Script" uid="uid://b7v54rffdav5b" path="res://scripts/resting_menu.gd" id="1_xitk6"]
 [ext_resource type="FontFile" uid="uid://drnqnibw60daw" path="res://assets/images/Firlest-Regular.otf" id="2_aoemk"]
-[ext_resource type="Resource" path="res://resources/test_player_stats.tres" id="2_rpyq4"]
+[ext_resource type="Resource" uid="uid://bcgmbdxenfrbo" path="res://resources/test_player_stats.tres" id="2_rpyq4"]
 [ext_resource type="Texture2D" uid="uid://c4d7icnifcuh8" path="res://assets/images/wood-buttons.png" id="5_rpyq4"]
 [ext_resource type="Texture2D" uid="uid://ksteg5m1hskw" path="res://assets/images/dark-wooden-buttons.png" id="6_mu6aj"]
 [ext_resource type="Texture2D" uid="uid://da83jon3upwgc" path="res://assets/images/light-wood-buttons.png" id="7_jd1n5"]
@@ -164,9 +164,9 @@ anchor_top = 0.685
 anchor_right = 0.5
 anchor_bottom = 0.685
 offset_left = -99.0
-offset_top = -60.8
+offset_top = -70.8
 offset_right = 93.0
-offset_bottom = 61.2
+offset_bottom = 51.2
 grow_horizontal = 2
 grow_vertical = 2
 metadata/_edit_group_ = true
@@ -214,17 +214,34 @@ text = "0 ml."
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="UpgradesText" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.691
+anchor_top = 0.769
+anchor_right = 0.691
+anchor_bottom = 0.769
+offset_left = -164.72
+offset_top = -45.5201
+offset_right = 163.28
+offset_bottom = 46.4799
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 30
+theme_override_fonts/font = ExtResource("20_6w85d")
+theme_override_font_sizes/font_size = 70
+text = "Upgrades:"
+
 [node name="SpeedDemonUpgradeBtn" type="TextureButton" parent="."]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.657
+anchor_left = 0.642
 anchor_top = 0.899
-anchor_right = 0.657
+anchor_right = 0.642
 anchor_bottom = 0.899
-offset_left = -74.4401
-offset_top = -77.92
-offset_right = 75.5599
-offset_bottom = 77.08
+offset_left = -74.64
+offset_top = -87.92
+offset_right = 75.36
+offset_bottom = 67.08
 texture_normal = SubResource("AtlasTexture_q3qxc")
 texture_pressed = SubResource("AtlasTexture_jch81")
 texture_hover = SubResource("AtlasTexture_nqn7n")
@@ -249,17 +266,33 @@ texture = ExtResource("14_77cnt")
 expand_mode = 1
 stretch_mode = 4
 
+[node name="SpeedDemonText" type="Label" parent="SpeedDemonUpgradeBtn"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 1.092
+anchor_right = 0.5
+anchor_bottom = 1.092
+offset_left = -78.0
+offset_top = -12.26
+offset_right = 78.0
+offset_bottom = 48.74
+theme_override_fonts/font = ExtResource("20_6w85d")
+theme_override_font_sizes/font_size = 25
+text = "Speed Demon
+"
+
 [node name="AutoFingersUpgradeBtn" type="TextureButton" parent="."]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.754
+anchor_left = 0.744
 anchor_top = 0.899
-anchor_right = 0.754
+anchor_right = 0.744
 anchor_bottom = 0.899
-offset_left = -74.6801
-offset_top = -77.92
-offset_right = 75.3199
-offset_bottom = 77.08
+offset_left = -78.48
+offset_top = -87.92
+offset_right = 71.52
+offset_bottom = 67.08
 texture_normal = SubResource("AtlasTexture_q3qxc")
 texture_pressed = SubResource("AtlasTexture_jch81")
 texture_hover = SubResource("AtlasTexture_nqn7n")
@@ -284,17 +317,33 @@ texture = ExtResource("13_nqn7n")
 expand_mode = 1
 stretch_mode = 4
 
+[node name="AutoFingersText" type="Label" parent="AutoFingersUpgradeBtn"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 1.092
+anchor_right = 0.5
+anchor_bottom = 1.092
+offset_left = -78.0
+offset_top = -12.26
+offset_right = 78.0
+offset_bottom = 48.74
+theme_override_fonts/font = ExtResource("20_6w85d")
+theme_override_font_sizes/font_size = 25
+text = "Auto Fingers
+"
+
 [node name="PowerfulFingersUpgradeBtn" type="TextureButton" parent="."]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.847
+anchor_left = 0.842
 anchor_top = 0.899
-anchor_right = 0.847
+anchor_right = 0.842
 anchor_bottom = 0.899
-offset_left = -73.8201
-offset_top = -77.92
-offset_right = 76.1797
-offset_bottom = 77.08
+offset_left = -74.2202
+offset_top = -87.92
+offset_right = 75.7795
+offset_bottom = 67.08
 texture_normal = SubResource("AtlasTexture_q3qxc")
 texture_pressed = SubResource("AtlasTexture_jch81")
 texture_hover = SubResource("AtlasTexture_nqn7n")
@@ -319,6 +368,22 @@ texture = ExtResource("12_q3qxc")
 expand_mode = 1
 stretch_mode = 4
 
+[node name="PowerfulFingersText" type="Label" parent="PowerfulFingersUpgradeBtn"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 1.092
+anchor_right = 0.5
+anchor_bottom = 1.092
+offset_left = -102.42
+offset_top = -11.26
+offset_right = 97.5802
+offset_bottom = 49.74
+theme_override_fonts/font = ExtResource("20_6w85d")
+theme_override_font_sizes/font_size = 25
+text = "Powerful Fingers
+"
+
 [node name="LongFingersUpgradeBtn" type="TextureButton" parent="."]
 layout_mode = 1
 anchors_preset = -1
@@ -326,10 +391,10 @@ anchor_left = 0.939
 anchor_top = 0.899
 anchor_right = 0.939
 anchor_bottom = 0.899
-offset_left = -73.98
-offset_top = -77.92
-offset_right = 76.0199
-offset_bottom = 77.08
+offset_left = -70.98
+offset_top = -87.92
+offset_right = 79.0199
+offset_bottom = 67.08
 texture_normal = SubResource("AtlasTexture_q3qxc")
 texture_pressed = SubResource("AtlasTexture_jch81")
 texture_hover = SubResource("AtlasTexture_nqn7n")
@@ -353,6 +418,22 @@ grow_vertical = 2
 texture = ExtResource("11_jch81")
 expand_mode = 1
 stretch_mode = 4
+
+[node name="LongFingersText" type="Label" parent="LongFingersUpgradeBtn"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.517
+anchor_top = 1.107
+anchor_right = 0.517
+anchor_bottom = 1.107
+offset_left = -73.45
+offset_top = -15.585
+offset_right = 73.55
+offset_bottom = 45.415
+theme_override_fonts/font = ExtResource("20_6w85d")
+theme_override_font_sizes/font_size = 25
+text = "Long Fingers
+"
 
 [node name="UpgradeMenu" type="Control" parent="."]
 visible = false
