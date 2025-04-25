@@ -16,7 +16,7 @@
 [ext_resource type="AudioStream" uid="uid://ce4ap4wnbfu2a" path="res://assets/sfx/ending-spinner.ogg" id="13_3o07h"]
 [ext_resource type="AudioStream" uid="uid://cdyo43kldau1r" path="res://assets/sfx/breeze-of-blood-122253.mp3" id="14_mqgsy"]
 [ext_resource type="FontFile" uid="uid://bnscowtn6uye1" path="res://assets/fonts/DoubleFeature-KvAe.ttf" id="15_fj47n"]
-[ext_resource type="Script" uid="uid://bl7tmdb6s7pbw" path="res://scenes/script_runner_2.gd" id="16_tn8vy"]
+[ext_resource type="Script" path="res://scenes/script_runner_2.gd" id="16_tn8vy"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_xdg4i"]
 atlas = ExtResource("3_gjgub")
