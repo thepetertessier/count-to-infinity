@@ -35,6 +35,10 @@ region = Rect2(190, 254, 1751, 564)
 atlas = ExtResource("7_jd1n5")
 region = Rect2(190, 254, 1751, 564)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_sj1uh"]
+atlas = ExtResource("5_rpyq4")
+region = Rect2(2061, 3038, 1541, 561)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_q3qxc"]
 atlas = ExtResource("5_rpyq4")
 region = Rect2(2626, 1968, 416, 433)
@@ -46,10 +50,6 @@ region = Rect2(2626, 1968, 416, 433)
 [sub_resource type="AtlasTexture" id="AtlasTexture_nqn7n"]
 atlas = ExtResource("7_jd1n5")
 region = Rect2(2626, 1968, 416, 433)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_sj1uh"]
-atlas = ExtResource("5_rpyq4")
-region = Rect2(2061, 3038, 1541, 561)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6w85d"]
 atlas = ExtResource("15_3c05p")
@@ -121,13 +121,13 @@ text = "Count to Infinity"
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.5
-anchor_top = 0.543
+anchor_top = 0.539
 anchor_right = 0.5
-anchor_bottom = 0.543
+anchor_bottom = 0.539
 offset_left = -210.5
-offset_top = -91.4401
+offset_top = -91.1201
 offset_right = 210.5
-offset_bottom = 90.5599
+offset_bottom = 90.8798
 grow_horizontal = 2
 grow_vertical = 2
 texture_normal = SubResource("AtlasTexture_rpyq4")
@@ -159,14 +159,14 @@ vertical_alignment = 1
 [node name="GrainCountContainer" type="HBoxContainer" parent="."]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.5
-anchor_top = 0.685
-anchor_right = 0.5
-anchor_bottom = 0.685
-offset_left = -99.0
-offset_top = -60.8
-offset_right = 93.0
-offset_bottom = 61.2
+anchor_left = 0.183
+anchor_top = 0.818
+anchor_right = 0.183
+anchor_bottom = 0.818
+offset_left = -350.36
+offset_top = -61.44
+offset_right = 349.64
+offset_bottom = 60.56
 grow_horizontal = 2
 grow_vertical = 2
 metadata/_edit_group_ = true
@@ -183,19 +183,18 @@ layout_mode = 2
 theme_override_fonts/font = ExtResource("8_suj7e")
 theme_override_font_sizes/font_size = 100
 text = "0"
-horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="BloodCountContainer" type="HBoxContainer" parent="."]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.108
+anchor_left = 0.194
 anchor_top = 0.931
-anchor_right = 0.108
+anchor_right = 0.194
 anchor_bottom = 0.931
-offset_left = -200.84
+offset_left = -365.96
 offset_top = -64.48
-offset_right = 530.16
+offset_right = 365.04
 offset_bottom = 63.52
 grow_horizontal = 2
 grow_vertical = 2
@@ -211,20 +210,36 @@ layout_mode = 2
 theme_override_fonts/font = ExtResource("8_suj7e")
 theme_override_font_sizes/font_size = 100
 text = "0 ml."
-horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="SpeedDemonUpgradeBtn" type="TextureButton" parent="."]
+[node name="StaticUpgradeMenuBg" type="TextureRect" parent="."]
+self_modulate = Color(0.560484, 0.117764, 1.92523e-07, 1)
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.657
-anchor_top = 0.899
-anchor_right = 0.657
-anchor_bottom = 0.899
-offset_left = -74.4401
-offset_top = -77.92
-offset_right = 75.5599
-offset_bottom = 77.08
+anchor_left = 0.509
+anchor_top = 0.636
+anchor_right = 0.987
+anchor_bottom = 0.992
+offset_left = 7.71997
+offset_top = 0.119934
+offset_right = 6.95996
+offset_bottom = -0.360107
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("AtlasTexture_sj1uh")
+expand_mode = 1
+
+[node name="SpeedDemonUpgradeBtn" type="TextureButton" parent="StaticUpgradeMenuBg"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.174
+anchor_top = 0.583
+anchor_right = 0.174
+anchor_bottom = 0.583
+offset_left = -74.906
+offset_top = -77.532
+offset_right = 75.094
+offset_bottom = 77.468
 texture_normal = SubResource("AtlasTexture_q3qxc")
 texture_pressed = SubResource("AtlasTexture_jch81")
 texture_hover = SubResource("AtlasTexture_nqn7n")
@@ -232,7 +247,7 @@ ignore_texture_size = true
 stretch_mode = 4
 metadata/_edit_group_ = true
 
-[node name="SpeedDemonTexture" type="TextureRect" parent="SpeedDemonUpgradeBtn"]
+[node name="SpeedDemonTexture" type="TextureRect" parent="StaticUpgradeMenuBg/SpeedDemonUpgradeBtn"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -249,17 +264,33 @@ texture = ExtResource("14_77cnt")
 expand_mode = 1
 stretch_mode = 4
 
-[node name="AutoFingersUpgradeBtn" type="TextureButton" parent="."]
+[node name="SpeedDemonText" type="Label" parent="StaticUpgradeMenuBg/SpeedDemonUpgradeBtn"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.754
-anchor_top = 0.899
-anchor_right = 0.754
-anchor_bottom = 0.899
-offset_left = -74.6801
-offset_top = -77.92
-offset_right = 75.3199
-offset_bottom = 77.08
+anchor_left = 0.5
+anchor_top = 1.092
+anchor_right = 0.5
+anchor_bottom = 1.092
+offset_left = -78.0
+offset_top = -12.26
+offset_right = 78.0
+offset_bottom = 34.74
+theme_override_fonts/font = ExtResource("2_aoemk")
+theme_override_font_sizes/font_size = 30
+text = "Speed Demon
+"
+
+[node name="AutoFingersUpgradeBtn" type="TextureButton" parent="StaticUpgradeMenuBg"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.398
+anchor_top = 0.585
+anchor_right = 0.398
+anchor_bottom = 0.585
+offset_left = -75.128
+offset_top = -77.54
+offset_right = 74.872
+offset_bottom = 77.46
 texture_normal = SubResource("AtlasTexture_q3qxc")
 texture_pressed = SubResource("AtlasTexture_jch81")
 texture_hover = SubResource("AtlasTexture_nqn7n")
@@ -267,7 +298,7 @@ ignore_texture_size = true
 stretch_mode = 4
 metadata/_edit_group_ = true
 
-[node name="AutoFingersTexture" type="TextureRect" parent="AutoFingersUpgradeBtn"]
+[node name="AutoFingersTexture" type="TextureRect" parent="StaticUpgradeMenuBg/AutoFingersUpgradeBtn"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -284,17 +315,33 @@ texture = ExtResource("13_nqn7n")
 expand_mode = 1
 stretch_mode = 4
 
-[node name="PowerfulFingersUpgradeBtn" type="TextureButton" parent="."]
+[node name="AutoFingersText" type="Label" parent="StaticUpgradeMenuBg/AutoFingersUpgradeBtn"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.847
-anchor_top = 0.899
-anchor_right = 0.847
-anchor_bottom = 0.899
-offset_left = -73.8201
-offset_top = -77.92
-offset_right = 76.1797
-offset_bottom = 77.08
+anchor_left = 0.5
+anchor_top = 1.092
+anchor_right = 0.5
+anchor_bottom = 1.092
+offset_left = -78.0
+offset_top = -12.26
+offset_right = 78.0
+offset_bottom = 48.74
+theme_override_fonts/font = ExtResource("2_aoemk")
+theme_override_font_sizes/font_size = 30
+text = "Auto Fingers
+"
+
+[node name="PowerfulFingersUpgradeBtn" type="TextureButton" parent="StaticUpgradeMenuBg"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.618
+anchor_top = 0.587
+anchor_right = 0.618
+anchor_bottom = 0.587
+offset_left = -74.7061
+offset_top = -77.368
+offset_right = 75.2936
+offset_bottom = 77.632
 texture_normal = SubResource("AtlasTexture_q3qxc")
 texture_pressed = SubResource("AtlasTexture_jch81")
 texture_hover = SubResource("AtlasTexture_nqn7n")
@@ -302,7 +349,7 @@ ignore_texture_size = true
 stretch_mode = 4
 metadata/_edit_group_ = true
 
-[node name="PowerfulFingersTexture" type="TextureRect" parent="PowerfulFingersUpgradeBtn"]
+[node name="PowerfulFingersTexture" type="TextureRect" parent="StaticUpgradeMenuBg/PowerfulFingersUpgradeBtn"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -319,17 +366,33 @@ texture = ExtResource("12_q3qxc")
 expand_mode = 1
 stretch_mode = 4
 
-[node name="LongFingersUpgradeBtn" type="TextureButton" parent="."]
+[node name="PowerfulFingersText" type="Label" parent="StaticUpgradeMenuBg/PowerfulFingersUpgradeBtn"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.939
-anchor_top = 0.899
-anchor_right = 0.939
-anchor_bottom = 0.899
-offset_left = -73.98
-offset_top = -77.92
-offset_right = 76.0199
-offset_bottom = 77.08
+anchor_left = 0.5
+anchor_top = 1.092
+anchor_right = 0.5
+anchor_bottom = 1.092
+offset_left = -102.42
+offset_top = -11.26
+offset_right = 97.5802
+offset_bottom = 49.74
+theme_override_fonts/font = ExtResource("2_aoemk")
+theme_override_font_sizes/font_size = 30
+text = "Powerful Fingers
+"
+
+[node name="LongFingersUpgradeBtn" type="TextureButton" parent="StaticUpgradeMenuBg"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.839
+anchor_top = 0.598
+anchor_right = 0.839
+anchor_bottom = 0.598
+offset_left = -75.363
+offset_top = -80.592
+offset_right = 74.6368
+offset_bottom = 74.408
 texture_normal = SubResource("AtlasTexture_q3qxc")
 texture_pressed = SubResource("AtlasTexture_jch81")
 texture_hover = SubResource("AtlasTexture_nqn7n")
@@ -337,7 +400,7 @@ ignore_texture_size = true
 stretch_mode = 4
 metadata/_edit_group_ = true
 
-[node name="LongFingersTexture" type="TextureRect" parent="LongFingersUpgradeBtn"]
+[node name="LongFingersTexture" type="TextureRect" parent="StaticUpgradeMenuBg/LongFingersUpgradeBtn"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -353,6 +416,39 @@ grow_vertical = 2
 texture = ExtResource("11_jch81")
 expand_mode = 1
 stretch_mode = 4
+
+[node name="LongFingersText" type="Label" parent="StaticUpgradeMenuBg/LongFingersUpgradeBtn"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.517
+anchor_top = 1.107
+anchor_right = 0.517
+anchor_bottom = 1.107
+offset_left = -73.45
+offset_top = -15.585
+offset_right = 73.55
+offset_bottom = 45.415
+theme_override_fonts/font = ExtResource("2_aoemk")
+theme_override_font_sizes/font_size = 30
+text = "Long Fingers
+"
+
+[node name="UpgradesText" type="Label" parent="StaticUpgradeMenuBg"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.181
+anchor_right = 0.5
+anchor_bottom = 0.181
+offset_left = -125.5
+offset_top = -30.124
+offset_right = 143.5
+offset_bottom = 29.876
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 30
+theme_override_fonts/font = ExtResource("2_aoemk")
+theme_override_font_sizes/font_size = 70
+text = "Upgrades:"
 
 [node name="UpgradeMenu" type="Control" parent="."]
 visible = false
@@ -577,9 +673,9 @@ text = "Next: 70s"
 stream = ExtResource("15_sj1uh")
 
 [connection signal="pressed" from="NewRunBtn" to="." method="_on_new_run_btn_pressed"]
-[connection signal="pressed" from="SpeedDemonUpgradeBtn" to="." method="_on_speed_demon_upgrade_btn_pressed"]
-[connection signal="pressed" from="AutoFingersUpgradeBtn" to="." method="_on_auto_fingers_upgrade_btn_pressed"]
-[connection signal="pressed" from="PowerfulFingersUpgradeBtn" to="." method="_on_powerful_fingers_upgrade_btn_pressed"]
-[connection signal="pressed" from="LongFingersUpgradeBtn" to="." method="_on_long_fingers_upgrade_btn_pressed"]
+[connection signal="pressed" from="StaticUpgradeMenuBg/SpeedDemonUpgradeBtn" to="." method="_on_speed_demon_upgrade_btn_pressed"]
+[connection signal="pressed" from="StaticUpgradeMenuBg/AutoFingersUpgradeBtn" to="." method="_on_auto_fingers_upgrade_btn_pressed"]
+[connection signal="pressed" from="StaticUpgradeMenuBg/PowerfulFingersUpgradeBtn" to="." method="_on_powerful_fingers_upgrade_btn_pressed"]
+[connection signal="pressed" from="StaticUpgradeMenuBg/LongFingersUpgradeBtn" to="." method="_on_long_fingers_upgrade_btn_pressed"]
 [connection signal="pressed" from="UpgradeMenu/UpgradeButton" to="." method="_on_upgrade_button_pressed"]
 [connection signal="pressed" from="UpgradeMenu/CloseMenu" to="." method="_on_close_menu_pressed"]

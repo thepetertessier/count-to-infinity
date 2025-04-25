@@ -9,9 +9,9 @@
 [ext_resource type="Texture2D" uid="uid://da83jon3upwgc" path="res://assets/images/light-wood-buttons.png" id="5_qt8r4"]
 [ext_resource type="FontFile" uid="uid://drnqnibw60daw" path="res://assets/images/Firlest-Regular.otf" id="6_572xw"]
 [ext_resource type="Script" uid="uid://dfigp78ocy0ka" path="res://scripts/stop_wheel.gd" id="6_vvma1"]
-[ext_resource type="Texture2D" uid="uid://bcm856x2r76fb" path="res://assets/images/pointing-finger.png" id="8_qt8r4"]
 [ext_resource type="Script" uid="uid://7kwja6qr20ce" path="res://scripts/collect_blood.gd" id="9_572xw"]
-[ext_resource type="Resource" path="res://resources/test_player_stats.tres" id="10_xdg4i"]
+[ext_resource type="Resource" uid="uid://blbc35jihvyfe" path="res://resources/test_player_stats.tres" id="10_xdg4i"]
+[ext_resource type="PackedScene" uid="uid://qnoqxbojxcn8" path="res://scenes/pointing_finger.tscn" id="11_lyxip"]
 [ext_resource type="AudioStream" uid="uid://brwqas7g7fny7" path="res://assets/sfx/wheel-looping2.ogg" id="12_fj47n"]
 [ext_resource type="AudioStream" uid="uid://ce4ap4wnbfu2a" path="res://assets/sfx/ending-spinner.ogg" id="13_3o07h"]
 [ext_resource type="AudioStream" uid="uid://cdyo43kldau1r" path="res://assets/sfx/breeze-of-blood-122253.mp3" id="14_mqgsy"]
@@ -111,11 +111,8 @@ text = "STOP"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Pointing-finger" type="Sprite2D" parent="."]
-position = Vector2(1631, 596)
-rotation = 2.06472
-scale = Vector2(0.5, -0.5)
-texture = ExtResource("8_qt8r4")
+[node name="Pointing-finger" parent="." instance=ExtResource("11_lyxip")]
+position = Vector2(1619, 533)
 
 [node name="CollectBlood" type="TextureButton" parent="." node_paths=PackedStringArray("nodeAddBlood")]
 visible = false

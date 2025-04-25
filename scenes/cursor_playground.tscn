@@ -1,8 +1,8 @@
 [gd_scene load_steps=7 format=3 uid="uid://biv4een8oyq0b"]
 
-[ext_resource type="PackedScene" uid="uid://j856hemyhcaa" path="res://scenes/player_cursor.tscn" id="1_ud1jq"]
-[ext_resource type="PackedScene" path="res://scenes/moving_rect.tscn" id="2_gee7y"]
-[ext_resource type="PackedScene" path="res://scenes/pushable.tscn" id="3_euvy8"]
+[ext_resource type="PackedScene" uid="uid://dsaq4eheaehbl" path="res://scenes/player_cursor.tscn" id="1_ud1jq"]
+[ext_resource type="PackedScene" uid="uid://dxgiuhv6sjefj" path="res://scenes/moving_rect.tscn" id="2_gee7y"]
+[ext_resource type="PackedScene" uid="uid://dskep877p7svb" path="res://scenes/pushable.tscn" id="3_euvy8"]
 
 [sub_resource type="Animation" id="Animation_euvy8"]
 length = 0.001
