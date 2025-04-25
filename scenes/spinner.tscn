@@ -11,7 +11,7 @@
 [ext_resource type="Script" uid="uid://dfigp78ocy0ka" path="res://scripts/stop_wheel.gd" id="6_vvma1"]
 [ext_resource type="Texture2D" uid="uid://bcm856x2r76fb" path="res://assets/images/pointing-finger.png" id="8_qt8r4"]
 [ext_resource type="Script" uid="uid://7kwja6qr20ce" path="res://scripts/collect_blood.gd" id="9_572xw"]
-[ext_resource type="Resource" uid="uid://bcgmbdxenfrbo" path="res://resources/test_player_stats.tres" id="10_xdg4i"]
+[ext_resource type="Resource" uid="uid://cfr27holx6fi7" path="res://resources/test_player_stats.tres" id="10_xdg4i"]
 [ext_resource type="AudioStream" uid="uid://brwqas7g7fny7" path="res://assets/sfx/wheel-looping2.ogg" id="12_fj47n"]
 [ext_resource type="AudioStream" uid="uid://ce4ap4wnbfu2a" path="res://assets/sfx/ending-spinner.ogg" id="13_3o07h"]
 [ext_resource type="AudioStream" uid="uid://cdyo43kldau1r" path="res://assets/sfx/breeze-of-blood-122253.mp3" id="14_mqgsy"]
