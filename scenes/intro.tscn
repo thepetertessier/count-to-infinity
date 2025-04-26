@@ -326,4 +326,5 @@ volume_db = -8.432
 autoplay = true
 parameters/looping = true
 
+[connection signal="pressed" from="SkipIntro" to="." method="_on_skip_intro_pressed"]
 [connection signal="pressed" from="NextLine" to="Intro_Text" method="_on_next_line_pressed"]

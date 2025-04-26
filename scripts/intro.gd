@@ -61,10 +61,9 @@ func fade_out_intro_elements() -> void:
 	button_tween.tween_callback(Callable(next_line_button, "hide"))
 
 	await button_tween.finished  # Could also use text_tween if you prefer
-	
-func _input(event):
-	if event.is_action_pressed("ui_accept"): 
-		SceneSwitcher.goto_scene_from_path("res://scenes/resting_menu.tscn")
+
+func _on_skip_intro_pressed() -> void:
+	SceneSwitcher.goto_scene_from_path("res://scenes/resting_menu.tscn")
 
 func show_seed_and_wait_for_click(seed: Node) -> void:
 	seed.visible = true
@@ -135,9 +134,3 @@ func show_vampire_freedom():
 	
 	await get_tree().create_timer(1.0).timeout
 	SceneSwitcher.goto_scene_from_path("res://scenes/resting_menu.tscn")
-	
-	
-		
-
-
-		
