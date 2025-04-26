@@ -1,6 +1,9 @@
 extends Node
 
 @onready var text_label = $Intro_Text
+@onready var next_line_button = $NextLine
+@onready var click_hint_label = $hint_label
+var has_shown_click_hint = false
 
 const VAMPIRE_HAND = preload("res://assets/images/vampire_hand.png")
 
@@ -34,8 +37,7 @@ func _ready() -> void:
 		seed.visible = false
 
 func _on_text_finished():
-	await get_tree().create_timer(3.0).timeout  # wait for 3 seconds
-	await fade_out_text()
+	await fade_out_intro_elements() 
 	for i in seeds.size():
 		var seed = seeds[i]
 		var counting_text = counting_texts[i]
@@ -48,27 +50,50 @@ func _on_text_finished():
 	await get_tree().create_timer(2.0).timeout
 	await show_vampire_freedom()
 	
-func fade_out_text() -> void:
-	var tween = get_tree().create_tween()
-	tween.tween_property(text_label, "modulate:a", 0.0, 1.5)
-	await tween.finished
+func fade_out_intro_elements() -> void:
+	# ensure both start fully visible
+	text_label.modulate.a = 1.0
+	next_line_button.modulate.a = 1.0
 	
-func _input(event):
-	if event.is_action_pressed("ui_accept"): 
-		SceneSwitcher.goto_scene_from_path("res://scenes/resting_menu.tscn")
+	next_line_button.disabled = true
+
+	var text_tween = text_label.create_tween()
+	text_tween.tween_property(text_label, "modulate:a", 0.0, 1.5)
+
+	var button_tween = next_line_button.create_tween()
+	button_tween.tween_property(next_line_button, "modulate:a", 0.0, 1.5)
+	button_tween.tween_callback(Callable(next_line_button, "hide"))
+
+	await button_tween.finished  # Could also use text_tween if you prefer
+
+func _on_skip_intro_pressed() -> void:
+	SceneSwitcher.goto_scene_from_path("res://scenes/resting_menu.tscn")
 
 func show_seed_and_wait_for_click(seed: Node) -> void:
 	seed.visible = true
 	
 	seed.get_node("AnimationPlayer2").play("Tutorial")
 	seed.get_node("AnimationPlayer").play("teeter")
+	
+	if not has_shown_click_hint:
+		has_shown_click_hint = true
 
-	var tween = null
+		click_hint_label.visible = true
+		click_hint_label.modulate = Color(1, 1, 1, 0.0)
+		var hint_tween = click_hint_label.create_tween()
+		hint_tween.tween_property(click_hint_label, "modulate:a", 0.6, 3.0)
 
-	# Connect ONCE and disconnect right after
-	var conn = await seed.clicked
+		var conn = await seed.clicked
 
-	tween = create_tween()
+		if hint_tween.is_running():
+			hint_tween.kill()
+		var fade_out = click_hint_label.create_tween()
+		fade_out.tween_property(click_hint_label, "modulate:a", 0.0, 0.5)
+		fade_out.tween_callback(Callable(click_hint_label, "hide"))
+	else:
+		await seed.clicked
+
+	var tween = create_tween()
 	tween.tween_property(seed, "scale", Vector2(), 0.5)
 	tween.tween_callback(seed.queue_free)
 	await tween.finished
@@ -76,7 +101,7 @@ func show_seed_and_wait_for_click(seed: Node) -> void:
 func show_counting_text(label: RichTextLabel, text: String) -> void:
 	label.visible = true
 	label.scroll_text(text)
-	await label.text_finished
+	await label.counting_finished
 	await get_tree().create_timer(1.5).timeout
 
 	var fade_tween = create_tween()
@@ -126,9 +151,3 @@ func show_vampire_freedom():
 	
 	await get_tree().create_timer(1.0).timeout
 	SceneSwitcher.goto_scene_from_path("res://scenes/resting_menu.tscn")
-	
-	
-		
-
-
-		
