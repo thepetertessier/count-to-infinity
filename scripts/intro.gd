@@ -1,6 +1,7 @@
 extends Node
 
 @onready var text_label = $Intro_Text
+@onready var next_line_button = $NextLine
 
 const VAMPIRE_HAND = preload("res://assets/images/vampire_hand.png")
 
@@ -34,8 +35,7 @@ func _ready() -> void:
 		seed.visible = false
 
 func _on_text_finished():
-	await get_tree().create_timer(3.0).timeout  # wait for 3 seconds
-	await fade_out_text()
+	await fade_out_intro_elements() 
 	for i in seeds.size():
 		var seed = seeds[i]
 		var counting_text = counting_texts[i]
@@ -48,10 +48,19 @@ func _on_text_finished():
 	await get_tree().create_timer(2.0).timeout
 	await show_vampire_freedom()
 	
-func fade_out_text() -> void:
-	var tween = get_tree().create_tween()
-	tween.tween_property(text_label, "modulate:a", 0.0, 1.5)
-	await tween.finished
+func fade_out_intro_elements() -> void:
+	# ensure both start fully visible
+	text_label.modulate.a = 1.0
+	next_line_button.modulate.a = 1.0
+
+	var text_tween = text_label.create_tween()
+	text_tween.tween_property(text_label, "modulate:a", 0.0, 1.5)
+
+	var button_tween = next_line_button.create_tween()
+	button_tween.tween_property(next_line_button, "modulate:a", 0.0, 1.5)
+	button_tween.tween_callback(Callable(next_line_button, "hide"))
+
+	await button_tween.finished  # Could also use text_tween if you prefer
 	
 func _input(event):
 	if event.is_action_pressed("ui_accept"): 
@@ -76,7 +85,7 @@ func show_seed_and_wait_for_click(seed: Node) -> void:
 func show_counting_text(label: RichTextLabel, text: String) -> void:
 	label.visible = true
 	label.scroll_text(text)
-	await label.text_finished
+	await label.counting_finished
 	await get_tree().create_timer(1.5).timeout
 
 	var fade_tween = create_tween()

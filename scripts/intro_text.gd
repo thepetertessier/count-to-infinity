@@ -17,18 +17,49 @@ You are Velka, the Hungering Sovereign, the last of the old lords, sealed in a c
 
 Until…"
 
+var story_lines = []
+var current_line = 0
+var skipping = false
+var scrolling = false
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	scroll_text(story_text)
+	story_lines = story_text.split("\n\n")  # splits by paragraph
+	show_next_line()
 
+
+func show_next_line() -> void:
+	if current_line >= story_lines.size():
+		emit_signal("text_finished")
+		return
+	scroll_text(story_lines[current_line])
+	
+	
 func scroll_text(input_text: String) -> void:
-	visible_characters = 0
-	text = input_text
+	var old_text = text
+	var prefix = ""
+	if old_text.length() > 0:
+		prefix = "\n\n"
+	var new_text = old_text + prefix + input_text
 
-	
+	text = new_text
+	visible_characters = old_text.length()
+	scrolling = true
+	skipping = false
+
 	for i in input_text.length():
+		if skipping:
+			break
 		visible_characters += 1
-		await get_tree().create_timer(0.05).timeout
+		await get_tree().create_timer(0.03).timeout
 
-	emit_signal("text_finished")
-	
+	visible_characters = new_text.length()
+	scrolling = false
+
+func _on_next_line_pressed() -> void:
+	if scrolling:
+		skipping = true
+	else:
+		current_line += 1
+		show_next_line()
+		

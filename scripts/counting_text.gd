@@ -1,5 +1,5 @@
 extends RichTextLabel
-signal text_finished
+signal counting_finished
 
 func scroll_text(input_text: String) -> void:
 	visible_characters = 0
@@ -9,4 +9,4 @@ func scroll_text(input_text: String) -> void:
 		visible_characters += 1
 		await get_tree().create_timer(0.05).timeout
 
-	emit_signal("text_finished")
+	emit_signal("counting_finished")

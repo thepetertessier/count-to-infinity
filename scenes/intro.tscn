@@ -1,12 +1,15 @@
-[gd_scene load_steps=11 format=3 uid="uid://bgmdjfwguirpr"]
+[gd_scene load_steps=17 format=3 uid="uid://bgmdjfwguirpr"]
 
 [ext_resource type="Script" uid="uid://dpyofscfjk0vx" path="res://scripts/intro.gd" id="1_i2l1n"]
 [ext_resource type="Script" uid="uid://fcrd3vcoasqf" path="res://scripts/intro_text.gd" id="1_ioskq"]
 [ext_resource type="FontFile" uid="uid://df8p6ogj2hy8b" path="res://assets/fonts/MedievalSharp-Regular.ttf" id="1_yjqpq"]
-[ext_resource type="FontFile" uid="uid://d1wqf4rmbxrgy" path="res://assets/fonts/Nightcore Demo.ttf" id="3_4bx60"]
 [ext_resource type="PackedScene" uid="uid://60wse8gqjg0t" path="res://scenes/intro_sunflower_seed.tscn" id="5_0naf5"]
 [ext_resource type="AudioStream" uid="uid://lk5nqc53stpo" path="res://assets/sound/GameMusic_ForestTheme_24.mp3" id="6_es01l"]
 [ext_resource type="Script" uid="uid://bmn0tkxuvsv60" path="res://scripts/counting_text.gd" id="7_0naf5"]
+[ext_resource type="Texture2D" uid="uid://c4d7icnifcuh8" path="res://assets/images/wood-buttons.png" id="8_272cy"]
+[ext_resource type="Texture2D" uid="uid://ksteg5m1hskw" path="res://assets/images/dark-wooden-buttons.png" id="9_37iue"]
+[ext_resource type="FontFile" uid="uid://drnqnibw60daw" path="res://assets/images/Firlest-Regular.otf" id="10_272cy"]
+[ext_resource type="Texture2D" uid="uid://da83jon3upwgc" path="res://assets/images/light-wood-buttons.png" id="10_n6p8m"]
 
 [sub_resource type="Animation" id="Animation_0naf5"]
 length = 0.001
@@ -44,6 +47,18 @@ _data = {
 &"RESET": SubResource("Animation_0naf5"),
 &"Tutorial": SubResource("Animation_es01l")
 }
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m3r7s"]
+atlas = ExtResource("8_272cy")
+region = Rect2(110, 130, 1910, 730)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xwriy"]
+atlas = ExtResource("9_37iue")
+region = Rect2(110, 130, 1910, 730)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u5myo"]
+atlas = ExtResource("10_n6p8m")
+region = Rect2(110, 130, 1910, 730)
 
 [node name="Intro" type="Node"]
 script = ExtResource("1_i2l1n")
@@ -88,22 +103,6 @@ theme_override_font_sizes/normal_font_size = 50
 theme_override_font_sizes/bold_font_size = 50
 fit_content = true
 script = ExtResource("1_ioskq")
-
-[node name="Skip Label" type="Label" parent="."]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 356.0
-offset_top = 827.0
-offset_right = -328.0
-offset_bottom = 31.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_fonts/font = ExtResource("3_4bx60")
-theme_override_font_sizes/font_size = 35
-text = "( Press Enter  to  Skip  Cutscene  and  Tutorial )"
-horizontal_alignment = 1
-vertical_alignment = 1
 
 [node name="SunflowerSeed1" parent="." instance=ExtResource("5_0naf5")]
 position = Vector2(967, -71)
@@ -242,6 +241,72 @@ theme_override_font_sizes/bold_font_size = 50
 bbcode_enabled = true
 script = ExtResource("7_0naf5")
 
+[node name="SkipIntro" type="TextureButton" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 1599.0
+offset_top = 946.0
+offset_right = -6.0
+offset_bottom = -17.0
+grow_horizontal = 2
+grow_vertical = 2
+texture_normal = SubResource("AtlasTexture_m3r7s")
+texture_pressed = SubResource("AtlasTexture_xwriy")
+texture_hover = SubResource("AtlasTexture_u5myo")
+ignore_texture_size = true
+stretch_mode = 4
+
+[node name="SkipText" type="Label" parent="SkipIntro"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.118
+anchor_top = 0.318
+anchor_right = 0.855
+anchor_bottom = 0.734
+offset_left = 0.203995
+offset_top = 0.0279961
+offset_right = 0.190002
+offset_bottom = -0.0360031
+theme_override_fonts/font = ExtResource("10_272cy")
+theme_override_font_sizes/font_size = 35
+text = "Skip Intro"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="NextLine" type="TextureButton" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 1290.0
+offset_top = 946.0
+offset_right = -315.0
+offset_bottom = -17.0
+grow_horizontal = 2
+grow_vertical = 2
+texture_normal = SubResource("AtlasTexture_m3r7s")
+texture_pressed = SubResource("AtlasTexture_xwriy")
+texture_hover = SubResource("AtlasTexture_u5myo")
+ignore_texture_size = true
+stretch_mode = 4
+
+[node name="NextText" type="Label" parent="NextLine"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.118
+anchor_top = 0.318
+anchor_right = 0.855
+anchor_bottom = 0.734
+offset_left = 0.203995
+offset_top = 0.0279961
+offset_right = 0.190002
+offset_bottom = -0.0360031
+theme_override_fonts/font = ExtResource("10_272cy")
+theme_override_font_sizes/font_size = 35
+text = "Next Line"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="BlackOverlay" type="ColorRect" parent="."]
 visible = false
 anchors_preset = 15
@@ -260,3 +325,5 @@ stream = ExtResource("6_es01l")
 volume_db = -8.432
 autoplay = true
 parameters/looping = true
+
+[connection signal="pressed" from="NextLine" to="Intro_Text" method="_on_next_line_pressed"]
