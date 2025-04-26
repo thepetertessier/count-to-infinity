@@ -54,6 +54,8 @@ func fade_out_intro_elements() -> void:
 	# ensure both start fully visible
 	text_label.modulate.a = 1.0
 	next_line_button.modulate.a = 1.0
+	
+	next_line_button.disabled = true
 
 	var text_tween = text_label.create_tween()
 	text_tween.tween_property(text_label, "modulate:a", 0.0, 1.5)
