@@ -2,6 +2,8 @@ extends Node
 
 @onready var text_label = $Intro_Text
 @onready var next_line_button = $NextLine
+@onready var click_hint_label = $hint_label
+var has_shown_click_hint = false
 
 const VAMPIRE_HAND = preload("res://assets/images/vampire_hand.png")
 
@@ -70,13 +72,26 @@ func show_seed_and_wait_for_click(seed: Node) -> void:
 	
 	seed.get_node("AnimationPlayer2").play("Tutorial")
 	seed.get_node("AnimationPlayer").play("teeter")
+	
+	if not has_shown_click_hint:
+		has_shown_click_hint = true
 
-	var tween = null
+		click_hint_label.visible = true
+		click_hint_label.modulate = Color(1, 1, 1, 0.0)
+		var hint_tween = click_hint_label.create_tween()
+		hint_tween.tween_property(click_hint_label, "modulate:a", 0.6, 3.0)
 
-	# Connect ONCE and disconnect right after
-	var conn = await seed.clicked
+		var conn = await seed.clicked
 
-	tween = create_tween()
+		if hint_tween.is_running():
+			hint_tween.kill()
+		var fade_out = click_hint_label.create_tween()
+		fade_out.tween_property(click_hint_label, "modulate:a", 0.0, 0.5)
+		fade_out.tween_callback(Callable(click_hint_label, "hide"))
+	else:
+		await seed.clicked
+
+	var tween = create_tween()
 	tween.tween_property(seed, "scale", Vector2(), 0.5)
 	tween.tween_callback(seed.queue_free)
 	await tween.finished
