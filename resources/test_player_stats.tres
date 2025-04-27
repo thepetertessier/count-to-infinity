@@ -1,11 +1,11 @@
-[gd_resource type="Resource" script_class="PlayerStats" load_steps=2 format=3]
+[gd_resource type="Resource" script_class="PlayerStats" load_steps=2 format=3 uid="uid://bcaqk2ws4obs8"]
 
-[ext_resource type="Script" path="res://scripts/player_stats.gd" id="1_otkgs"]
+[ext_resource type="Script" uid="uid://gcq1t384arvx" path="res://scripts/player_stats.gd" id="1_otkgs"]
 
 [resource]
 script = ExtResource("1_otkgs")
-lifetime_grain_count = 60
-blood = 2075
+lifetime_grain_count = 0
+blood = 0
 click_power = 1
 click_radius = 1.0
 auto_collect_rate = 0.0
