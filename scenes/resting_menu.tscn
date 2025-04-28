@@ -1,9 +1,9 @@
-[gd_scene load_steps=36 format=3 uid="uid://ime13jo53wo8"]
+[gd_scene load_steps=39 format=3 uid="uid://ime13jo53wo8"]
 
 [ext_resource type="Texture2D" uid="uid://bu8s78x7kd1ty" path="res://assets/images/CoffinBackground.png" id="1_4y48l"]
 [ext_resource type="Script" uid="uid://b7v54rffdav5b" path="res://scripts/resting_menu.gd" id="1_xitk6"]
 [ext_resource type="FontFile" uid="uid://drnqnibw60daw" path="res://assets/images/Firlest-Regular.otf" id="2_aoemk"]
-[ext_resource type="Resource" path="res://resources/test_player_stats.tres" id="2_rpyq4"]
+[ext_resource type="Resource" uid="uid://jsqufb2osnse" path="res://resources/test_player_stats.tres" id="2_rpyq4"]
 [ext_resource type="Texture2D" uid="uid://c4d7icnifcuh8" path="res://assets/images/wood-buttons.png" id="5_rpyq4"]
 [ext_resource type="Texture2D" uid="uid://ksteg5m1hskw" path="res://assets/images/dark-wooden-buttons.png" id="6_mu6aj"]
 [ext_resource type="Texture2D" uid="uid://da83jon3upwgc" path="res://assets/images/light-wood-buttons.png" id="7_jd1n5"]
@@ -34,6 +34,44 @@ region = Rect2(190, 254, 1751, 564)
 [sub_resource type="AtlasTexture" id="AtlasTexture_suj7e"]
 atlas = ExtResource("7_jd1n5")
 region = Rect2(190, 254, 1751, 564)
+
+[sub_resource type="Animation" id="Animation_en5wp"]
+resource_name = "bounce"
+length = 1.5
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.5),
+"transitions": PackedFloat32Array(2.73208, 2.46229),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.1, 1.1)]
+}
+
+[sub_resource type="Animation" id="Animation_t3xc3"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_t3xc3"]
+_data = {
+&"RESET": SubResource("Animation_t3xc3"),
+&"bounce": SubResource("Animation_en5wp")
+}
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_sj1uh"]
 atlas = ExtResource("5_rpyq4")
@@ -126,10 +164,11 @@ anchor_right = 0.5
 anchor_bottom = 0.539
 offset_left = -210.5
 offset_top = -91.1201
-offset_right = 210.5
-offset_bottom = 90.8798
+offset_right = 209.5
+offset_bottom = 88.8799
 grow_horizontal = 2
 grow_vertical = 2
+pivot_offset = Vector2(210, 90)
 texture_normal = SubResource("AtlasTexture_rpyq4")
 texture_pressed = SubResource("AtlasTexture_jd1n5")
 texture_hover = SubResource("AtlasTexture_suj7e")
@@ -150,11 +189,17 @@ offset_right = 35.0
 offset_bottom = 11.5
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/outline_size = 20
 theme_override_fonts/font = ExtResource("2_aoemk")
 theme_override_font_sizes/font_size = 70
 text = "New Run"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="NewRunBtn"]
+libraries = {
+&"": SubResource("AnimationLibrary_t3xc3")
+}
 
 [node name="GrainCountContainer" type="HBoxContainer" parent="."]
 layout_mode = 1
