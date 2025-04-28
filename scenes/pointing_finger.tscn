@@ -2,7 +2,11 @@
 
 [ext_resource type="Texture2D" uid="uid://bcm856x2r76fb" path="res://assets/images/pointing-finger.png" id="1_78udx"]
 
-[node name="Pointing finger" type="Node2D"]
+[node name="Pointing Finger" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(4, 57)
