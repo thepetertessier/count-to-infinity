@@ -1,6 +1,9 @@
 extends Control
 
-@export var stage_num :int = 1
+@export var stage_num: int = 1:
+	set(value):
+		stage_num = value
+		$ScriptRunner.stage_num = value
 @export var grain_count_across_run :int = 0
 @export var grain_count_min: int = 10
 @export var grain_count_max: int = 20

@@ -45,6 +45,5 @@ func load_next_scene(scene: PackedScene, run_total_seconds, grain_count_min := 1
 	next_stage.grain_count_across_run = run_grain_count
 	next_stage.grain_count_min = grain_count_min
 	next_stage.seconds_until_sunrise = run_total_seconds if seconds_remaining == null else seconds_remaining
-	next_stage.run_total_seconds = run_total_seconds
-	
+	next_stage.run_total_seconds = run_total_seconds	
 	goto_node(next_stage)

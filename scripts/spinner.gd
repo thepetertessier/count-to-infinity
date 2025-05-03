@@ -12,10 +12,10 @@ var col = Color(255,0,0)
 var h = 100
 var w = 200
 var done = 100
+@export var stage_num: int = 1
 @export var addblood: int = 0
 
 signal spun
-
 
 func addReward(odds, value):
 	var label = Label.new()
@@ -35,11 +35,12 @@ func addReward(odds, value):
 
 func _process(delta: float) -> void:
 	if (d == 0):
-		addReward(50,50)
-		addReward(50,100)
-		addReward(100,25)
-		addReward(25,200)
-		addReward(10,1000)
+		var multiplier := stage_num - 1
+		addReward(50,50*multiplier)
+		addReward(50,100*multiplier)
+		addReward(100,25*multiplier)
+		addReward(25,200*multiplier)
+		addReward(10,1000*multiplier)
 	d += delta
 	speed -= accel*delta
 	if (speed < 0): 
